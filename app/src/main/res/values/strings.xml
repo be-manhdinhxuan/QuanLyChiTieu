@@ -1,3 +1,12 @@
 <resources>
-    <string name="app_name">QuanLyChiTieu</string>
+    <string name="app_name">Quản Lý Chi Tiêu</string>
+    
+    <!-- Facebook Configuration -->
+    <string name="facebook_app_id">1010742911005239</string>
+    <string name="fb_login_protocol_scheme">fb1010742911005239</string>
+    <string name="facebook_client_token">917753c6e91219e3d681dd4959d95abf</string>
+    <string name="facebook_auth_protocol_scheme">fb1010742911005239</string>
+    
+    <!-- Google Configuration -->
+    <string name="default_web_client_id">753170906061-rkqtim39rmdnqqnkk3bkpcv5hff98o4o.apps.googleusercontent.com</string>
 </resources>

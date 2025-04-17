@@ -200,17 +200,18 @@
                 android:id="@+id/tvHaveAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đã có tài khoản? " /> <TextView
-            android:id="@+id/tvLoginNow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            android:focusable="true"
-            android:paddingStart="5dp"
-            android:paddingEnd="5dp"
-            android:text="Đăng nhập ngay"
-            android:textColor="@color/blue"
-            android:textStyle="bold" />
+                android:text="Đã có tài khoản? " />
+            <TextView
+                    android:id="@+id/tvLoginNow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="5dp"
+                    android:paddingEnd="5dp"
+                    android:text="Đăng nhập ngay"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold" tools:ignore="TouchTargetSizeCheck"/>
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
