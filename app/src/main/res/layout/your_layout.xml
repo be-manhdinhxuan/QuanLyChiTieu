@@ -1,0 +1,4 @@
+<com.example.quanlychitieu.views.CircleTextView
+    android:id="@+id/circleTextView"
+    android:layout_width="40dp"
+    android:layout_height="40dp"/>
