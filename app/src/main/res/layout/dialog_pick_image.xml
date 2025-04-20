@@ -1,59 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="16dp">
+    android:orientation="vertical"
+    android:background="@drawable/dialog_background">
 
-    <LinearLayout
-        android:layout_width="0dp"
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:text="@string/choose_image_source"
+        android:textSize="20sp"
+        android:textStyle="bold"
         android:gravity="center"
-        android:orientation="vertical">
+        android:padding="16dp"
+        android:textColor="?android:attr/textColorPrimary"/>
 
-        <ImageButton
-            android:id="@+id/galleryButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="12dp"
-            android:src="@drawable/ic_image"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/gallery"/>
-
-    </LinearLayout>
-
+    <!-- Divider -->
     <View
-        android:layout_width="1dp"
-        android:layout_height="match_parent"
-        android:layout_marginVertical="8dp"
-        android:background="@android:color/darker_gray"/>
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"/>
 
+    <!-- Options Container -->
     <LinearLayout
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="horizontal"
+        android:padding="24dp"
+        android:baselineAligned="false">
 
-        <ImageButton
-            android:id="@+id/cameraButton"
-            android:layout_width="wrap_content"
+        <!-- Gallery Option -->
+        <LinearLayout
+            android:id="@+id/galleryContainer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="12dp"
-            android:src="@drawable/ic_camera"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/select_from_gallery">
 
-        <TextView
-            android:layout_width="wrap_content"
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="?attr/colorPrimary">
+
+                <ImageButton
+                    android:id="@+id/galleryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_image"
+                    app:tint="@android:color/white"
+                    android:contentDescription="@string/select_from_gallery"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/gallery"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary"/>
+
+        </LinearLayout>
+
+        <!-- Vertical Divider -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="24dp"
+            android:background="?android:attr/listDivider"/>
+
+        <!-- Camera Option -->
+        <LinearLayout
+            android:id="@+id/cameraContainer"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:text="@string/camera"/>
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:contentDescription="@string/take_photo">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="4dp"
+                app:cardBackgroundColor="?attr/colorPrimary">
+
+                <ImageButton
+                    android:id="@+id/cameraButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="16dp"
+                    android:src="@drawable/ic_camera"
+                    app:tint="@android:color/white"
+                    android:contentDescription="@string/take_photo"/>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:text="@string/camera"
+                android:textSize="16sp"
+                android:textColor="?android:attr/textColorPrimary"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

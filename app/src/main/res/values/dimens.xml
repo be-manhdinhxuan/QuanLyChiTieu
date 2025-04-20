@@ -1,4 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="circle_radius">20dp</dimen>
+
+    <!-- Button dimensions -->
+    <dimen name="button_height">48dp</dimen>
+    <dimen name="button_corner_radius">10dp</dimen>
+
+    <!-- Text sizes -->
+    <dimen name="text_size_paragraph">16sp</dimen>
+
+    <!-- Line spacing -->
+    <dimen name="line_spacing_normal">8sp</dimen>
+
+    <!-- Margins -->
+    <dimen name="margin_small">8dp</dimen>
+    <dimen name="margin_medium">16dp</dimen>
+    <dimen name="margin_large">24dp</dimen>
+    <dimen name="margin_xlarge">32dp</dimen>
+
+    <!-- Padding -->
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+
+    <!-- Text Sizes -->
+    <dimen name="text_size_small">12sp</dimen>
+    <dimen name="text_size_medium">14sp</dimen>
+    <dimen name="text_size_large">16sp</dimen>
+    <dimen name="text_size_xlarge">20sp</dimen>
+
+    <!-- Component Sizes -->
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+
+    <!-- Social Integration Dimensions -->
+    <dimen name="facebook_button_corner_radius">2dp</dimen>
 </resources>

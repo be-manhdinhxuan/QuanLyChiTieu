@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/bg">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="@color/primary">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:titleTextColor="@android:color/white"/>
+            app:titleTextColor="@android:color/white"
+            android:contentDescription="@string/toolbar_add_spending"/>
 
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -23,15 +27,21 @@
             app:cardCornerRadius="8dp"
             app:cardElevation="4dp">
 
-            <EditText
-                android:id="@+id/moneyInput"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/moneyInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@null"
-                android:hint="@string/enter_amount"
-                android:inputType="number"
-                android:padding="16dp"
-                android:textSize="24sp"/>
+                android:hint="@string/money_input"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/moneyInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="numberDecimal"
+                    android:maxLines="1"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
@@ -39,7 +49,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:contentDescription="@string/spending_details_scroll"
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -47,125 +59,173 @@
             android:orientation="vertical"
             android:padding="16dp">
 
+            <!-- Main Details Card -->
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="8dp">
+                app:cardCornerRadius="8dp"
+                app:cardElevation="2dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="16dp">
+                    android:orientation="vertical">
 
                     <!-- Type Selection -->
-                    <LinearLayout
-                        android:id="@+id/typeContainer"
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/typeSelector"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal"
-                        android:padding="8dp">
+                        android:layout_margin="16dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="2dp">
 
-                        <ImageView
-                            android:id="@+id/typeIcon"
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@drawable/ic_question"/>
-
-                        <TextView
-                            android:id="@+id/typeText"
-                            android:layout_width="0dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:text="@string/select_type"/>
+                            android:orientation="horizontal"
+                            android:padding="16dp">
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_arrow_forward"/>
+                            <ImageView
+                                android:id="@+id/typeIcon"
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_default"
+                                app:tint="?attr/colorPrimary"/>
 
-                    </LinearLayout>
+                            <Space
+                                android:layout_width="16dp"
+                                android:layout_height="wrap_content"/>
 
-                    <View
+                            <TextView
+                                android:id="@+id/typeText"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/select_spending_type"
+                                android:textAppearance="?attr/textAppearanceBody1"/>
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_arrow_drop_down"
+                                app:tint="?attr/colorPrimary"/>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.divider.MaterialDivider
                         android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/divider"/>
+                        android:layout_height="1dp"/>
 
                     <!-- Date Selection -->
                     <LinearLayout
                         android:id="@+id/dateContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:gravity="center_vertical"
+                        android:minHeight="56dp"
                         android:orientation="horizontal"
-                        android:padding="8dp">
+                        android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@drawable/ic_calendar"/>
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:contentDescription="@string/calendar_icon"
+                            android:src="@drawable/ic_calendar"
+                            app:tint="?attr/colorPrimary"/>
 
                         <TextView
                             android:id="@+id/dateText"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:textAppearance="?attr/textAppearanceBody1"
+                            tools:text="01/01/2024"/>
 
                     </LinearLayout>
+
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
 
                     <!-- Time Selection -->
                     <LinearLayout
                         android:id="@+id/timeContainer"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        android:clickable="true"
+                        android:focusable="true"
                         android:gravity="center_vertical"
+                        android:minHeight="56dp"
                         android:orientation="horizontal"
-                        android:padding="8dp">
+                        android:padding="16dp">
 
                         <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@drawable/ic_time"/>
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:contentDescription="@string/time_icon"
+                            android:src="@drawable/ic_time"
+                            app:tint="?attr/colorPrimary"/>
 
                         <TextView
                             android:id="@+id/timeText"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_weight="1"/>
+                            android:layout_weight="1"
+                            android:textAppearance="?attr/textAppearanceBody1"
+                            tools:text="14:30"/>
 
                     </LinearLayout>
 
+                    <com.google.android.material.divider.MaterialDivider
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"/>
+
                     <!-- Note Input -->
-                    <EditText
-                        android:id="@+id/noteInput"
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/noteInputLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@null"
-                        android:hint="@string/note"
-                        android:padding="8dp"/>
+                        android:hint="@string/note_input"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/noteInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:maxLines="5"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- More Options -->
+            <!-- More Options Container -->
             <LinearLayout
                 android:id="@+id/moreContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="visible">
 
+                <!-- Location Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
-                    app:cardCornerRadius="8dp">
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -173,31 +233,36 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <!-- Location Input -->
-                        <EditText
-                            android:id="@+id/locationInput"
+                        <com.google.android.material.textfield.TextInputLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@null"
                             android:hint="@string/location"
-                            android:padding="8dp"/>
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-                        <View
-                            android:layout_width="match_parent"
-                            android:layout_height="1dp"
-                            android:background="@color/divider"/>
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/locationInput"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:maxLines="1"/>
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <!-- Friends List -->
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/friendsList"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="16dp"
+                            android:contentDescription="@string/friends_list"
+                            tools:itemCount="2"
+                            tools:listitem="@layout/item_friend"/>
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/addFriendButton"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="@string/add_friend"
                             style="@style/Widget.MaterialComponents.Button.TextButton"/>
 
@@ -205,23 +270,26 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <!-- Image Picker -->
+                <!-- Image Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/imageContainer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:cardCornerRadius="8dp">
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="2dp">
 
                     <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="16dp">
 
                         <ImageView
                             android:id="@+id/selectedImage"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:adjustViewBounds="true"
-                            android:visibility="gone"/>
+                            android:contentDescription="@string/selected_image"
+                            android:visibility="visible"/>
 
                         <com.google.android.material.button.MaterialButton
                             android:id="@+id/addImageButton"
@@ -241,6 +309,7 @@
                 android:id="@+id/moreButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/more_options"
                 style="@style/Widget.MaterialComponents.Button.TextButton"/>
 

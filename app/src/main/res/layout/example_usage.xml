@@ -1,4 +1,0 @@
-<com.example.quanlychitieu.views.RemoveIconView
-    android:id="@+id/removeIcon"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"/>

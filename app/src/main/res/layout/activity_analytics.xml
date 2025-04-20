@@ -3,107 +3,124 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/white">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/primary"
+        app:titleTextColor="@android:color/white"
+        app:title="@string/spending">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+        <ImageButton
+            android:id="@+id/searchButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_search"
+            app:tint="@android:color/white"/>
 
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Spending"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/searchButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:src="@drawable/ic_search" />
-        </LinearLayout>
-    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/periodTabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:elevation="4dp"
+        app:tabTextColor="@color/grey_600"
+        app:tabSelectedTextColor="@color/primary"
+        app:tabIndicatorColor="@color/primary"
+        app:tabIndicatorHeight="3dp"
+        app:tabIndicatorFullWidth="false"
+        app:tabRippleColor="@color/primary_light"/>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="#2c4260"
-        app:cardCornerRadius="4dp">
+        android:layout_margin="16dp"
+        app:cardBackgroundColor="@color/primary_dark"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/dateText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                android:textAppearance="?attr/textAppearanceHeadline6"/>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/spendingTypeTabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:tabTextColor="@color/grey_300"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabIndicatorColor="@android:color/white"
+                app:tabIndicatorHeight="2dp"
+                app:tabIndicatorFullWidth="false"/>
 
             <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="350dp">
+                android:layout_height="350dp"
+                android:layout_marginTop="16dp">
 
-                <com.example.quanlychitieu.views.PieChartView
-                    android:id="@+id/pieChartView"
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/pieChart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
-                <com.example.quanlychitieu.views.ColumnChartView
-                    android:id="@+id/columnChartView"
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:visibility="gone" />
+                    android:visibility="gone"/>
 
                 <TextView
                     android:id="@+id/noDataText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="No data available"
-                    android:textColor="#FFE06F"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:visibility="gone" />
+                    android:text="@string/no_data"
+                    android:textColor="@color/amber_300"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    android:visibility="gone"/>
 
                 <ProgressBar
                     android:id="@+id/loadingIndicator"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:visibility="gone" />
+                    android:indeterminateTint="@color/amber_300"
+                    android:visibility="gone"/>
+
             </FrameLayout>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/chartTypeTabLayout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                app:tabTextColor="@color/grey_300"
+                app:tabSelectedTextColor="@android:color/white"
+                app:tabIndicatorColor="@android:color/white"
+                app:tabIndicatorHeight="2dp"
+                app:tabIndicatorFullWidth="false"/>
+
         </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
+    </com.google.android.material.card.MaterialCardView>
+
 </LinearLayout>

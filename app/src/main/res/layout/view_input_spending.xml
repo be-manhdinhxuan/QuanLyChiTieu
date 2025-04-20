@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:contentDescription="@string/input_spending_container">
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:contentDescription="@null"/>
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="9dp"
+        android:contentDescription="@string/spending_type_icon"/>
 
     <Space
         android:layout_width="10dp"
@@ -22,6 +25,12 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@null"
-        android:textSize="16sp"/>
+        android:textSize="16sp"
+        android:minHeight="48dp"
+        android:hint="@string/spending_amount_hint"
+        android:inputType="numberDecimal"
+        android:importantForAutofill="yes"
+        android:autofillHints="transactionAmount"
+        tools:text="100,000đ"/>
 
 </LinearLayout>

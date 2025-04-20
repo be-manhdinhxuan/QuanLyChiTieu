@@ -21,9 +21,9 @@
             android:name="com.google.android.gms.auth.api.signin.DEFAULT_WEB_CLIENT_ID"
             android:value="@string/default_web_client_id"/>
 
-
+        <!-- Auth Feature Activities -->
         <activity
-            android:name=".LoginActivity"
+            android:name=".presentation.features.auth.login.screen.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,23 +31,32 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".SignupActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".ForgotPasswordActivity" />
-        <activity android:name=".ChangePasswordActivity" />
+        <activity
+            android:name=".presentation.features.auth.signup.screen.SignupActivity" />
+
+        <activity
+            android:name=".presentation.features.auth.forgot.screen.ForgotPasswordActivity" />
+
+        <activity
+            android:name=".presentation.features.auth.password.screen.ChangePasswordActivity" />
+
+        <!-- Main Feature Activities -->
+        <activity
+            android:name=".presentation.features.main.screen.MainActivity" />
 
         <!-- Facebook Configuration -->
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-                   android:value="@string/facebook_app_id"/>
-        <meta-data android:name="com.facebook.sdk.ClientToken"
-                   android:value="@string/facebook_client_token"/>
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id"/>
+        <meta-data
+            android:name="com.facebook.sdk.ClientToken"
+            android:value="@string/facebook_client_token"/>
 
         <activity
             android:name="com.facebook.FacebookActivity"
-            android:configChanges=
-                    "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name" />
-        
+
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">

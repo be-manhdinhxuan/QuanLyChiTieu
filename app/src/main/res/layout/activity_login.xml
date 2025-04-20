@@ -18,170 +18,133 @@
             android:id="@+id/tvHello"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Xin chào"
-            android:textAlignment="center"
-            android:textColor="#000000"
+            android:text="@string/hello_again"
             android:textSize="25sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:gravity="center"/>
 
         <TextView
             android:id="@+id/tvWelcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Chào mừng bạn quay trở lai!"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="20sp" />
+            android:text="@string/welcome_back_you_been_missed"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:textAlignment="center"/>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/emailInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+        <com.example.quanlychitieu.presentation.login.widget.InputText
+            android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:hint="Email"
-            app:errorEnabled="true">
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
 
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/passwordInputLayout"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <com.example.quanlychitieu.presentation.login.widget.InputPassword
+            android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="Mật khẩu"
-            app:errorEnabled="true"
-            app:endIconMode="password_toggle">
+            android:hint="@string/password"/>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword" />
-
-        </com.google.android.material.textfield.TextInputLayout>
         <TextView
             android:id="@+id/tvForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="10dp"
-            android:text="Quên mật khẩu?"
-            android:textColor="@color/blue"
-            android:textStyle="bold" />
+            android:text="@string/forgot_password"
+            android:textColor="@color/colorPrimary"/>
 
-        <com.google.android.material.button.MaterialButton
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
+
+        <com.example.quanlychitieu.presentation.login.widget.CustomButton
             android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="18dp"
-            android:text="Đăng Nhập"
-            android:textColor="@android:color/white"
-            android:textSize="18sp"
-            app:backgroundTint="@color/button"
-            app:cornerRadius="10dp" />
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone" />
+            android:text="@string/sign_in"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="30dp"/>
+
+        <com.example.quanlychitieu.presentation.login.widget.TextContinue
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginEnd="10dp"
-                android:layout_weight="1"
-                android:background="#000" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Hoặc tiếp tục với"
-                android:textColor="@color/black"
-                android:textSize="16sp" />
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_marginStart="10dp"
-                android:layout_weight="1"
-                android:background="#000" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
             android:orientation="horizontal">
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnGoogle"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="15dp"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_google"
-                android:gravity="center"
-                android:text="Google"
-                android:textColor="@color/googleGray"
-                android:textSize="16sp"
-                app:backgroundTint="@color/white"
-                app:cornerRadius="10dp" />
+                android:text="@string/google"
+                android:textColor="@color/gray"
+                app:icon="@drawable/ic_google"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:cornerRadius="10dp"
+                android:backgroundTint="@color/white"/>
+
+            <Space
+                android:layout_width="30dp"
+                android:layout_height="match_parent"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnFacebook"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_facebook"
-                android:gravity="center"
-                android:text="Facebook"
-                android:textColor="@android:color/white"
-                android:textSize="16sp"
-                app:backgroundTint="@color/fb"
-                app:cornerRadius="10dp" />
+                android:text="@string/facebook"
+                android:textColor="@color/white"
+                app:icon="@drawable/ic_facebook"
+                app:iconGravity="start"
+                app:iconPadding="8dp"
+                app:cornerRadius="10dp"
+                android:backgroundTint="@color/facebook_blue"/>
+
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bạn chưa có tài khoản? "
-                android:textSize="14sp" />
+                android:text="@string/do_not_have_account"
+                style="@style/TextAppearance.App.Paragraph"/>
 
             <TextView
-                android:id="@+id/tvRegisterNow"
+                android:id="@+id/tvRegister"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Đăng ký ngay"
-                android:textColor="@color/blue"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+                android:text="@string/register_now"
+                android:textColor="@color/colorPrimary"
+                style="@style/TextAppearance.App.Paragraph"/>
+
         </LinearLayout>
 
     </LinearLayout>

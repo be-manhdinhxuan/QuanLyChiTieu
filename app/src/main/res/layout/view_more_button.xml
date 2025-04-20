@@ -5,18 +5,23 @@
     android:background="?attr/selectableItemBackgroundBorderless"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:padding="8dp"
+    android:minHeight="48dp"
+    android:contentDescription="@string/more_button_description">
 
     <TextView
         android:id="@+id/buttonText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:layout_marginEnd="4dp"/>
+        android:layout_marginEnd="4dp"
+        android:text="@string/more_options"/>
 
     <ImageView
         android:id="@+id/arrowIcon"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/arrow_icon_description"
+        android:src="@drawable/ic_arrow_forward"/>
 
 </LinearLayout>

@@ -1,13 +1,231 @@
 <resources>
-    <!-- Example Activity -->
-    <string name="remove_item">Xóa mục</string>
+    <!-- App Configuration -->
+    <string name="app_name">Quản Lý Chi Tiêu</string>
+
+    <!-- Feature: Auth -->
+    <string name="login">Đăng nhập</string>
+    <string name="password">Mật khẩu</string>
+    <string name="email">Email</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="confirm_password">Xác nhận mật khẩu</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="enter_current_password">Nhập mật khẩu hiện tại</string>
+    <string name="please_enter_password">Vui lòng nhập mật khẩu</string>
+    <string name="incorrect_password">Mật khẩu không chính xác</string>
+    <string name="passwords_do_not_match">Mật khẩu mới không khớp</string>
+    <string name="change_password_successfully">Đổi mật khẩu thành công</string>
+    <string name="forgot_password_message">Đừng lo! Nhập email của bạn và chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.</string>
+    <string name="forgot_password">Quên mật khẩu</string>
+    <string name="password_required">Vui lòng nhập mật khẩu</string>
+    <string name="confirm_password_required">Vui lòng xác nhận mật khẩu</string>
+    <string name="hint_password">Mật khẩu không chính xác</string>
+    <string name="you_want_change_your_password">Bạn Muốn Thay Đổi Mật Khẩu?</string>
+    <string name="please_enter_your_current_password">Vui Lòng Nhập Mật Khẩu Hiện Tại</string>
+
+    <!-- Feature: Spending -->
+    <string name="add_spending">Thêm chi tiêu</string>
+    <string name="total_spending">Tổng chi tiêu</string>
+    <string name="spending">Chi tiêu</string>
+    <string name="income">Thu nhập</string>
+    <string name="total_income">Tổng thu nhập</string>
+    <string name="revenue_expenditure">Tổng doanh thu</string>
+    <string name="first_balance">Số dư đầu kỳ</string>
+    <string name="final_balance">Số dư cuối kỳ</string>
+    <string name="monthly_money">Ngân sách tháng</string>
+    <string name="enter_monthly_spending_amount">Nhập số tiền chi tiêu hàng tháng bạn muốn quản lý</string>
+    <string name="please_enter_amount">Vui lòng nhập số tiền</string>
+    <string name="spending_details_scroll">Cuộn chi tiết chi tiêu</string>
+    <string name="select_spending_type">Chọn loại chi tiêu</string>
+    <string name="note_input">Nhập ghi chú</string>
+    <string name="location">Địa điểm</string>
+    <string name="enter_monthly_spending_amount_you_want_manage">Nhập số tiền chi tiêu hàng tháng bạn muốn quản lý</string>
+    <string name="spending_amount_hint">Nhập số tiền</string>
+    <string name="spending_type_icon">Biểu tượng loại chi tiêu</string>
+    <string name="input_spending_container">Nhập chi tiêu</string>
+    <string name="spending_summary_card">Tổng hợp chi tiêu</string>
+
+    <!-- Feature: Analytics -->
+    <string name="analytic">Phân tích</string>
+    <string name="statistical">Thống kê</string>
+    <string name="this_month">Tháng này</string>
+    <string name="next_month">Tháng sau</string>
+    <string name="last_month">Tháng trước</string>
+    <string name="filter_title">Tiêu đề bộ lọc</string>
+    <string name="this_month_spending_list">Danh sách chi tiêu tháng này</string>
+    <string name="spending_list">Danh sách chi tiêu %s</string>
+    <string name="no_data">Không có dữ liệu %s!</string>
+    <string name="view_your_spending_and_income_reports_through_graphs">Xem báo cáo chi tiêu và thu nhập qua biểu đồ</string>
+    <string name="analytics_tab_description">Tab điều hướng phân tích</string>
+    <string name="chart_type_tabs_description">Tab lựa chọn loại biểu đồ</string>
+    <string name="spending_type_tabs_description">Tab lựa chọn loại chi tiêu</string>
+    <string name="spending_list_description">Danh sách các khoản chi tiêu</string>
+    <string name="total_report_description">Báo cáo tổng chi tiêu và thu nhập</string>
+
+    <!-- Feature: Profile -->
+    <string name="account">Tài khoản</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="dark_mode">Chế độ tối</string>
+    <string name="export_csv">Xuất ra CSV</string>
+    <string name="about">Giới thiệu</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="edit_personal_information_and_other_settings">Chỉnh sửa thông tin cá nhân và các cài đặt khác</string>
+    <string name="profile_avatar">Ảnh đại diện</string>
+    <string name="birthday">Ngày sinh</string>
+    <string name="birthday_selector">Chọn ngày sinh</string>
+    <string name="gender_selection_description">Lựa chọn giới tính</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="other_gender">Khác</string>
+    <string name="male_option">Lựa chọn giới tính nam</string>
+    <string name="female_option">Lựa chọn giới tính nữ</string>
+    <string name="other_gender_option">Lựa chọn giới tính khác</string>
+
+    <!-- Feature: Social -->
+    <string name="friend">Bạn bè</string>
     <string name="add_friend">Thêm bạn</string>
-    <string name="circle_text_clicked">Đã nhấn vào văn bản tròn</string>
-    <string name="friend_added">Đã thêm bạn: %1$s</string>
-    <string name="friend_removed">Đã xóa bạn: %1$s</string>
-    <string name="confirm_remove">Xác nhận xóa</string>
-    <string name="confirm_remove_message">Bạn có chắc chắn muốn xóa mục này?</string>
-    <string name="item_removed">Đã xóa mục</string>
+    <string name="remove_friend">Xóa bạn</string>
+    <string name="friend_list">Danh sách bạn bè</string>
+    <string name="no_friends">Không có bạn bè</string>
+    <string name="friend_added">Đã thêm bạn</string>
+    <string name="friend_removed">Đã xóa bạn</string>
+    <string name="friend_exists">Bạn đã tồn tại</string>
+    <string name="enter_friend_name">Nhập tên bạn</string>
+    <string name="add_friend_widget">Widget thêm bạn</string>
+    <string name="friend_added_with_name">Đã thêm bạn: %s</string>
+    <string name="friend_removed_with_name">Đã xóa bạn: %s</string>
+    <string name="add_friends">Thêm</string>
+    <string name="friends_list">Danh sách bạn bè</string>
+    <string name="share_your_spending_with_friends">Chia sẻ chi tiêu với bạn bè</string>
+    <string name="circle_text_container">Chữ cái đầu trong vòng tròn</string>
+    <string name="circle_text_clicked">Đã nhấn vào chữ trong vòng tròn</string>
+
+    <!-- Feature: Calendar -->
+    <string name="calendar">Lịch</string>
+    <string name="calendar_icon">Biểu tượng lịch</string>
+    <string name="date_selector_description">Bộ chọn ngày</string>
+    <string name="choose_date">Chọn ngày</string>
+    <string name="date_navigation_container">Điều hướng ngày</string>
+    <string name="calendar_view_container">Lịch</string>
+    <string name="calendar_grid">Lưới ngày trong lịch</string>
+    <string name="build_spending">Xây dựng chi tiêu</string>
+    <string name="monday_short">T2</string>
+    <string name="tuesday_short">T3</string>
+    <string name="wednesday_short">T4</string>
+    <string name="thursday_short">T5</string>
+    <string name="friday_short">T6</string>
+    <string name="saturday_short">T7</string>
+    <string name="sunday_short">CN</string>
+
+    <!-- Categories -->
+    <string name="food">Ăn uống</string>
+    <string name="transport">Di chuyển</string>
+    <string name="shopping">Mua sắm</string>
+    <string name="entertainment">Giải trí</string>
+    <string name="other">Khác</string>
+    <string name="new_type">Loại mới</string>
+
+    <!-- Navigation -->
+    <string name="home">Trang chủ</string>
+    <string name="history">Lịch sử</string>
+    <string name="wallet">Ví</string>
+
+    <!-- Common Actions -->
+    <string name="back">Quay lại</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Hủy</string>
+    <string name="save">Lưu</string>
+    <string name="done">Hoàn thành</string>
     <string name="yes">Có</string>
     <string name="no">Không</string>
+    <string name="share">Chia sẻ</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="next">Tiếp theo</string>
+    <string name="previous">Trước đó</string>
+    <string name="submit">Gửi</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="get_started">Bắt đầu</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="remove_item">Xóa mục</string>
+    <string name="confirm_remove">Xác nhận xóa</string>
+    <string name="item_removed">Đã xóa mục</string>
+    <string name="add_image">Thêm ảnh</string>
+    <string name="selected_image">Ảnh đã chọn</string>
+    <string name="all">Tất cả</string>
+
+    <!-- UI Components -->
+    <string name="more_options">Thêm tùy chọn</string>
+    <string name="more_button_description">Xem thêm</string>
+    <string name="arrow_icon_description">Mũi tên điều hướng</string>
+    <string name="button_action_description">Nút hành động</string>
+    <string name="button_text">Tiếp tục</string>
+    <string name="progress_button_action">Nút hành động</string>
+    <string name="progress_button_container">Nút với biểu tượng đang tải</string>
+    <string name="loading_indicator">Đang tải</string>
+    <string name="or_continue_with">Hoặc tiếp tục với</string>
+    <string name="setting_item_container">Mục cài đặt</string>
+    <string name="setting_icon">Biểu tượng cài đặt</string>
+    <string name="setting_item_icon">Biểu tượng mục cài đặt</string>
+    <string name="setting_item_arrow">Mũi tên chuyển trang</string>
+    <string name="open_setting">Mở cài đặt</string>
+    <string name="custom_tab_bar_description">Tab điều hướng</string>
+    <string name="type_tab_bar_description">Tab lựa chọn loại</string>
+
+    <!-- Form Fields -->
+    <string name="money_input">Nhập tiền</string>
+    <string name="money_input_container">Trường nhập tiền</string>
+    <string name="money_input_hint">Nhập số tiền</string>
+    <string name="money_in_words_description">Số tiền bằng chữ</string>
+    <string name="input_text_hint">Nhập văn bản</string>
+    <string name="input_text_description">Trường nhập văn bản</string>
+    <string name="filter_item_container">Mục bộ lọc</string>
+    <string name="filter_dropdown_card">Thẻ dropdown bộ lọc</string>
+    <string name="filter_dropdown_description">Dropdown để chọn giá trị bộ lọc</string>
+    <string name="filter_value_dropdown">Chọn giá trị từ danh sách</string>
+    <string name="select_value">Chọn giá trị</string>
+
+    <!-- Toolbars and Content Areas -->
+    <string name="toolbar">Thanh công cụ</string>
+    <string name="toolbar_add_spending">Thanh công cụ thêm chi tiêu</string>
+    <string name="content_scroll_view">Cuộn xem nội dung</string>
+    <string name="time_icon">Biểu tượng thời gian</string>
+
+    <!-- Search -->
+    <string name="search_hint">Tìm theo tên, ghi chú hoặc địa điểm</string>
+    <string name="search_by_country_name_or_currency">Tìm theo tên quốc gia hoặc tiền tệ</string>
+    <string name="search_for_your_expenses">Tìm kiếm các khoản chi tiêu</string>
+
+    <!-- Filters -->
+    <string name="filter_all">Tất cả</string>
+    <string name="filter_income">Thu nhập</string>
+    <string name="filter_spending">Chi tiêu</string>
+    <string name="filter_today">Hôm nay</string>
+    <string name="filter_week">Tuần này</string>
+    <string name="filter_month">Tháng này</string>
+    <string name="filter_year">Năm nay</string>
+
+    <!-- Media -->
+    <string name="pick_image_from_gallery">Chọn ảnh từ thư viện</string>
+    <string name="gallery">Thư viện</string>
+    <string name="camera">Máy ảnh</string>
+    <string name="choose_image_source">Chọn nguồn ảnh</string>
+    <string name="select_from_gallery">Chọn từ thư viện</string>
+    <string name="take_photo">Chụp ảnh mới</string>
+
+    <!-- Messages -->
+    <string name="press_back_again_to_exit">Nhấn quay lại lần nữa để thoát</string>
+    <string name="file_successfully_saved">Đã lưu tệp thành công</string>
+    <string name="invalid_name">Tên không hợp lệ</string>
+    <string name="confirm_remove_message">Bạn có chắc chắn muốn xóa mục này?</string>
+    <string name="you_have_spending_the_day">Bạn đã chi tiêu vào %s</string>
+    <string name="dont_worry_it_happens">Đừng lo! Nhập email của bạn và chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.</string>
+
+    <!-- Onboarding -->
+    <string name="view_monthly_spending_summary_and_remaining_balance">Xem tổng kết chi tiêu hàng tháng và số dư còn lại</string>
+    <string name="review_your_scheduled_expenses">Xem lại các khoản chi tiêu đã lên lịch</string>
+    <string name="add_and_edit_your_daily_spending">Thêm và chỉnh sửa chi tiêu hàng ngày</string>
+
+    <!-- About -->
+    <string name="version">Phiên bản</string>
+    <string name="developed_by">Phát triển bởi</string>
+    <string name="currency_exchange_rate">Tỷ giá tiền tệ</string>
 </resources>

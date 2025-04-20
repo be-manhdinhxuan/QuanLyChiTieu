@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal"
-    android:padding="5dp"
-    android:gravity="center"
-    android:background="@drawable/box_text_background">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@drawable/bg_box_text">
 
     <TextView
-        android:id="@+id/labelText"
-        android:layout_width="wrap_content"
+        android:id="@+id/text"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@color/text_secondary"
         android:maxLines="1"
         android:ellipsize="end"
-        android:textSize="13sp"/>
-
-    <Space
-        android:layout_width="5dp"
-        android:layout_height="wrap_content"/>
+        tools:text="Chi tiêu"/>
 
     <TextView
-        android:id="@+id/numberText"
-        android:layout_width="0dp"
+        android:id="@+id/number"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_marginTop="8dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="@color/text_primary"
+        android:maxLines="1"
         android:ellipsize="end"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+        tools:text="2.000.000đ"/>
 
 </LinearLayout>

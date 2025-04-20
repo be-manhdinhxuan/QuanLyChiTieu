@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="220dp"
+            android:layout_height="45dp"
+            android:contentDescription="@string/spending_type_tabs_description"
+            app:tabTextAppearance="@style/SpendingTypeTabText"
+            app:tabGravity="fill"
+            app:tabMode="fixed"/>
+
+</merge>

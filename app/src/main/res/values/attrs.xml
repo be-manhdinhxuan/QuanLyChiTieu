@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="MoreButton">
-        <attr name="initiallyExpanded" format="boolean" />
+    <!-- Common Attributes -->
+    <attr name="contentPadding" format="dimension" />
+    <attr name="textColor" format="color" />
+    <attr name="backgroundColor" format="color" />
+
+    <!-- Custom Views -->
+    <declare-styleable name="BoxTextView">
+        <attr name="boxTitle" format="string" />
+        <attr name="boxValue" format="string" />
+        <attr name="boxTextColor" format="color" />
     </declare-styleable>
+
+    <declare-styleable name="AddFriendWidget">
+        <attr name="addButtonText" format="string"/>
+        <attr name="maxFriends" format="integer"/>
+    </declare-styleable>
+
+    <!-- Add more custom view attributes as needed -->
 </resources>
