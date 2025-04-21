@@ -38,16 +38,17 @@ public class AnalyticsTotalReportView extends LinearLayout {
     }
 
     public void setData(double spending, double income) {
-        binding.spendingBox.setTitle(R.string.spending);
+        binding.spendingBox.setTitle("Chi tiêu");
         binding.spendingBox.setValue(numberFormat.format(spending));
-        binding.spendingBox.setValueColor(R.color.spending);
+        binding.spendingBox.setValueColorRes(R.color.spending);
 
-        binding.incomeBox.setTitle(R.string.income);
+        binding.incomeBox.setTitle("Thu nhập");
         binding.incomeBox.setValue(numberFormat.format(income));
-        binding.incomeBox.setValueColor(R.color.income);
+        binding.incomeBox.setValueColorRes(R.color.income);
 
-        binding.totalBox.setTitle(R.string.total);
+        binding.totalBox.setTitle("Tổng");
         binding.totalBox.setValue(numberFormat.format(income - spending));
-        binding.totalBox.setValueColor(income >= spending ? R.color.income : R.color.spending);
+        int colorResId = income >= spending ? R.color.income : R.color.spending;
+        binding.totalBox.setValueColorRes(colorResId);
     }
 }

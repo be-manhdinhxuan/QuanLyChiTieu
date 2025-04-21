@@ -14,21 +14,26 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
-    <string name="new_password">New password</string>
+    <string name="enter_new_password">Enter new password</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="change_password">Change Password</string>
     <string name="enter_current_password">Enter current password</string>
     <string name="please_enter_password">Please enter password</string>
+    <string name="please_enter_your_new_password">Please enter your new password</string>
     <string name="incorrect_password">Password is incorrect</string>
     <string name="passwords_do_not_match">New password does not match</string>
     <string name="change_password_successfully">Password changed successfully</string>
     <string name="forgot_password_message">Don\'t worry! Enter your email and we\'ll send you a link to reset your password.</string>
-    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password">Forgot Password?</string>
     <string name="password_required">Please enter password</string>
     <string name="confirm_password_required">Please confirm password</string>
     <string name="hint_password">Password is incorrect</string>
-    <string name="you_want_change_your_password">Do You Want To Change Your Password?</string>
+    <string name="you_want_change_your_password">You want to change your password?</string>
     <string name="please_enter_your_current_password">Please Enter Your Current Password</string>
+    <string name="hello_again">Welcome back!</string>
+    <string name="welcome_back_you_been_missed">Welcome back, you\'ve been missed!</string>
+    <string name="hello_new_user">Hello new user!</string>
+    <string name="welcome_to_app">Welcome to the app</string>
 
     <!-- Feature: Spending -->
     <string name="add_spending">Add Spending</string>
@@ -66,7 +71,7 @@
     <string name="analytics_tab_description">Analytics navigation tabs</string>
     <string name="chart_type_tabs_description">Chart type selection tabs</string>
     <string name="spending_type_tabs_description">Spending type selection tabs</string>
-    <string name="spending_list_description">List of spending items</string>
+
     <string name="total_report_description">Total spending and income report</string>
 
     <!-- Feature: Profile -->
@@ -87,21 +92,20 @@
     <string name="male_option">Male gender option</string>
     <string name="female_option">Female gender option</string>
     <string name="other_gender_option">Other gender option</string>
+    <string name="full_name">Full Name</string>
+    <string name="gender">Gender</string>
 
     <!-- Feature: Social -->
     <string name="friend">Friend</string>
-    <string name="add_friend">Add Friend</string>
     <string name="remove_friend">Remove Friend</string>
     <string name="friend_list">Friend List</string>
     <string name="no_friends">No Friends</string>
     <string name="friend_added">Friend Added</string>
     <string name="friend_removed">Friend Removed</string>
     <string name="friend_exists">Friend Already Exists</string>
-    <string name="enter_friend_name">Enter Friend Name</string>
     <string name="add_friend_widget">Add friend widget</string>
     <string name="friend_added_with_name">Friend added: %s</string>
     <string name="friend_removed_with_name">Friend removed: %s</string>
-    <string name="add_friends">Add</string>
     <string name="friends_list">Friends List</string>
     <string name="share_your_spending_with_friends">Share Your Spending With Friends</string>
     <string name="circle_text_container">Initial letter in circle</string>
@@ -129,7 +133,7 @@
     <string name="transport">Transport</string>
     <string name="shopping">Shopping</string>
     <string name="entertainment">Entertainment</string>
-    <string name="other">Other</string>
+
     <string name="new_type">New type</string>
 
     <!-- Navigation -->
@@ -140,7 +144,6 @@
     <!-- Common Actions -->
     <string name="back">Back</string>
     <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
     <string name="save">Save</string>
     <string name="done">Done</string>
     <string name="yes">Yes</string>
@@ -158,7 +161,6 @@
     <string name="item_removed">Item Removed</string>
     <string name="add_image">Add Image</string>
     <string name="selected_image">Selected Image</string>
-    <string name="all">All</string>
 
     <!-- UI Components -->
     <string name="more_options">More options</string>
@@ -240,4 +242,196 @@
     <string name="contact_me_via_twitter" translatable="false">Contact me via Twitter</string>
     <string name="contact_me_via_telegram" translatable="false">Contact me via Telegram</string>
     <string name="contact_me_via_email" translatable="false">Contact me via Email</string>
+
+    <!-- Validation Messages -->
+    <string name="enter_valid_email">Please enter a valid email address</string>
+    <string name="enter_valid_name">Please enter a valid name</string>
+    <string name="enter_valid_otp">Please enter a valid verification code</string>
+
+    <string name="more">More</string>
+    <string name="less">Less</string>
+    <string name="user_initial">User Initial</string>
+
+    <!-- Spending List -->
+    <string name="spending_by_category">Spending by Category</string>
+    <string name="no_spending_data">No spending data</string>
+    <string name="spending_list_title_description">Spending list title</string>
+    <string name="spending_list_description">List of spending items</string>
+    <string name="empty_state_description">No spending data available</string>
+    <string name="loading_description">Loading data</string>
+
+    <!-- Auth -->
+    <string name="sign_in">Sign In</string>
+    <string name="do_not_have_account">Don\'t have an account?</string>
+    <string name="register_now">Register now</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_button_desc">Sign up button</string>
+    <string name="already_have_account">Already have an account?</string>
+
+    <!-- Social Login -->
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="continue_with_google">Continue with Google</string>
+
+    <!-- Spending -->
+    <string name="edit_spending">Edit Spending</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+
+    <!-- Filter -->
+    <string name="filter">Filter</string>
+    <string name="money">Money</string>
+    <string name="note">Note</string>
+
+    <!-- Filter Lists -->
+
+
+
+
+    <!-- Auth -->
+    <string name="success">Success</string>
+    <string name="check_your_email_make_password_change">Please check your email and make a new password change!</string>
+    <string name="go_to_login">Go to Login</string>
+    <string name="please_enter_email">Please enter your email</string>
+
+    <!-- Password reset strings -->
+    <string name="reset_email_sent">Password reset email has been sent</string>
+    <string name="failed_to_send_reset_email">Failed to send password reset email</string>
+
+
+    <string name="select_date">Select date</string>
+    <string name="other">Other</string>
+
+    <!-- Profile -->
+    <string name="error_loading_profile">Failed to load profile</string>
+    <string name="invalid_money_format">Invalid money format</string>
+    <string name="profile_updated">Profile updated successfully</string>
+    <string name="error_updating_profile">Failed to update profile</string>
+
+    <!-- Summary -->
+    <string name="summary">Summary</string>
+
+    <!-- Budget Management -->
+    <string name="monthly_budget">Monthly Budget</string>
+    <string name="enter_monthly_budget">Enter your monthly budget</string>
+    <string name="budget_amount">Budget Amount</string>
+    <string name="budget_exceeded">Budget Exceeded</string>
+    <string name="budget_remaining">Budget Remaining</string>
+
+    <!-- Auth Messages -->
+    <string name="create_account_success">Account created successfully</string>
+    <string name="enter_valid_password">Please enter a valid password</string>
+    <string name="enter_valid_confirm_password">Passwords do not match</string>
+    <string name="email_required">Please enter your email</string>
+    <string name="login_success">Login successful</string>
+
+    <!-- Spending Edit -->
+    <string name="spending_updated">Spending updated successfully</string>
+    <string name="error_updating_spending">Error updating spending</string>
+    <string name="please_select_type">Please select a type</string>
+    <string name="please_enter_valid_amount">Please enter a valid amount</string>
+
+    <string name="type">Type</string>
+
+    <!-- Spending Types -->
+    <string name="type_food">Food</string>
+    <string name="type_shopping">Shopping</string>
+    <string name="type_transport">Transport</string>
+    <string name="type_housing">Housing</string>
+    <string name="type_entertainment">Entertainment</string>
+    <string name="type_healthcare">Healthcare</string>
+    <string name="type_education">Education</string>
+    <string name="please_enter_name">Please enter name</string>
+
+    <!-- Image Related -->
+    <string name="image_loaded">Image loaded successfully</string>
+    <string name="image_selected">Image selected successfully</string>
+    
+    <!-- Actions -->
+    <string name="add">Add</string>
+    
+    <!-- Validation Messages -->
+    <string name="amount_too_large">Amount is too large</string>
+
+    <!-- Filter Actions -->
+    <string name="apply_filter">Apply Filter</string>
+    <string name="reset_filter">Reset Filter</string>
+
+    <!-- Filter Screen -->
+    <string name="enter_amount">Enter Amount</string>
+    <string name="cancel">Cancel</string>
+    <string name="invalid_input">Invalid input</string>
+    <string name="invalid_date_range">Invalid date range</string>
+    <string name="all">All</string>
+    <string name="group">Group</string>
+    <string name="enter_friend_name">Enter friend name</string>
+    <string name="added_friends">Added friends (%d)</string>
+    <string name="add_friends">Add Friends</string>
+    <string name="filter_reset">Filter has been reset</string>
+    
+    <!-- Arrays for Filter -->
+    <string-array name="money_list">
+        <item>All</item>
+        <item>Equal to</item>
+        <item>Greater than</item>
+        <item>Between</item>
+        <item>Less than</item>
+    </string-array>
+
+    <string-array name="time_list">
+        <item>All</item>
+        <item>On</item>
+        <item>After</item>
+        <item>Between</item>
+        <item>Before</item>
+    </string-array>
+
+    <string-array name="group_list">
+        <item>All</item>
+        <item>Income</item>
+        <item>Expense</item>
+    </string-array>
+
+    <!-- Filter Dialog Titles -->
+    <string name="select_money_filter">Select Money Filter</string>
+    <string name="select_time_filter">Select Time Filter</string>
+
+    <!-- Validation Messages -->
+    <string name="number_too_large">Number is too large</string>
+    <string name="invalid_range">Invalid range</string>
+
+    <!-- Amount Range Input -->
+    <string name="amount_from">Amount from</string>
+    <string name="min_amount">Minimum amount</string>
+    <string name="amount_to">Amount to</string>
+    <string name="max_amount">Maximum amount</string>
+
+    <!-- List Type Screen -->
+    <string name="list_type_title">List of type %d</string>
+
+    <!-- Spending Types Array -->
+    <string-array name="spending_types">
+        <item>Other</item>          <!-- 0 -->
+        <item>Food &amp; Drinks</item>    <!-- 1 -->
+        <item>Shopping</item>       <!-- 2 -->
+        <item>Transportation</item> <!-- 3 -->
+        <item>Housing</item>        <!-- 4 -->
+        <item>Entertainment</item>  <!-- 5 -->
+        <item>Healthcare</item>     <!-- 6 -->
+        <item>Education</item>      <!-- 7 -->
+        <item>Bills</item>          <!-- 8 -->
+        <item>Investment</item>     <!-- 9 -->
+        <item>Salary</item>         <!-- 10 -->
+        <item>Business</item>       <!-- 11 -->
+        <item>Gifts</item>          <!-- 12 -->
+        <item>Insurance</item>      <!-- 13 -->
+        <item>Taxes</item>          <!-- 14 -->
+        <item>Savings</item>        <!-- 15 -->
+    </string-array>
+
+    <!-- Spending Reports -->
+    <string name="week_spending_report">Weekly Spending Report</string>
+    <string name="month_spending_report">Monthly Spending Report</string>
+    <string name="year_spending_report">Yearly Spending Report</string>
 </resources>

@@ -40,8 +40,9 @@ public class AnalyticsChartTabsView extends LinearLayout {
 
     public void setupWithViewPager(@NonNull ViewPager2 viewPager) {
         this.viewPager = viewPager;
-        new TabLayoutMediator(binding.tabLayout, viewPager,
-                (tab, position) -> tab.setText(tabTitles[position])).attach();
+        TabLayoutMediator mediator = new TabLayoutMediator(binding.tabLayout, viewPager,
+                (tab, position) -> tab.setText(tabTitles[position]));
+        mediator.attach();
     }
 
     public TabLayout getTabLayout() {

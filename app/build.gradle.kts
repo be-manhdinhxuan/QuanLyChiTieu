@@ -94,4 +94,11 @@ dependencies {
 
     // Alternatively, you can use this library for calendar functionality
     implementation("com.github.prolificinteractive:material-calendarview:2.0.1")
+
+    // Thêm Glide
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.16.0")
+
+    // Thêm CircleImageView
+    implementation ("de.hdodenhof:circleimageview:3.1.0")
 }

@@ -9,9 +9,9 @@ import android.widget.LinearLayout;
 import androidx.annotation.Nullable;
 
 import com.example.quanlychitieu.R;
-import com.example.quanlychitieu.data.model.SpendingType;
 import com.example.quanlychitieu.databinding.ViewAnalyticsSpendingPieItemBinding;
-import com.example.quanlychitieu.presentation.view_list_spending.ViewListSpendingActivity;
+import com.example.quanlychitieu.presentation.features.spending.view.screen.ViewSpendingActivity;
+import com.example.quanlychitieu.domain.model.spending.Spending;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -20,7 +20,8 @@ import java.util.Locale;
 public class AnalyticsSpendingPieItemView extends LinearLayout {
     private ViewAnalyticsSpendingPieItemBinding binding;
     private NumberFormat numberFormat;
-    private SpendingType spendingType;
+    private int spendingType;
+    private String typeName;
 
     public AnalyticsSpendingPieItemView(Context context) {
         super(context);
@@ -42,17 +43,60 @@ public class AnalyticsSpendingPieItemView extends LinearLayout {
         numberFormat = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
     }
 
-    public void setData(SpendingType type, double amount, double total) {
+    public void setData(int type, String typeName, int amount, double total) {
         this.spendingType = type;
-        binding.imageType.setImageResource(type.getIconResId());
-        binding.textTitle.setText(type.getTitle());
+        this.typeName = typeName;
+
+        // Lấy icon dựa trên loại chi tiêu
+        int iconResId = getIconResourceByType(type);
+        binding.imageType.setImageResource(iconResId);
+
+        binding.textTitle.setText(typeName != null ? typeName : getDefaultTypeName(type));
         binding.textAmount.setText(numberFormat.format(amount));
         binding.textPercent.setText(String.format("%.1f%%", (amount / total) * 100));
 
         setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), ViewListSpendingActivity.class);
+            Intent intent = new Intent(getContext(), ViewSpendingActivity.class);
             intent.putExtra("spending_type", type);
+            intent.putExtra("type_name", typeName);
             getContext().startActivity(intent);
         });
+    }
+
+    private int getIconResourceByType(int type) {
+        // Map loại chi tiêu với icon tương ứng
+        switch (type) {
+            case 1:
+                return R.drawable.ic_food; // Đồ ăn
+            case 2:
+                return R.drawable.ic_transport; // Di chuyển
+            case 3:
+                return R.drawable.ic_shopping; // Mua sắm
+            case 4:
+                return R.drawable.ic_entertainment; // Giải trí
+            case 5:
+                return R.drawable.ic_bill; // Hóa đơn
+            // Thêm các loại khác nếu cần
+            default:
+                return R.drawable.ic_money; // Mặc định
+        }
+    }
+
+    private String getDefaultTypeName(int type) {
+        // Cung cấp tên mặc định nếu typeName là null
+        switch (type) {
+            case 1:
+                return "Đồ ăn";
+            case 2:
+                return "Di chuyển";
+            case 3:
+                return "Mua sắm";
+            case 4:
+                return "Giải trí";
+            case 5:
+                return "Hóa đơn";
+            default:
+                return "Khác";
+        }
     }
 }

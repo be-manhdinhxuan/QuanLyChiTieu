@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
-       xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       xmlns:app="http://schemas.android.com/apk/res-auto"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:padding="16dp">
 
     <LinearLayout
             android:layout_width="match_parent"
@@ -19,7 +19,7 @@
                 android:layout_weight="1"/>
 
         <Space
-                android:layout_width="5dp"
+                android:layout_width="8dp"
                 android:layout_height="match_parent"/>
 
         <com.example.quanlychitieu.views.analytics.summary.BoxTextView
@@ -32,15 +32,11 @@
 
     <Space
             android:layout_width="match_parent"
-            android:layout_height="10dp"/>
+            android:layout_height="16dp"/>
 
     <com.example.quanlychitieu.views.analytics.summary.BoxTextView
             android:id="@+id/totalBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
-    <Space
-            android:layout_width="match_parent"
-            android:layout_height="10dp"/>
-
-</merge>
+</LinearLayout>

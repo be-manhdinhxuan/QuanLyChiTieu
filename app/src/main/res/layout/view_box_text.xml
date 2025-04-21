@@ -4,29 +4,25 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@drawable/bg_box_text">
+    android:padding="12dp"
+    android:background="@drawable/bg_box">
 
     <TextView
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textColor="@color/text_secondary"
-        android:maxLines="1"
-        android:ellipsize="end"
-        tools:text="Chi tiêu"/>
+        tools:text="Title" />
 
     <TextView
         android:id="@+id/number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="24sp"
+        android:layout_marginTop="4dp"
+        android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="@color/text_primary"
-        android:maxLines="1"
-        android:ellipsize="end"
-        tools:text="2.000.000đ"/>
+        tools:text="1,000,000đ" />
 
 </LinearLayout>

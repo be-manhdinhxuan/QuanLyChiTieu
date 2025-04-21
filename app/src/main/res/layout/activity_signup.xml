@@ -6,21 +6,24 @@
     android:layout_height="match_parent"
     android:background="@color/bg"
     android:fillViewport="true"
+    android:scrollbars="none"
+    android:overScrollMode="never"
     android:paddingHorizontal="20dp"
-    android:paddingTop="30dp"
-    android:paddingBottom="20dp">
+    android:paddingTop="20dp"
+    android:clipToPadding="false"
+    android:paddingBottom="40dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
+        android:gravity="center_horizontal|top"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tvHelloNewUser"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Chào người dùng mới!"
+            android:text="@string/hello_new_user"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -30,60 +33,89 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:text="Chào mừng bạn đến với ứng dụng"
+            android:layout_marginBottom="25dp"
+            android:text="@string/welcome_to_app"
             android:textColor="@color/black"
             android:textSize="16sp" />
 
-        <com.example.quanlychitieu.presentation.login.widget.InputText
-            android:id="@+id/inputName"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutName"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"/>
+            android:layout_marginTop="10dp"
+            android:hint="@string/full_name">
 
-        <com.example.quanlychitieu.presentation.login.widget.InputText
-            android:id="@+id/inputEmail"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutEmail"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="15dp"
+            android:hint="@string/email">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:orientation="horizontal">
+            android:layout_marginTop="15dp"
+            android:orientation="vertical">
 
-            <Space
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-
-            <com.example.quanlychitieu.presentation.signup.widget.GenderWidget
-                android:id="@+id/genderMale"
+            <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Space
-                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:text="@string/gender"
+                android:textSize="16sp"
+                android:textColor="@color/gray_600" />
 
-            <com.example.quanlychitieu.presentation.signup.widget.GenderWidget
-                android:id="@+id/genderFemale"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Space
-                android:layout_width="0dp"
+            <RadioGroup
+                android:id="@+id/radioGroupGender"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp">
 
+                <RadioButton
+                    android:id="@+id/radioMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/male"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/radioFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/female"
+                    android:layout_weight="1" />
+
+                <RadioButton
+                    android:id="@+id/radioOther"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/other"
+                    android:layout_weight="1" />
+            </RadioGroup>
         </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layoutBirthday"
             android:layout_width="match_parent"
-            android:layout_height="57dp"
-            android:layout_marginTop="20dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/bg_input"
             android:gravity="center_vertical"
             android:orientation="horizontal"
@@ -95,38 +127,73 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:hint="@string/select_date"
                 android:textAppearance="@style/TextAppearance.App.Paragraph"/>
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:src="@drawable/ic_calendar"
-                android:tint="@android:color/darker_gray"/>
+                app:tint="@android:color/darker_gray"/>
 
         </LinearLayout>
 
-        <com.example.quanlychitieu.presentation.login.widget.InputPassword
-            android:id="@+id/inputPassword"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="15dp"
+            android:hint="@string/password"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/black"
+            app:endIconDrawable="@drawable/ic_password_toggle">
 
-        <com.example.quanlychitieu.presentation.login.widget.InputPassword
-            android:id="@+id/inputConfirmPassword"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutConfirmPassword"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="15dp"
+            android:hint="@string/confirm_password"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/black"
+            app:endIconDrawable="@drawable/ic_password_toggle">
 
-        <com.example.quanlychitieu.presentation.login.widget.CustomButton
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputConfirmPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/buttonSignup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"/>
+            android:layout_marginTop="15dp"
+            android:padding="12dp"
+            android:text="@string/sign_up"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:elevation="0dp"
+            app:backgroundTint="@color/button_login"
+            android:contentDescription="@string/sign_up_button_desc"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="20dp"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -134,14 +201,18 @@
                 android:id="@+id/textHaveAccount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/already_have_account"
+                android:paddingEnd="5dp"
                 android:textAppearance="@style/TextAppearance.App.Paragraph"/>
 
             <TextView
                 android:id="@+id/textLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="@style/TextAppearance.App.Paragraph"
-                android:textColor="?attr/colorPrimary"/>
+                android:text="@string/sign_in"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:textAppearance="@style/TextAppearance.App.Paragraph"/>
 
         </LinearLayout>
     </LinearLayout>

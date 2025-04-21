@@ -37,22 +37,38 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"/>
 
-        <com.example.quanlychitieu.presentation.login.widget.InputText
-            android:id="@+id/etEmail"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/email"
-            android:inputType="textEmailAddress"/>
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
 
-        <com.example.quanlychitieu.presentation.login.widget.InputPassword
-            android:id="@+id/etPassword"
+        <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"/>
+            android:hint="@string/password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:endIconMode="password_toggle"
+            app:endIconTint="@color/black"
+            app:endIconDrawable="@drawable/ic_password_toggle">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
             android:id="@+id/tvForgotPassword"
@@ -60,25 +76,57 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:text="@string/forgot_password"
-            android:textColor="@color/colorPrimary"/>
+            android:textStyle="bold"
+            android:textColor="@color/blue"/>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="20dp"/>
 
-        <com.example.quanlychitieu.presentation.login.widget.CustomButton
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSignIn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/sign_in"/>
+            android:padding="12dp"
+            android:text="@string/sign_in"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            app:elevation="0dp"
+            app:backgroundTint="@color/button_login"
+            android:contentDescription="@string/button_action_description"/>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="30dp"/>
 
-        <com.example.quanlychitieu.presentation.login.widget.TextContinue
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/black_45" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:text="@string/or_continue_with"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1"
+                android:background="@color/black_45" />
+        </LinearLayout>
 
         <Space
             android:layout_width="match_parent"
@@ -96,11 +144,21 @@
                 android:layout_weight="1"
                 android:text="@string/google"
                 android:textColor="@color/gray"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
                 app:icon="@drawable/ic_google"
-                app:iconGravity="start"
-                app:iconPadding="8dp"
+                app:iconGravity="textStart"
+                app:iconPadding="10dp"
                 app:cornerRadius="10dp"
-                android:backgroundTint="@color/white"/>
+                app:elevation="0dp"
+                app:iconTint="@null"
+                app:iconSize="24dp"
+                android:backgroundTint="@color/white"
+                android:contentDescription="@string/continue_with_google"/>
 
             <Space
                 android:layout_width="30dp"
@@ -113,11 +171,21 @@
                 android:layout_weight="1"
                 android:text="@string/facebook"
                 android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:textSize="14sp"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
                 app:icon="@drawable/ic_facebook"
-                app:iconGravity="start"
-                app:iconPadding="8dp"
+                app:iconGravity="textStart"
+                app:iconPadding="4dp"
+                app:iconSize="24dp"
+                app:iconTint="@null"
                 app:cornerRadius="10dp"
-                android:backgroundTint="@color/facebook_blue"/>
+                app:elevation="0dp"
+                android:backgroundTint="@color/facebook_blue"
+                android:contentDescription="@string/continue_with_facebook"/>
 
         </LinearLayout>
 
@@ -135,6 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/do_not_have_account"
+                android:paddingRight="5dp"
                 style="@style/TextAppearance.App.Paragraph"/>
 
             <TextView
@@ -142,7 +211,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/register_now"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/blue"
+                android:textStyle="bold"
                 style="@style/TextAppearance.App.Paragraph"/>
 
         </LinearLayout>

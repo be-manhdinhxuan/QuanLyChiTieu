@@ -3,8 +3,8 @@
     <dimen name="circle_radius">20dp</dimen>
 
     <!-- Button dimensions -->
-    <dimen name="button_height">48dp</dimen>
-    <dimen name="button_corner_radius">10dp</dimen>
+    <dimen name="button_height">56dp</dimen>
+    <dimen name="button_corner_radius">8dp</dimen>
 
     <!-- Text sizes -->
     <dimen name="text_size_paragraph">16sp</dimen>
