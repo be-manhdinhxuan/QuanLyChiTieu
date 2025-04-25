@@ -4,10 +4,10 @@
     <string name="app_name">Expense Manager</string>
 
     <!-- Non-translatable Keys -->
-    <string name="facebook_app_id" translatable="false">1010742911005239</string>
-    <string name="fb_login_protocol_scheme" translatable="false">fb1010742911005239</string>
-    <string name="facebook_client_token" translatable="false">917753c6e91219e3d681dd4959d95abf</string>
-    <string name="facebook_auth_protocol_scheme" translatable="false">fb1010742911005239</string>
+    <string name="facebook_app_id" translatable="false">2268861543571852</string>
+    <string name="fb_login_protocol_scheme" translatable="false">fb2268861543571852</string>
+    <string name="facebook_client_token" translatable="false">4ebf7a2a3404cc2d0e8012e7d2be3a53</string>
+    <string name="facebook_auth_protocol_scheme" translatable="false">fb2268861543571852</string>
     <string name="default_web_client_id" translatable="false">753170906061-rkqtim39rmdnqqnkk3bkpcv5hff98o4o.apps.googleusercontent.com</string>
 
     <!-- Feature: Auth -->
@@ -20,7 +20,6 @@
     <string name="enter_current_password">Enter current password</string>
     <string name="please_enter_password">Please enter password</string>
     <string name="please_enter_your_new_password">Please enter your new password</string>
-    <string name="incorrect_password">Password is incorrect</string>
     <string name="passwords_do_not_match">New password does not match</string>
     <string name="change_password_successfully">Password changed successfully</string>
     <string name="forgot_password_message">Don\'t worry! Enter your email and we\'ll send you a link to reset your password.</string>
@@ -38,8 +37,7 @@
     <!-- Feature: Spending -->
     <string name="add_spending">Add Spending</string>
     <string name="total_spending">Total Spending</string>
-    <string name="spending">Spending</string>
-    <string name="income">Income</string>
+
     <string name="total_income">Total Income</string>
     <string name="revenue_expenditure">Total Revenue</string>
     <string name="first_balance">Opening Balance</string>
@@ -49,7 +47,7 @@
     <string name="please_enter_amount">Please Enter Amount</string>
     <string name="spending_details_scroll">Spending Details Scroll</string>
     <string name="select_spending_type">Select Spending Type</string>
-    <string name="note_input">Note Input</string>
+    <string name="note_input">Note input</string>
     <string name="location">Location</string>
     <string name="enter_monthly_spending_amount_you_want_manage">Enter the monthly spending amount you want to manage</string>
     <string name="spending_amount_hint">Enter amount</string>
@@ -129,10 +127,7 @@
     <string name="sunday_short">Sun</string>
 
     <!-- Categories -->
-    <string name="food">Food</string>
-    <string name="transport">Transport</string>
-    <string name="shopping">Shopping</string>
-    <string name="entertainment">Entertainment</string>
+
 
     <string name="new_type">New type</string>
 
@@ -143,7 +138,6 @@
 
     <!-- Common Actions -->
     <string name="back">Back</string>
-    <string name="ok">OK</string>
     <string name="save">Save</string>
     <string name="done">Done</string>
     <string name="yes">Yes</string>
@@ -181,7 +175,7 @@
     <string name="type_tab_bar_description">Type selection tabs</string>
 
     <!-- Form Fields -->
-    <string name="money_input">Money input</string>
+    <string name="money_input">Input money</string>
     <string name="money_input_container">Money input field</string>
     <string name="money_input_hint">Enter amount</string>
     <string name="money_in_words_description">Amount in words</string>
@@ -236,10 +230,10 @@
 
     <!-- About -->
     <string name="version">Version</string>
-    <string name="developed_by">Developed by</string>
+    <string name="developed_by">Developed by Đinh Xuân Mạnh</string>
     <string name="currency_exchange_rate">Currency Exchange Rate</string>
     <string name="contact_me_via_facebook" translatable="false">Contact me via Facebook</string>
-    <string name="contact_me_via_twitter" translatable="false">Contact me via Twitter</string>
+    <string name="contact_me_via_zalo" translatable="false">Contact me via Zalo</string>
     <string name="contact_me_via_telegram" translatable="false">Contact me via Telegram</string>
     <string name="contact_me_via_email" translatable="false">Contact me via Email</string>
 
@@ -301,7 +295,6 @@
 
 
     <string name="select_date">Select date</string>
-    <string name="other">Other</string>
 
     <!-- Profile -->
     <string name="error_loading_profile">Failed to load profile</string>
@@ -347,6 +340,7 @@
     <!-- Image Related -->
     <string name="image_loaded">Image loaded successfully</string>
     <string name="image_selected">Image selected successfully</string>
+    <string name="images">Images</string>
     
     <!-- Actions -->
     <string name="add">Add</string>
@@ -360,10 +354,10 @@
 
     <!-- Filter Screen -->
     <string name="enter_amount">Enter Amount</string>
-    <string name="cancel">Cancel</string>
+
     <string name="invalid_input">Invalid input</string>
     <string name="invalid_date_range">Invalid date range</string>
-    <string name="all">All</string>
+
     <string name="group">Group</string>
     <string name="enter_friend_name">Enter friend name</string>
     <string name="added_friends">Added friends (%d)</string>
@@ -434,4 +428,97 @@
     <string name="week_spending_report">Weekly Spending Report</string>
     <string name="month_spending_report">Monthly Spending Report</string>
     <string name="year_spending_report">Yearly Spending Report</string>
+
+    <!-- About Screen -->
+    <string name="contact">Contact</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+
+    <!-- Location and Friends -->
+    <string name="location_and_friends">Location and Friends</string>
+    <string name="add_friend">Add Friend</string>
+
+    <!-- Time Periods -->
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+
+    <!-- Password Change -->
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="update_password">Update Password</string>
+
+    <!-- Password Change Validation Messages -->
+    <string name="please_enter_current_password">Please enter your current password</string>
+    <string name="please_enter_new_password">Please enter your new password</string>
+    <string name="password_must_be_at_least_6_chars">Password must be at least 6 characters long</string>
+    <string name="please_confirm_new_password">Please confirm your new password</string>
+    <string name="password_not_match">Passwords do not match</string>
+    <string name="incorrect_password">Incorrect password</string>
+    <string name="password_changed_successfully">Password changed successfully</string>
+    <string name="failed_to_change_password">Failed to change password</string>
+
+    <!-- Type Selection -->
+    <string name="all">All</string>
+    <string name="spending">Spending</string>
+    <string name="income">Income</string>
+    <string name="new_spending_type">New Spending Type</string>
+    <string name="new_income_type">New Income Type</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    
+    <!-- Spending Types -->
+    <string name="food">Food</string>
+    <string name="transport">Transport</string>
+    <string name="shopping">Shopping</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="salary">Salary</string>
+    <string name="bonus">Bonus</string>
+    <string name="other">Other</string>
+    <string name="other_income">Other Income</string>
+    <string name="type_name">Type name</string>
+    <string name="amount">Amount</string>
+
+    <string name="profile">Profile</string>
+    <string name="edit">Edit</string>
+    <string name="settings">Settings</string>
+
+    <string name="clear">Clear</string>
+    <string name="no_search_results">No search results found</string>
+
+    <string name="expense">Expense</string>
+    <string name="date_range">Date Range</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+
+    <string name="verify_email">Verify Email</string>
+    <string name="verify_now">Verify Now</string>
+    <string name="go_to_home">Go to Home</string>
+    <string name="resend_email">Resend Email</string>
+
+    <string name="view_image">View Image</string>
+    <string name="error_image">Error Image</string>
+    <string name="image_load_failed">Failed to load image</string>
+
+    <string name="download">Download</string>
+    <string name="cannot_share_image">Cannot share image</string>
+    <string name="share_image">Share Image</string>
+    <string name="share_failed">Failed to share image</string>
+    <string name="cannot_download_image">Cannot download image</string>
+    <string name="download_success">Image downloaded successfully</string>
+    <string name="download_failed">Failed to download image</string>
+
+    <string name="spending_details">Spending Details</string>
+    <string name="delete">Delete</string>
+    <string name="details">Details</string>
+    <string name="receipt_image">Receipt Image</string>
+    <string name="you_want_delete">Do you want to delete this item?</string>
+    <string name="default_type">Other</string>
+    <string name="no_data_available">No data available</string>
+
+    <!-- History screen -->
+    <string name="no_history_found">No history found</string>
+    <string name="add_spending_to_see_history">Add spending to see history</string>
+    <string name="error_user_not_logged_in">User not logged in error</string>
 </resources>

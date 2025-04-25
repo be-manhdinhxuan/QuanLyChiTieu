@@ -13,7 +13,6 @@
     <string name="enter_current_password">Nhập mật khẩu hiện tại</string>
     <string name="please_enter_password">Vui lòng nhập mật khẩu</string>
     <string name="please_enter_your_new_password">Vui lòng nhập vào mật khẩu mới của bạn</string>
-    <string name="incorrect_password">Mật khẩu không chính xác</string>
     <string name="passwords_do_not_match">Mật khẩu mới không khớp</string>
     <string name="change_password_successfully">Đổi mật khẩu thành công</string>
     <string name="forgot_password_message">Đừng lo! Nhập email của bạn và chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.</string>
@@ -36,8 +35,7 @@
 
     <!-- Feature: Spending -->
     <string name="add_spending">Thêm chi tiêu</string>
-    <string name="spending">Chi tiêu</string>
-    <string name="income">Thu nhập</string>
+
     <string name="total_income">Tổng thu nhập</string>
     <string name="revenue_expenditure">Tổng doanh thu</string>
 
@@ -125,11 +123,6 @@
     <string name="saturday_short">T7</string>
     <string name="sunday_short">CN</string>
 
-    <!-- Categories -->
-    <string name="food">Ăn uống</string>
-    <string name="transport">Di chuyển</string>
-    <string name="shopping">Mua sắm</string>
-    <string name="entertainment">Giải trí</string>
 
     <string name="new_type">Loại mới</string>
 
@@ -140,7 +133,7 @@
 
     <!-- Common Actions -->
     <string name="back">Quay lại</string>
-    <string name="ok">OK</string>
+
     <string name="save">Lưu</string>
     <string name="done">Hoàn thành</string>
     <string name="yes">Có</string>
@@ -233,7 +226,7 @@
 
     <!-- About -->
     <string name="version">Phiên bản</string>
-    <string name="developed_by">Phát triển bởi</string>
+    <string name="developed_by">Phát triển bởi Đinh Xuân Mạnh</string>
     <string name="currency_exchange_rate">Tỷ giá tiền tệ</string>
 
     <!-- Validation Messages -->
@@ -274,9 +267,6 @@
     <string name="apply_filter">Áp dụng bộ lọc</string>
     <string name="reset_filter">Đặt lại bộ lọc</string>
 
-
-
-
     <!-- Auth -->
     <string name="success">Thành công</string>
     <string name="check_your_email_make_password_change">Vui lòng kiểm tra email và thực hiện thay đổi mật khẩu mới!</string>
@@ -289,7 +279,6 @@
 
     <!-- New strings -->
     <string name="select_date">Chọn ngày sinh</string>
-    <string name="other">Khác</string>
 
     <!-- Profile -->
     <string name="error_loading_profile">Không thể tải thông tin cá nhân</string>
@@ -337,9 +326,10 @@
     <string name="please_enter_name">Vui lòng nhập tên</string>
 
     <!-- Image Related -->
+    <string name="images">Hình ảnh</string>
     <string name="image_loaded">Đã tải ảnh thành công</string>
     <string name="image_selected">Đã chọn ảnh thành công</string>
-    
+
     <!-- Actions -->
     <string name="add">Thêm</string>
     
@@ -348,10 +338,10 @@
 
     <!-- Filter Screen -->
     <string name="enter_amount">Nhập số tiền</string>
-    <string name="cancel">Hủy</string>
+
     <string name="invalid_input">Dữ liệu không hợp lệ</string>
     <string name="invalid_date_range">Khoảng thời gian không hợp lệ</string>
-    <string name="all">Tất cả</string>
+
     <string name="group">Nhóm</string>
 
     <string name="enter_friend_name">Nhập tên bạn</string>
@@ -422,4 +412,102 @@
     <string name="week_spending_report">Báo Cáo Chi Tiêu Theo Tuần</string>
     <string name="month_spending_report">Báo Cáo Chi Tiêu Theo Tháng</string>
     <string name="year_spending_report">Báo Cáo Chi Tiêu Theo Năm</string>
+
+    <!-- About Screen -->
+    <string name="contact">Liên hệ</string>
+    <string name="buy_me_a_coffee">Ủng hộ tôi một ly cà phê</string>
+
+    <!-- Location and Friends -->
+    <string name="location_and_friends">Địa điểm và Bạn bè</string>
+    <string name="add_friend">Thêm bạn</string>
+
+    <!-- Time Periods -->
+    <string name="day">Ngày</string>
+    <string name="week">Tuần</string>
+    <string name="month">Tháng</string>
+    <string name="year">Năm</string>
+
+    <!-- Password Change -->
+    <string name="current_password">Mật khẩu hiện tại</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
+    <string name="update_password">Cập nhật mật khẩu</string>
+
+    <!-- Password Change Validation Messages -->
+    <string name="please_enter_current_password">Vui lòng nhập mật khẩu hiện tại</string>
+    <string name="please_enter_new_password">Vui lòng nhập mật khẩu mới</string>
+    <string name="password_must_be_at_least_6_chars">Mật khẩu phải có ít nhất 6 ký tự</string>
+    <string name="please_confirm_new_password">Vui lòng xác nhận mật khẩu mới</string>
+    <string name="password_not_match">Mật khẩu không khớp</string>
+    <string name="incorrect_password">Mật khẩu không đúng</string>
+    <string name="password_changed_successfully">Đổi mật khẩu thành công</string>
+    <string name="failed_to_change_password">Đổi mật khẩu thất bại</string>
+
+    <!-- Type Selection -->
+    <string name="all">Tất cả</string>
+    <string name="spending">Chi tiêu</string>
+    <string name="income">Thu nhập</string>
+    <string name="new_spending_type">Loại chi tiêu mới</string>
+    <string name="new_income_type">Loại thu nhập mới</string>
+    <string name="ok">Đồng ý</string>
+    <string name="cancel">Hủy</string>
+    
+    <!-- Spending Types -->
+    <string name="food">Ăn uống</string>
+    <string name="transport">Di chuyển</string>
+    <string name="shopping">Mua sắm</string>
+    <string name="entertainment">Giải trí</string>
+    <string name="salary">Lương</string>
+    <string name="bonus">Thưởng</string>
+    <string name="other">Khác</string>
+    <string name="other_income">Thu nhập khác</string>
+    <string name="type_name">Tên loại</string>
+    <string name="amount">Số tiền</string>
+
+    <!-- New strings -->
+    <string name="profile">Hồ sơ</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="settings">Cài đặt</string>
+    <string name="clear">Xóa</string>
+    <string name="no_search_results">Không tìm thấy kết quả</string>
+
+    <!-- Additional strings -->
+    <string name="expense">Chi tiêu</string>
+    <string name="date_range">Khoảng thời gian</string>
+    <string name="start_date">Ngày bắt đầu</string>
+    <string name="end_date">Ngày kết thúc</string>
+
+    <!-- New strings -->
+    <string name="verify_email">Xác thực Email</string>
+    <string name="verify_now">Xác thực ngay</string>
+    <string name="go_to_home">Về trang chủ</string>
+    <string name="resend_email">Gửi lại email</string>
+
+    <!-- Image Related -->
+    <string name="view_image">Xem ảnh</string>
+    <string name="error_image">Ảnh lỗi</string>
+    <string name="image_load_failed">Không thể tải ảnh</string>
+
+    <!-- New string -->
+    <string name="download">Tải xuống</string>
+
+    <!-- New strings -->
+    <string name="cannot_share_image">Không thể chia sẻ ảnh</string>
+    <string name="share_image">Chia sẻ ảnh</string>
+    <string name="share_failed">Chia sẻ ảnh thất bại</string>
+    <string name="cannot_download_image">Không thể tải ảnh xuống</string>
+    <string name="download_success">Tải ảnh xuống thành công</string>
+    <string name="download_failed">Tải ảnh xuống thất bại</string>
+
+    <!-- New strings -->
+    <string name="spending_details">Chi tiết chi tiêu</string>
+    <string name="delete">Xóa</string>
+    <string name="details">Chi tiết</string>
+    <string name="receipt_image">Ảnh hóa đơn</string>
+    <string name="you_want_delete">Bạn có muốn xóa mục này?</string>
+    <string name="default_type">Khác</string>
+    <string name="no_data_available">Không có dữ liệu</string>
+    <string name="no_history_found">Không tìm thấy lịch sử</string>
+    <string name="add_spending_to_see_history">Thêm chi tiêu để xem lịch sử</string>
+    <string name="error_user_not_logged_in">Lỗi người dùng chưa đăng nhập</string>
 </resources>

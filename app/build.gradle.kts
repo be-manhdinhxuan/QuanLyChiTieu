@@ -9,20 +9,38 @@ android {
     namespace = "com.example.quanlychitieu"
     compileSdk = 34
 
+    // Cách cấu hình aaptOptions đúng
+    androidResources {
+        noCompress += listOf("") // Disable resource compression
+    }
+
     defaultConfig {
         applicationId = "com.example.quanlychitieu"
         minSdk = 24
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
-
+        
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += mapOf(
+                    "room.schemaLocation" to "$projectDir/schemas",
+                    "room.incremental" to "true"
+                )
+            }
+        }
     }
 
     buildTypes {
         release {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+        }
+        debug {
+            isDebuggable = true
+            isMinifyEnabled = false
         }
     }
 
@@ -40,6 +58,26 @@ android {
 
     buildFeatures {
         viewBinding = true
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
+    }
+
+    configurations.all {
+        resolutionStrategy {
+            // Ép buộc sử dụng phiên bản cụ thể của thư viện androidx.core
+            force("androidx.core:core:1.12.0")
+        }
+
+        // Loại bỏ các phụ thuộc cũ của thư viện support library
+        // Lưu ý: Đã sửa lỗi gõ nhầm dấu nháy đơn (') thành nháy kép (") ở dòng đầu tiên
+        exclude(group = "com.android.support", module = "support-compat")
+        exclude(group = "com.android.support", module = "support-v4")
+        exclude(group = "com.android.support", module = "support-annotations")
+        exclude(group = "com.android.support", module = "support-core-utils")
     }
 }
 
@@ -59,10 +97,12 @@ dependencies {
     // Google Sign In
     implementation("com.google.android.gms:play-services-auth:20.7.0")
     implementation("com.google.android.gms:play-services-base:18.3.0")
+    implementation("com.google.android.gms:play-services-safetynet:18.0.1")
 
     // Facebook Login
     implementation("com.facebook.android:facebook-android-sdk:16.3.0")
     implementation("com.facebook.android:facebook-login:16.3.0")
+    implementation("com.facebook.android:facebook-login:latest.release")
 
     // AndroidX
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -101,4 +141,18 @@ dependencies {
 
     // Thêm CircleImageView
     implementation ("de.hdodenhof:circleimageview:3.1.0")
+
+    implementation("com.squareup.picasso:picasso:2.8")
+
+    implementation("com.github.chrisbanes:PhotoView:2.3.0")
+
+    // Thêm OkHttp3 Logging Interceptor
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
+
+    implementation ("androidx.room:room-runtime:2.6.1")
+    annotationProcessor ("androidx.room:room-compiler:2.6.1")
+    implementation ("androidx.room:room-ktx:2.6.1") // Nếu dùng Kotlin
+
+    implementation("com.cloudinary:cloudinary-android:2.3.1")
+    implementation("com.cloudinary:cloudinary-core:1.34.0")
 }

@@ -18,6 +18,12 @@ public class AnalyticsChartTabsView extends LinearLayout {
     private ViewAnalyticsChartTabsBinding binding;
     private ViewPager2 viewPager;
     private String[] tabTitles = { "Column", "Pie" };
+    private OnChartTypeSelectedListener listener;
+
+    // Interface để xử lý sự kiện khi loại biểu đồ được chọn
+    public interface OnChartTypeSelectedListener {
+        void onChartTypeSelected(String chartType);
+    }
 
     public AnalyticsChartTabsView(Context context) {
         super(context);
@@ -36,6 +42,33 @@ public class AnalyticsChartTabsView extends LinearLayout {
 
     private void init() {
         binding = ViewAnalyticsChartTabsBinding.inflate(LayoutInflater.from(getContext()), this, true);
+
+        // Thêm sự kiện cho các tab
+        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (listener != null) {
+                    // Gửi loại biểu đồ đã chọn dưới dạng chuỗi
+                    String chartType = tab.getPosition() == 0 ? "column" : "pie";
+                    listener.onChartTypeSelected(chartType);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                // Không cần xử lý
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                // Không cần xử lý
+            }
+        });
+    }
+
+    // Phương thức để đăng ký listener
+    public void setOnChartTypeSelectedListener(OnChartTypeSelectedListener listener) {
+        this.listener = listener;
     }
 
     public void setupWithViewPager(@NonNull ViewPager2 viewPager) {

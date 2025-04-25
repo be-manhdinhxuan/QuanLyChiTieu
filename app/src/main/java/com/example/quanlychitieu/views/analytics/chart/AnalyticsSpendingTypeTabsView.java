@@ -18,6 +18,12 @@ public class AnalyticsSpendingTypeTabsView extends LinearLayout {
     private ViewAnalyticsSpendingTypeTabsBinding binding;
     private ViewPager2 viewPager;
     private String[] tabTitles = { "Day", "Week", "Month" };
+    private OnSpendingTypeSelectedListener listener;
+
+    // Interface để xử lý sự kiện khi loại chi tiêu được chọn
+    public interface OnSpendingTypeSelectedListener {
+        void onSpendingTypeSelected(String spendingType);
+    }
 
     public AnalyticsSpendingTypeTabsView(Context context) {
         super(context);
@@ -36,6 +42,33 @@ public class AnalyticsSpendingTypeTabsView extends LinearLayout {
 
     private void init() {
         binding = ViewAnalyticsSpendingTypeTabsBinding.inflate(LayoutInflater.from(getContext()), this, true);
+
+        // Thêm sự kiện cho các tab
+        binding.tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (listener != null) {
+                    // Gửi loại chi tiêu đã chọn dưới dạng chuỗi
+                    String spendingType = tab.getPosition() == 0 ? "expense" : "income";
+                    listener.onSpendingTypeSelected(spendingType);
+                }
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+                // Không cần xử lý
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+                // Không cần xử lý
+            }
+        });
+    }
+
+    // Phương thức để đăng ký listener
+    public void setOnSpendingTypeSelectedListener(OnSpendingTypeSelectedListener listener) {
+        this.listener = listener;
     }
 
     public void setupWithViewPager(@NonNull ViewPager2 viewPager) {

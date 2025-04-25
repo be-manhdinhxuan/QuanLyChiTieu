@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Theme Colors -->
+    <color name="blue_50">#E3F2FD</color>  <!-- Material Design Blue 50 -->
     <color name="blue_500">#2196F3</color>
     <color name="primary">@color/blue_500</color>
     <color name="primary_dark">#0D47A1</color>
@@ -37,6 +38,10 @@
     <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
     <color name="text_hint">#9E9E9E</color>
+    <color name="text_tertiary">#61000000</color>  <!-- Black with 38% opacity -->
+
+    <!-- Transaction Colors -->
+    <color name="expense_red">#F44336</color>      <!-- Material Design Red 500 -->
 
     <!-- Background Colors -->
     <color name="background_primary">#FFFFFF</color>
@@ -152,5 +157,7 @@
 
     <!-- Material Design Colors -->
     <color name="orange_500">#FF9800</color>  <!-- Material Design Orange 500 -->
-    <color name="yellow_500">#F2BB06</color>  <!-- Material Design Yellow 500 -->
+    <color name="yellow_500">#F2BB06</color>
+    <color name="income_green">#4CAF50</color>  <!-- Material Design Yellow 500 -->
+    <color name="black_translucent">#99000000</color>  <!-- Black with 60% opacity -->
 </resources>
