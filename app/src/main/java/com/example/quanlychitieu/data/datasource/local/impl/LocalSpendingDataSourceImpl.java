@@ -1,5 +1,8 @@
 package com.example.quanlychitieu.data.datasource.local.impl;
 
+import android.content.Context;
+
+import com.example.quanlychitieu.data.datasource.local.AppDatabase;
 import com.example.quanlychitieu.data.datasource.local.dao.SpendingDao;
 import com.example.quanlychitieu.data.datasource.local.datasource.LocalSpendingDataSource;
 import com.example.quanlychitieu.data.datasource.local.entity.SpendingEntity;
@@ -11,6 +14,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.inject.Inject;
+import dagger.hilt.android.qualifiers.ApplicationContext;
+
 /**
  * Implementation of LocalSpendingDataSource using Room database
  */
@@ -18,8 +24,9 @@ public class LocalSpendingDataSourceImpl implements LocalSpendingDataSource {
   private final SpendingDao spendingDao;
   private final SpendingMapper mapper;
 
-  public LocalSpendingDataSourceImpl(SpendingDao spendingDao, SpendingMapper mapper) {
-    this.spendingDao = spendingDao;
+  @Inject
+  public LocalSpendingDataSourceImpl(@ApplicationContext Context context, SpendingMapper mapper) {
+    this.spendingDao = AppDatabase.getInstance(context).spendingDao();
     this.mapper = mapper;
   }
 
@@ -28,11 +35,11 @@ public class LocalSpendingDataSourceImpl implements LocalSpendingDataSource {
     // Tách chuỗi id thành userId và spendingId
     String[] parts = id.split("/");
     if (parts.length != 2) {
-      return null; // hoặc throw exception tùy vào yêu cầu của bạn
+      return null;
     }
     String userId = parts[0];
     String spendingId = parts[1];
-    
+
     SpendingEntity entity = spendingDao.getSpendingById(userId, spendingId);
     return entity != null ? mapper.toDomain(entity) : null;
   }
@@ -53,7 +60,7 @@ public class LocalSpendingDataSourceImpl implements LocalSpendingDataSource {
   public List<Spending> getSpendingsByMonth(String userId, Date date) {
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(date);
-    
+
     // Set to first day of month
     calendar.set(Calendar.DAY_OF_MONTH, 1);
     calendar.set(Calendar.HOUR_OF_DAY, 0);
@@ -68,12 +75,6 @@ public class LocalSpendingDataSourceImpl implements LocalSpendingDataSource {
     Date endDate = calendar.getTime();
 
     return getSpendingsByDateRange(userId, startDate, endDate);
-  }
-
-  @Override
-  public List<Spending> getSpendingsByType(String userId, int type) {
-    List<SpendingEntity> entities = spendingDao.getSpendingsByCategory(userId, String.valueOf(type));
-    return mapEntitiesToDomainList(entities);
   }
 
   @Override
@@ -104,9 +105,22 @@ public class LocalSpendingDataSourceImpl implements LocalSpendingDataSource {
 
   @Override
   public void deleteSpending(String id) {
+    if (id == null || id.isEmpty()) {
+      return; // hoặc throw new IllegalArgumentException("ID không được null hoặc rỗng");
+    }
+
     String[] parts = id.split("/");
+    if (parts.length != 2) {
+      return; // hoặc throw new IllegalArgumentException("ID không đúng định dạng userId/spendingId");
+    }
+
     String userId = parts[0];
     String spendingId = parts[1];
+
+    if (userId.isEmpty() || spendingId.isEmpty()) {
+      return; // hoặc throw new IllegalArgumentException("userId và spendingId không được rỗng");
+    }
+
     spendingDao.deleteSpending(userId, spendingId);
   }
 
@@ -114,6 +128,12 @@ public class LocalSpendingDataSourceImpl implements LocalSpendingDataSource {
   public void markAsSynced(String id) {
     // This functionality needs to be added to the DAO
     // For now, we'll leave it as a no-op
+  }
+
+  @Override
+  public List<Spending> getSpendingsByType(String userId, int type) {
+    List<SpendingEntity> entities = spendingDao.getSpendingsByType(userId, type);
+    return mapEntitiesToDomainList(entities);
   }
 
   /**

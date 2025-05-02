@@ -1,7 +1,6 @@
 package com.example.quanlychitieu.domain.adapter.search;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +12,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quanlychitieu.R;
+import com.example.quanlychitieu.domain.constants.SpendingType;
 import com.example.quanlychitieu.domain.model.spending.Spending;
 import com.google.android.material.card.MaterialCardView;
 
@@ -108,22 +108,109 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
 
     // Sửa phương thức này để nhận type là int thay vì String
     private void setIconForCategory(ImageView imageView, int type) {
-        // Sử dụng type (int) để xác định icon
         switch (type) {
-            case 1: // Ăn uống
-                imageView.setImageResource(R.drawable.ic_food);
+            // Monthly spending types
+            case SpendingType.EATING:
+                imageView.setImageResource(R.drawable.ic_eat);
                 break;
-            case 2: // Di chuyển
-                imageView.setImageResource(R.drawable.ic_transport);
+            case SpendingType.TRANSPORTATION:
+                imageView.setImageResource(R.drawable.ic_taxi);
                 break;
-            case 3: // Mua sắm
+            case SpendingType.RENT:
+                imageView.setImageResource(R.drawable.ic_house);
+                break;
+            case SpendingType.WATER:
+                imageView.setImageResource(R.drawable.ic_water);
+                break;
+            case SpendingType.PHONE:
+                imageView.setImageResource(R.drawable.ic_phone);
+                break;
+            case SpendingType.ELECTRICITY:
+                imageView.setImageResource(R.drawable.ic_electricity);
+                break;
+            case SpendingType.GAS:
+                imageView.setImageResource(R.drawable.ic_gas);
+                break;
+            case SpendingType.TV:
+                imageView.setImageResource(R.drawable.ic_tv);
+                break;
+            case SpendingType.INTERNET:
+                imageView.setImageResource(R.drawable.ic_internet);
+                break;
+
+            // Essential spending types
+            case SpendingType.HOME_REPAIR:
+                imageView.setImageResource(R.drawable.ic_house_2);
+                break;
+            case SpendingType.VEHICLE:
+                imageView.setImageResource(R.drawable.ic_tools);
+                break;
+            case SpendingType.HEALTHCARE:
+                imageView.setImageResource(R.drawable.ic_doctor);
+                break;
+            case SpendingType.INSURANCE:
+                imageView.setImageResource(R.drawable.ic_health_insurance);
+                break;
+            case SpendingType.EDUCATION:
+                imageView.setImageResource(R.drawable.ic_education);
+                break;
+            case SpendingType.HOUSEWARES:
+                imageView.setImageResource(R.drawable.ic_armchair);
+                break;
+            case SpendingType.PERSONAL:
+                imageView.setImageResource(R.drawable.ic_toothbrush);
+                break;
+            case SpendingType.PET:
+                imageView.setImageResource(R.drawable.ic_pet);
+                break;
+            case SpendingType.FAMILY:
+                imageView.setImageResource(R.drawable.ic_family);
+                break;
+            case SpendingType.HOUSING:
+                imageView.setImageResource(R.drawable.ic_house);
+                break;
+            case SpendingType.UTILITIES:
+                imageView.setImageResource(R.drawable.ic_water);
+                break;
+
+            // Entertainment and lifestyle types
+            case SpendingType.SPORTS:
+                imageView.setImageResource(R.drawable.ic_sports);
+                break;
+            case SpendingType.BEAUTY:
+                imageView.setImageResource(R.drawable.ic_diamond);
+                break;
+            case SpendingType.GIFTS:
+                imageView.setImageResource(R.drawable.ic_give_love);
+                break;
+            case SpendingType.ENTERTAINMENT:
+                imageView.setImageResource(R.drawable.ic_game_pad);
+                break;
+            case SpendingType.SHOPPING:
                 imageView.setImageResource(R.drawable.ic_shopping);
                 break;
-            case 4: // Thu nhập
+
+            // Income types
+            case SpendingType.SALARY:
                 imageView.setImageResource(R.drawable.ic_money);
                 break;
-            default:
+            case SpendingType.BONUS:
+                imageView.setImageResource(R.drawable.ic_money_bag);
+                break;
+            case SpendingType.INVESTMENT_RETURN:
                 imageView.setImageResource(R.drawable.ic_money);
+                break;
+            case SpendingType.OTHER_INCOME:
+                imageView.setImageResource(R.drawable.ic_money_bag);
+                break;
+
+            // Other types
+            case SpendingType.OTHER:
+                imageView.setImageResource(R.drawable.ic_box);
+                break;
+            
+            default:
+                imageView.setImageResource(R.drawable.ic_other);
                 break;
         }
     }

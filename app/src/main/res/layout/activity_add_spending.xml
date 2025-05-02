@@ -1,358 +1,413 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/bg">
-
-    <!-- Toolbar đồng bộ với các màn hình khác -->
-    <com.google.android.material.appbar.MaterialToolbar
+<FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.features.spending.add.screen.AddSpendingActivity"> <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/bg"> <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@android:color/white"
         android:elevation="2dp"
-        app:contentInsetStart="0dp"
-        app:contentInsetStartWithNavigation="0dp">
-
-        <ImageButton
-            android:id="@+id/buttonBack"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="12dp"
-            android:layout_gravity="start"
-            android:src="@drawable/ic_long_arrow_back"
-            android:contentDescription="@string/back" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/add_spending"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginEnd="48dp" />
-    </com.google.android.material.appbar.MaterialToolbar>
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        app:navigationIcon="@drawable/ic_close"
+        app:navigationIconTint="@color/black"> <TextView
+        android:id="@+id/toolbar_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/add_spending"
+        android:textColor="@color/black"
+        android:layout_gravity="center"
+        android:textSize="18sp"
+        android:textStyle="bold"/>
+</androidx.appcompat.widget.Toolbar>
 
     <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#E0E0E0"/>
-
-    <!-- Money Input không bọc trong MaterialCardView -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/moneyInputLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="@string/money_input"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/moneyInput"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#E0E0E0"/> <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="numberDecimal"
-            android:maxLines="1"/>
+            android:background="@android:color/white"
+            android:padding="16dp"
+            app:prefixText="₫ "
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/inputMoney"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"
+                android:textSize="20sp"
+                android:hint="@string/spending_amount_hint" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:contentDescription="@string/spending_details_scroll"
-        android:fillViewport="true">
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:clipToPadding="false">
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- Main Details Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="2dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <!-- Type Selection -->
-                    <LinearLayout
-                        android:id="@+id/typeSelector"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:minHeight="56dp"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:id="@+id/typeIcon"
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_default"
-                            app:tint="?attr/colorPrimary"/>
-
-                        <TextView
-                            android:id="@+id/typeText"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:layout_marginStart="16dp"
-                            android:text="@string/select_spending_type"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"/>
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:src="@drawable/ic_arrow_drop_down"
-                            app:tint="?attr/colorPrimary"/>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#E0E0E0"/>
-
-                    <!-- Date Selection -->
-                    <LinearLayout
-                        android:id="@+id/dateContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:minHeight="56dp"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:contentDescription="@string/calendar_icon"
-                            android:src="@drawable/ic_calendar"
-                            app:tint="?attr/colorPrimary"/>
-
-                        <TextView
-                            android:id="@+id/dateText"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="01/01/2024"/>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#E0E0E0"/>
-
-                    <!-- Time Selection -->
-                    <LinearLayout
-                        android:id="@+id/timeContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="?attr/selectableItemBackground"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center_vertical"
-                        android:minHeight="56dp"
-                        android:orientation="horizontal"
-                        android:padding="16dp">
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:contentDescription="@string/time_icon"
-                            android:src="@drawable/ic_time"
-                            app:tint="?attr/colorPrimary"/>
-
-                        <TextView
-                            android:id="@+id/timeText"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_weight="1"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            tools:text="14:30"/>
-                    </LinearLayout>
-
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#E0E0E0"/>
-
-                    <!-- Note Input -->
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/noteInputLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/note_input"
-                        android:padding="16dp"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/noteInput"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textMultiLine"
-                            android:maxLines="5"/>
-                    </com.google.android.material.textfield.TextInputLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- More Options Container -->
-            <LinearLayout
-                android:id="@+id/moreContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:visibility="visible">
+                android:paddingHorizontal="15dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="20dp">
 
-                <!-- Location Card -->
-                <com.google.android.material.card.MaterialCardView
+            <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginVertical="5dp"
                     app:cardCornerRadius="10dp"
                     app:cardElevation="2dp">
 
-                    <LinearLayout
+                <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/location_and_friends"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:layout_marginBottom="8dp"/>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:hint="@string/location"
-                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/locationInput"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="text"
-                                android:maxLines="1"/>
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <!-- Friends List -->
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/friendsList"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="16dp"
-                            android:contentDescription="@string/friends_list"
-                            tools:itemCount="2"
-                            tools:listitem="@layout/item_friend"/>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/addFriendButton"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/add_friend"
-                            android:textColor="@color/primary"
-                            style="@style/Widget.MaterialComponents.Button.TextButton"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Image Card -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="2dp">
+                        android:padding="10dp">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
+                            android:id="@+id/layoutType"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/images"
-                            android:textColor="@color/black"
-                            android:textSize="16sp"
-                            android:textStyle="bold"
-                            android:layout_marginBottom="8dp"/>
+                            android:orientation="horizontal"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:paddingVertical="8dp"
+                            android:gravity="center_vertical">
 
                         <ImageView
-                            android:id="@+id/selectedImage"
+                                android:id="@+id/imageType"
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/ic_question_mark" /> <TextView
+                            android:id="@+id/textType"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:paddingStart="10dp"
+                            android:text="@string/type" android:textSize="16sp" />
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_forward"
+                                app:tint="?android:attr/textColorSecondary"/>
+                    </LinearLayout>
+
+                    <View style="@style/DividerStyle" />
+
+                    <LinearLayout
+                            android:id="@+id/layoutDate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:adjustViewBounds="true"
-                            android:contentDescription="@string/selected_image"
-                            android:visibility="visible"/>
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical">
+
+                        <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/ic_calendar"
+                                app:tint="@color/orange_500" />
+
+                        <TextView
+                                android:id="@+id/textDate"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingStart="10dp"
+                                tools:text="28/04/2025"
+                                android:textSize="16sp" />
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_forward"
+                                app:tint="?android:attr/textColorSecondary"/>
+                    </LinearLayout>
+
+                    <View style="@style/DividerStyle" />
+
+                    <LinearLayout
+                            android:id="@+id/layoutTime"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical">
+
+                        <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/ic_time"
+                                app:tint="@color/yellow_500" />
+
+                        <TextView
+                                android:id="@+id/textTime"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingStart="10dp"
+                                tools:text="17:02"
+                                android:textSize="16sp" />
+
+                        <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/ic_arrow_forward"
+                                app:tint="?android:attr/textColorSecondary"/>
+                    </LinearLayout>
+
+                    <View style="@style/DividerStyle" />
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:gravity="top">
+
+                        <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:adjustViewBounds="true"
+                                android:src="@drawable/ic_note"
+                                app:tint="@color/red_500" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                                android:hint="@string/note">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/inputNote"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="top"
+                                    android:minLines="3"
+                                    android:inputType="textMultiLine|textCapSentences" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMore"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    android:visibility="visible"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                    <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:gravity="center_vertical">
+
+                        <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/ic_location"
+                                app:tint="@color/green_500" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="10dp"
+                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                                android:hint="@string/location">
+
+                            <AutoCompleteTextView
+                                    android:id="@+id/inputLocation"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="text"
+                                    android:paddingTop="16dp"
+                                    android:paddingBottom="16dp"
+                                    android:completionThreshold="1" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <View style="@style/DividerStyle" />
+
+                    <LinearLayout
+                            android:id="@+id/layoutAddFriend"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingVertical="8dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="?attr/selectableItemBackground"
+                            android:gravity="center_vertical">
+
+                        <ImageView
+                                android:layout_width="35dp"
+                                android:layout_height="35dp"
+                                android:src="@drawable/ic_person"
+                                app:tint="@color/blue_500" />
+
+                        <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:paddingStart="10dp"
+                                android:text="@string/add_friend"
+                                android:textSize="16sp" />
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/addImageButton"
+                                android:id="@+id/buttonAddFriend"
+                                style="@style/Widget.MaterialComponents.Button.TextButton"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/add_friends"
+                                android:textAllCaps="false"
+                                android:textSize="14sp"
+                                android:textColor="@color/button_login" />
+                    </LinearLayout>
+
+                    <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerFriends"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:visibility="gone"
+                            tools:visibility="visible"
+                            tools:listitem="@layout/item_friend_selected" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardImage" android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="5dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="2dp">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+
+                    <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/add_image"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginBottom="8dp" />
+
+                    <FrameLayout
+                            android:id="@+id/cardSelectedImage" android:layout_width="120dp"
+                            android:layout_height="120dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="8dp"
+                            android:visibility="gone"
+                            tools:visibility="visible">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                                android:id="@+id/imageSelected" android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:scaleType="centerCrop"
+                                app:shapeAppearanceOverlay="@style/ShapeAppearance.Material3.Corner.Medium" />
+
+                        <ImageButton
+                                android:id="@+id/buttonRemoveImage" android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="top|end"
+                                android:background="@drawable/bg_remove_icon"
+                                android:src="@drawable/ic_close"
+                                android:padding="4dp"
+                                android:contentDescription="@string/remove_image"
+                                android:visibility="gone"/> </FrameLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                            android:id="@+id/buttonPickImage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:text="@string/pick_image_from_gallery"
+                            android:padding="12dp"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:textColor="@color/white"
                             app:cornerRadius="8dp"
-                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
+                            app:elevation="0dp"
+                            app:backgroundTint="@color/button_login"
+                            app:icon="@drawable/ic_image"
+                            app:iconGravity="textStart"
+                            app:iconTint="@color/white"
+                            android:visibility="visible"/> </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-            <!-- More Button -->
             <com.google.android.material.button.MaterialButton
-                android:id="@+id/moreButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/more_options"
-                android:textColor="@color/primary"
-                app:cornerRadius="8dp"
-                app:strokeColor="@color/grey"
-                app:strokeWidth="1dp"
-                app:backgroundTint="@android:color/transparent"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"/>
-
-            <!-- Save Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/saveButton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/save"
-                android:textAllCaps="false"
-                android:textSize="16sp"
-                android:textColor="@color/white"
-                app:cornerRadius="8dp"
-                app:backgroundTint="@color/button_login"/>
+                    android:id="@+id/buttonSave"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
+                    android:padding="12dp"
+                    android:text="@string/save"
+                    android:textAllCaps="false"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    app:cornerRadius="8dp"
+                    app:elevation="0dp"
+                    app:backgroundTint="@color/button_login" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
+
+    <FrameLayout
+            android:id="@+id/loadingOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000"
+            android:visibility="gone"
+            android:clickable="true"
+            android:focusable="true">
+
+        <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminateTint="@android:color/white"/>
+    </FrameLayout>
+
+</FrameLayout>

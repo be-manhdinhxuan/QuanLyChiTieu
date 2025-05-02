@@ -93,8 +93,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="8dp"
-                        android:textColor="@color/black"
-                        android:text="@string/version" />
+                        android:textColor="@color/black" />
 
                     <TextView
                         android:id="@+id/developer"
@@ -102,8 +101,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="5dp"
-                        android:textColor="@color/black"
-                        android:text="@string/developed_by" />
+                        android:textColor="@color/black" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -138,7 +136,6 @@
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
-                        android:onClick="onFacebookClick"
                         android:padding="12dp"
                         android:gravity="center_vertical">
 
@@ -147,13 +144,13 @@
                             android:layout_height="40dp"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp"
-                            app:cardBackgroundColor="@color/facebook_blue">
+                            app:cardBackgroundColor="#1877F2">
 
                             <ImageView
                                 android:layout_width="24dp"
                                 android:layout_height="24dp"
                                 android:layout_gravity="center"
-                                android:src="@drawable/ic_facebook"/>
+                                android:src="@drawable/ic_facebook" />
                         </com.google.android.material.card.MaterialCardView>
 
                         <TextView
@@ -165,12 +162,7 @@
                             android:textSize="16sp" />
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#E0E0E0"/>
-
-                    <!-- Twitter -->
+                    <!-- Zalo -->
                     <LinearLayout
                         android:id="@+id/layoutZalo"
                         android:layout_width="match_parent"
@@ -178,7 +170,6 @@
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
-                        android:onClick="onZaloClick"
                         android:padding="12dp"
                         android:gravity="center_vertical">
 
@@ -187,7 +178,7 @@
                             android:layout_height="40dp"
                             app:cardCornerRadius="20dp"
                             app:cardElevation="0dp"
-                            app:cardBackgroundColor="@color/white">
+                            app:cardBackgroundColor="#0068FF">
 
                             <ImageView
                                 android:layout_width="24dp"
@@ -205,11 +196,6 @@
                             android:textSize="16sp" />
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#E0E0E0"/>
-
                     <!-- Telegram -->
                     <LinearLayout
                         android:id="@+id/layoutTelegram"
@@ -218,7 +204,6 @@
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
-                        android:onClick="onTelegramClick"
                         android:padding="12dp"
                         android:gravity="center_vertical">
 
@@ -246,11 +231,6 @@
                             android:textSize="16sp" />
                     </LinearLayout>
 
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="#E0E0E0"/>
-
                     <!-- Email -->
                     <LinearLayout
                         android:id="@+id/layoutEmail"
@@ -259,7 +239,6 @@
                         android:background="?attr/selectableItemBackground"
                         android:clickable="true"
                         android:focusable="true"
-                        android:onClick="onEmailClick"
                         android:padding="12dp"
                         android:gravity="center_vertical">
 
@@ -304,8 +283,7 @@
                 app:iconTint="@color/white"
                 app:backgroundTint="@color/button_login"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="24dp"
-                android:onClick="onMomoClick"/>
+                android:layout_marginBottom="24dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

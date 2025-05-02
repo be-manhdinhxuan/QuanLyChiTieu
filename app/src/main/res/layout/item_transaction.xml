@@ -27,7 +27,7 @@
                 android:layout_height="24dp"
                 android:layout_gravity="center"
                 app:tint="@color/white"
-                tools:src="@drawable/ic_food" />
+                tools:src="@drawable/ic_food2" />
     </com.google.android.material.card.MaterialCardView>
 
     <!-- Transaction Info -->

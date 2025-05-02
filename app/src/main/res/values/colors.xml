@@ -35,7 +35,6 @@
     <color name="warning">#FFD54F</color>
 
     <!-- Text Colors -->
-    <color name="text_primary">#212121</color>
     <color name="text_secondary">#757575</color>
     <color name="text_hint">#9E9E9E</color>
     <color name="text_tertiary">#61000000</color>  <!-- Black with 38% opacity -->
@@ -56,6 +55,8 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+    <color name="colorPrimaryLight">#EDE7F6</color>  <!-- Màu tím nhạt cho nền khi được chọn -->
+    <color name="chart_toggle_selected">#E3F2FD</color>
 
     <!-- New colors from AppColors -->
     <color name="whisper_background">#F4EFF3</color>
@@ -160,4 +161,25 @@
     <color name="yellow_500">#F2BB06</color>
     <color name="income_green">#4CAF50</color>  <!-- Material Design Yellow 500 -->
     <color name="black_translucent">#99000000</color>  <!-- Black with 60% opacity -->
+
+    <!-- Analytics colors -->
+<!--    <color name="expense_red">#FF5252</color>-->
+<!--    <color name="income_green">#4CAF50</color>-->
+    <color name="divider_color">#BDBDBD</color>
+
+    <color name="balance_color">#FF000000</color>
+
+    <!-- Các màu hiện có -->
+    <color name="bg_icon">#F5F5F5</color>
+    <color name="text_primary">#212121</color>
+    <color name="bg_list">#FEF7FF</color>
+    <color name="grey_500">#9E9E9E</color>
+
+    <color name="chart_color_1">#FF4081</color>
+    <color name="chart_color_2">#3F51B5</color>
+    <color name="chart_color_3">#009688</color>
+    <color name="chart_color_4">#FF5722</color>
+    <color name="chart_color_5">#9C27B0</color>
+
+
 </resources>

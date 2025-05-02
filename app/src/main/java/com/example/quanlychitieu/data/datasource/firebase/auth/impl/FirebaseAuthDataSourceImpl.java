@@ -8,13 +8,17 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import javax.inject.Inject;
+import javax.inject.Singleton;
 
+@Singleton
 public class FirebaseAuthDataSourceImpl implements FirebaseAuthDataSource {
   private static final String TAG = "FirebaseAuthDataSource";
   private final FirebaseAuth auth;
 
-  public FirebaseAuthDataSourceImpl() {
-    this.auth = FirebaseAuth.getInstance();
+  @Inject
+  public FirebaseAuthDataSourceImpl(FirebaseAuth auth) {
+    this.auth = auth;
   }
 
   @Override

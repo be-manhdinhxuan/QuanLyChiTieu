@@ -1,54 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.quanlychitieu">
+          package="com.example.quanlychitieu">
 
-    <!-- Permissions -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28" />
     <application
-        android:name=".ExpenseManagerApplication"
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.QuanLyChiTieu">
+            android:name=".ExpenseManagerApplication"
+            android:allowBackup="true"
+            android:enableOnBackInvokedCallback="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="@string/app_name"
+            android:roundIcon="@mipmap/ic_launcher_round"
+            android:supportsRtl="true"
+            android:theme="@style/Theme.QuanLyChiTieu">
 
-        <!-- Meta-data for Google Play Services -->
         <meta-data
+                android:name="com.google.android.geo.API_KEY"
+                android:value="YOUR_API_KEY"/> <meta-data
             android:name="com.google.android.gms.version"
-            android:value="@integer/google_play_services_version" />
+            android:value="@integer/google_play_services_version"/>
 
-        <!-- Facebook Configuration -->
         <meta-data
-            android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id" />
+                android:name="com.facebook.sdk.ApplicationId"
+                android:value="@string/facebook_app_id"/>
         <meta-data
-            android:name="com.facebook.sdk.ClientToken"
-            android:value="@string/facebook_client_token" />
+                android:name="com.facebook.sdk.ClientToken"
+                android:value="@string/facebook_client_token"/>
 
-        <!-- Activities -->
         <activity
-            android:name=".presentation.features.auth.login.screen.LoginActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+                android:name=".presentation.features.auth.login.screen.LoginActivity"
+                android:exported="true"
+                android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!-- Facebook Activity -->
         <activity
-            android:name="com.facebook.FacebookActivity"
-            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
-            android:label="@string/app_name" />
+                android:name="com.facebook.FacebookActivity"
+                android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+                android:label="@string/app_name" />
+
         <activity
-            android:name="com.facebook.CustomTabActivity"
-            android:exported="true">
+                android:name="com.facebook.CustomTabActivity"
+                android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -57,44 +55,71 @@
             </intent-filter>
         </activity>
 
-        <!-- Forgot Password Activity -->
         <activity
-                android:name="com.example.quanlychitieu.presentation.features.auth.forgot.screen.ForgotActivity"
-            android:exported="false" />
+                android:name=".presentation.features.auth.forgot.screen.ForgotActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.auth.signup.screen.SignupActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.auth.verify.screen.VerifyActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.auth.success.screen.SuccessActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.main.navigation.screen.MainActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.wallet.setup.screen.InputWalletActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.profile.password.screen.ChangePasswordActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.profile.edit.screen.EditProfileActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.spending.add.screen.AddSpendingActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.spending.type.screen.ChooseTypeActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.social.add.screen.AddFriendActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.spending.view.screen.ViewSpendingActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.spending.list.screen.ViewListSpendingActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.spending.edit.screen.EditSpendingActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.media.screen.ViewImageActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.spending.filter.screen.FilterActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.profile.about.screen.AboutActivity"
+                android:exported="false"/>
+        <activity
+                android:name=".presentation.features.history.screen.HistoryActivity"
+                android:exported="false"/>
 
-        <!-- Sign Up Activity -->
-        <activity
-            android:name=".presentation.features.auth.signup.screen.SignupActivity"
-            android:exported="false" />
-
-        <!-- Email Verification Activity -->
-        <activity
-            android:name=".presentation.features.auth.verify.screen.VerifyActivity"
-            android:exported="false" />
-
-        <!-- Success Activity -->
-        <activity
-            android:name=".presentation.features.auth.success.screen.SuccessActivity"
-            android:exported="false" />
-
-        <!-- Main Activity -->
-        <activity
-            android:name=".presentation.features.main.navigation.screen.MainActivity"
-            android:exported="false" />
-
-        <!-- Input Wallet Activity -->
-        <activity
-            android:name=".presentation.features.wallet.setup.screen.InputWalletActivity"
-            android:exported="false" />
-
-        <!-- Change Password Activity -->
-        <activity
-            android:name=".presentation.features.profile.password.screen.ChangePasswordActivity"
-            android:exported="false" />
-        <!-- Edit Profile Activity -->
-        <activity
-            android:name=".presentation.features.profile.edit.screen.EditProfileActivity"
-            android:exported="false" />
+        <provider
+                android:name="androidx.core.content.FileProvider"
+                android:authorities="${applicationId}.fileprovider"
+                android:exported="false"
+                android:grantUriPermissions="true">
+            <meta-data
+                    android:name="android.support.FILE_PROVIDER_PATHS"
+                    android:resource="@xml/file_paths" />
+        </provider>
 
     </application>
+
 </manifest>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingVertical="10dp"
+              android:paddingHorizontal="8dp"
+              android:gravity="center_vertical"
+              android:background="?attr/selectableItemBackground"> <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp">
+
+    <TextView
+            android:id="@+id/transactionNoteTextView"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Ăn trưa cơm sườn rất ngon nhưng hơi mặn chút xíu"/>
+
+    <TextView
+            android:id="@+id/transactionDateTimeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            tools:text="30/04/2025 12:30"/>
+</LinearLayout>
+
+    <TextView
+            android:id="@+id/transactionAmountTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textColor="@color/red" android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="-50.000 ₫"/>
+
+</LinearLayout>

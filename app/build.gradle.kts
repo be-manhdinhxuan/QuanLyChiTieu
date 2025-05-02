@@ -1,7 +1,11 @@
 plugins {
     id("com.android.application")
     id("com.google.gms.google-services")
-    // Thêm plugin Kotlin nếu bạn muốn sử dụng Kotlin
+    id("com.google.dagger.hilt.android")
+    id("dagger.hilt.android.plugin")
+    alias(libs.plugins.google.android.libraries.mapsplatform.secrets.gradle.plugin)
+
+// Thêm plugin Kotlin nếu bạn muốn sử dụng Kotlin
     // id("org.jetbrains.kotlin.android")
 }
 
@@ -19,7 +23,7 @@ android {
         minSdk = 24
         targetSdk = 34
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.0.0"
         
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
@@ -58,6 +62,7 @@ android {
 
     buildFeatures {
         viewBinding = true
+        buildConfig = true
     }
 
     packaging {
@@ -80,7 +85,7 @@ android {
         exclude(group = "com.android.support", module = "support-core-utils")
     }
 }
-
+val roomVersion = "2.5.0"
 dependencies {
     // Architecture Components
     implementation("androidx.lifecycle:lifecycle-viewmodel:2.7.0")
@@ -120,7 +125,8 @@ dependencies {
     implementation("com.google.code.gson:gson:2.10.1")
 
     // Dependency Injection
-    implementation("io.insert-koin:koin-android:3.5.3")  // Thêm Koin cho DI
+    implementation("io.insert-koin:koin-android:3.5.3")
+    implementation(libs.play.services.maps)  // Thêm Koin cho DI
 
     // Testing
     testImplementation("junit:junit:4.13.2")
@@ -155,4 +161,18 @@ dependencies {
 
     implementation("com.cloudinary:cloudinary-android:2.3.1")
     implementation("com.cloudinary:cloudinary-core:1.34.0")
+
+    implementation("com.google.dagger:hilt-android:2.44")
+    annotationProcessor("com.google.dagger:hilt-android-compiler:2.44")
+
+    implementation ("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
+
+    // Room Persistence Library
+    implementation("androidx.room:room-runtime:$roomVersion")
+    // annotationProcessor("androidx.room:room-compiler:$roomVersion") // Dòng này dùng cho Java
+    annotationProcessor("androidx.room:room-compiler:$roomVersion") // Sử dụng kapt cho Kotlin
+
+    // Hỗ trợ Kotlin Extensions và Coroutines (tùy chọn)
+    implementation("androidx.room:room-ktx:$roomVersion")
 }

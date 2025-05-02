@@ -21,7 +21,8 @@ public class FirebaseAuthConfig {
     if (authDataSource == null) {
       synchronized (FirebaseAuthConfig.class) {
         if (authDataSource == null) {
-          authDataSource = new FirebaseAuthDataSourceImpl();
+          FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+          authDataSource = new FirebaseAuthDataSourceImpl(firebaseAuth);
         }
       }
     }

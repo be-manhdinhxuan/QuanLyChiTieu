@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App Configuration -->
+    <string name="app_name">Lỗi tải hình ảnh lên</string>
+
+
+    <!-- Feature: Auth -->
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="enter_new_password">Enter new password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="enter_current_password">Enter current password</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_enter_your_new_password">Please enter your new password</string>
+    <string name="passwords_do_not_match">New password does not match</string>
+    <string name="change_password_successfully">Password changed successfully</string>
+    <string name="forgot_password_message">Don\'t worry! Enter your email and we\'ll send you a link to reset your password.</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="password_required">Please enter password</string>
+    <string name="confirm_password_required">Please confirm password</string>
+    <string name="hint_password">Password is incorrect</string>
+    <string name="you_want_change_your_password">You want to change your password?</string>
+    <string name="please_enter_your_current_password">Please Enter Your Current Password</string>
+    <string name="hello_again">Welcome back!</string>
+    <string name="welcome_back_you_been_missed">Welcome back, you\'ve been missed!</string>
+    <string name="hello_new_user">Hello new user!</string>
+    <string name="welcome_to_app">Welcome to the app</string>
+
+    <!-- Feature: Spending -->
+    <string name="add_spending">Add Spending</string>
+    <string name="total_spending">Total Spending</string>
+
+    <string name="total_income">Total Income</string>
+    <string name="revenue_expenditure">Total Revenue</string>
+    <string name="budget">Budget</string>
+    <string name="monthly_money">Monthly Budget</string>
+    <string name="enter_monthly_spending_amount">Enter Monthly Spending Amount You Want To Manager</string>
+    <string name="please_enter_amount">Please Enter Amount</string>
+    <string name="spending_details_scroll">Spending Details Scroll</string>
+    <string name="select_spending_type">Select Spending Type</string>
+    <string name="note_input">Note input</string>
+    <string name="location">Location</string>
+    <string name="enter_monthly_spending_amount_you_want_manage">Enter the monthly spending amount you want to manage</string>
+    <string name="spending_amount_hint">Enter amount</string>
+    <string name="spending_type_icon">Spending type icon</string>
+    <string name="input_spending_container">Enter spending</string>
+    <string name="spending_summary_card">Spending summary</string>
+
+    <!-- Feature: Analytics -->
+    <string name="analytic">Analysis</string>
+    <string name="statistical">Statistical</string>
+    <string name="statistical_spending">Statistical spending</string>
+    <string name="this_month">This Month</string>
+    <string name="next_month">Next Month</string>
+    <string name="last_month">Last Month</string>
+    <string name="filter_title">Filter Title</string>
+    <string name="this_month_spending_list">This Month Spending List</string>
+    <string name="spending_list">Spending List %s</string>
+    <string name="no_data">No Data %s!</string>
+    <string name="view_your_spending_and_income_reports_through_graphs">View Your Spending And Income Reports Through Graphs</string>
+    <string name="analytics_tab_description">Analytics navigation tabs</string>
+    <string name="chart_type_tabs_description">Chart type selection tabs</string>
+    <string name="spending_type_tabs_description">Spending type selection tabs</string>
+
+    <string name="total_report_description">Total spending and income report</string>
+
+    <!-- Feature: Profile -->
+    <string name="account">Account</string>
+    <string name="language">Language</string>
+    <string name="dark_mode">Dark mode</string>
+    <string name="export_csv">Export to CSV</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+    <string name="edit_personal_information_and_other_settings">Edit Personal Information And Other Settings</string>
+    <string name="profile_avatar">Profile avatar</string>
+    <string name="birthday">Birthday</string>
+    <string name="birthday_selector">Birthday selector</string>
+    <string name="gender_selection_description">Gender selection</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="other_gender">Other</string>
+    <string name="male_option">Male gender option</string>
+    <string name="female_option">Female gender option</string>
+    <string name="other_gender_option">Other gender option</string>
+    <string name="full_name">Full Name</string>
+    <string name="gender">Gender</string>
+
+    <!-- Feature: Social -->
+    <string name="friend">Friend</string>
+    <string name="remove_friend">Remove Friend</string>
+    <string name="friend_list">Friend List</string>
+    <string name="no_friends">No Friends</string>
+    <string name="friend_added">Friend Added</string>
+    <string name="friend_removed">Friend Removed</string>
+    <string name="friend_exists">Friend Already Exists</string>
+    <string name="add_friend_widget">Add friend widget</string>
+    <string name="friend_added_with_name">Friend added: %s</string>
+    <string name="friend_removed_with_name">Friend removed: %s</string>
+    <string name="friends_list">Friends List</string>
+    <string name="share_your_spending_with_friends">Share Your Spending With Friends</string>
+    <string name="circle_text_container">Initial letter in circle</string>
+    <string name="circle_text_clicked">Circle Text Clicked</string>
+
+    <!-- Feature: Calendar -->
+    <string name="calendar">Calendar</string>
+    <string name="calendar_icon">Calendar icon</string>
+    <string name="date_selector_description">Date selector</string>
+    <string name="choose_date">Select date</string>
+    <string name="date_navigation_container">Date navigation</string>
+    <string name="calendar_view_container">Calendar</string>
+    <string name="calendar_grid">Calendar days grid</string>
+    <string name="build_spending">Build Spending</string>
+    <string name="monday_short">Mon</string>
+    <string name="tuesday_short">Tue</string>
+    <string name="wednesday_short">Wed</string>
+    <string name="thursday_short">Thu</string>
+    <string name="friday_short">Fri</string>
+    <string name="saturday_short">Sat</string>
+    <string name="sunday_short">Sun</string>
+
+    <!-- Categories -->
+
+
+    <string name="new_type">New type</string>
+
+    <!-- Navigation -->
+    <string name="home">Home</string>
+    <string name="history">History</string>
+    <string name="wallet">Wallet</string>
+
+    <!-- Common Actions -->
+    <string name="back">Back</string>
+    <string name="save">Save</string>
+    <string name="done">Done</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="share">Share</string>
+    <string name="search">Search</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="submit">Submit</string>
+    <string name="confirm">Confirm</string>
+    <string name="get_started">Get Started</string>
+    <string name="skip">Skip</string>
+    <string name="remove_item">Remove item</string>
+    <string name="confirm_remove">Confirm remove</string>
+    <string name="item_removed">Item removed</string>
+    <string name="add_image">Add image</string>
+    <string name="attached_photo">Attached photo</string>
+    <string name="selected_image">Selected image</string>
+
+    <!-- UI Components -->
+    <string name="more_options">More options</string>
+    <string name="more_button_description">View more</string>
+    <string name="arrow_icon_description">Navigation arrow</string>
+    <string name="button_action_description">Action button</string>
+    <string name="button_text">Continue</string>
+    <string name="progress_button_action">Action button</string>
+    <string name="progress_button_container">Button with loading</string>
+    <string name="loading_indicator">Loading</string>
+    <string name="or_continue_with">Or continue with</string>
+    <string name="setting_item_container">Settings item</string>
+    <string name="setting_icon">Settings icon</string>
+    <string name="setting_item_icon">Setting icon</string>
+    <string name="setting_item_arrow">Page navigation arrow</string>
+    <string name="open_setting">Open setting</string>
+    <string name="custom_tab_bar_description">Navigation tabs</string>
+    <string name="type_tab_bar_description">Type selection tabs</string>
+
+    <!-- Form Fields -->
+    <string name="money_input">Input money</string>
+    <string name="money_input_container">Money input field</string>
+    <string name="money_input_hint">Enter amount</string>
+    <string name="money_in_words_description">Amount in words</string>
+    <string name="input_text_hint">Input text</string>
+    <string name="input_text_description">Input text field</string>
+    <string name="filter_item_container">Filter item</string>
+    <string name="filter_dropdown_card">Filter dropdown card</string>
+    <string name="filter_dropdown_description">Dropdown to select filter value</string>
+    <string name="filter_value_dropdown">Select value from list</string>
+    <string name="select_value">Select value</string>
+
+    <!-- Toolbars and Content Areas -->
+    <string name="toolbar">Toolbar</string>
+    <string name="toolbar_add_spending">Add Spending Toolbar</string>
+    <string name="content_scroll_view">Content scroll view</string>
+    <string name="time_icon">Time icon</string>
+
+    <!-- Search -->
+    <string name="search_hint">Search by name, note or location</string>
+    <string name="search_by_country_name_or_currency">Search By Country Name Or Currency</string>
+    <string name="search_for_your_expenses">Search for your expenses</string>
+
+    <!-- Filters -->
+    <string name="filter_all">All</string>
+    <string name="filter_income">Income</string>
+    <string name="filter_spending">Spending</string>
+    <string name="filter_today">Today</string>
+    <string name="filter_week">This Week</string>
+    <string name="filter_month">This Month</string>
+    <string name="filter_year">This Year</string>
+
+    <!-- Media -->
+    <string name="pick_image_from_gallery">Pick image from gallery</string>
+    <string name="gallery">Gallery</string>
+    <string name="camera">Camera</string>
+    <string name="choose_image_source">Select image source</string>
+    <string name="select_from_gallery">Select from gallery</string>
+    <string name="take_photo">Take new photo</string>
+
+    <!-- Messages -->
+    <string name="press_back_again_to_exit">Press back again to exit</string>
+    <string name="file_successfully_saved">File successfully saved</string>
+    <string name="invalid_name">Invalid name</string>
+    <string name="confirm_remove_message">Are you sure you want to remove this item?</string>
+    <string name="you_have_spending_the_day">You have spending on %s</string>
+    <string name="dont_worry_it_happens">Don\'t worry! Enter your email and we\'ll send you a link to reset your password.</string>
+
+    <!-- Onboarding -->
+    <string name="view_monthly_spending_summary_and_remaining_balance">View monthly spending summary and remaining balance</string>
+    <string name="review_your_scheduled_expenses">Review your scheduled expenses</string>
+    <string name="add_and_edit_your_daily_spending">Add and edit your daily spending</string>
+
+    <!-- About -->
+    <string name="version">Version</string>
+    <string name="developed_by">Developed by</string>
+    <string name="developer_name">Đinh Xuân Mạnh</string>
+    <string name="currency_exchange_rate">Currency Exchange Rate</string>
+    <string name="contact_me_via_facebook">Contact me via Facebook</string>
+    <string name="contact_me_via_zalo">Contact me via Zalo</string>
+    <string name="contact_me_via_telegram">Contact me via Telegram</string>
+    <string name="contact_me_via_email">Contact me via Email</string>
+    <string name="facebook_url">https://www.facebook.com/XuanManh.Coder</string>
+    <string name="zalo_url">https://zalo.me/0914828548</string>
+    <string name="telegram_url">https://t.me/manhbeoit8</string>
+    <string name="momo_url" >https://me.momo.vn/manhdinhxuan18</string>
+    <string name="contact_email">manhbeo.it8@gmail.com</string>
+
+    <!-- Validation Messages -->
+    <string name="enter_valid_email">Please enter a valid email address</string>
+    <string name="enter_valid_name">Please enter a valid name</string>
+    <string name="enter_valid_otp">Please enter a valid verification code</string>
+
+    <string name="more">More</string>
+    <string name="less">Less</string>
+    <string name="user_initial">User Initial</string>
+
+    <!-- Spending List -->
+    <string name="spending_by_category">Spending by Category</string>
+    <string name="no_spending_data">No spending data</string>
+    <string name="no_spending_found">No spending found</string>
+    <string name="spending_list_title_description">Spending list title</string>
+    <string name="spending_list_description">List of spending items</string>
+    <string name="empty_state_description">No spending data available</string>
+    <string name="loading_description">Loading data</string>
+
+    <!-- Auth -->
+    <string name="sign_in">Sign In</string>
+    <string name="do_not_have_account">Don\'t have an account?</string>
+    <string name="register_now">Register now</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="sign_up_button_desc">Sign up button</string>
+    <string name="already_have_account">Already have an account?</string>
+
+    <!-- Social Login -->
+    <string name="google">Google</string>
+    <string name="facebook">Facebook</string>
+    <string name="continue_with_facebook">Continue with Facebook</string>
+    <string name="continue_with_google">Continue with Google</string>
+
+    <!-- Spending -->
+    <string name="edit_spending">Edit Spending</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+
+    <!-- Filter -->
+    <string name="filter">Filter</string>
+    <string name="money">Money</string>
+    <string name="note">Note</string>
+
+    <!-- Filter Lists -->
+
+
+
+
+    <!-- Auth -->
+    <string name="success">Success</string>
+    <string name="check_your_email_make_password_change">Please check your email and make a new password change!</string>
+    <string name="go_to_login">Go to Login</string>
+    <string name="please_enter_email">Please enter your email</string>
+
+    <!-- Password reset strings -->
+    <string name="reset_email_sent">Password reset email has been sent</string>
+    <string name="failed_to_send_reset_email">Failed to send password reset email</string>
+
+
+    <string name="select_date">Select date</string>
+
+    <!-- Profile -->
+    <string name="error_loading_profile">Failed to load profile</string>
+    <string name="invalid_money_format">Invalid money format</string>
+    <string name="profile_updated">Profile updated successfully</string>
+    <string name="error_updating_profile">Failed to update profile</string>
+
+    <!-- Summary -->
+    <string name="summary">Summary</string>
+
+    <!-- Budget Management -->
+    <string name="monthly_budget">Monthly Budget</string>
+    <string name="enter_monthly_budget">Enter your monthly budget</string>
+    <string name="budget_amount">Budget Amount</string>
+    <string name="budget_exceeded">Budget Exceeded</string>
+    <string name="budget_remaining">Budget Remaining</string>
+
+    <!-- Auth Messages -->
+    <string name="create_account_success">Account created successfully</string>
+    <string name="enter_valid_password">Please enter a valid password</string>
+    <string name="enter_valid_confirm_password">Passwords do not match</string>
+    <string name="email_required">Please enter your email</string>
+    <string name="login_success">Login successful</string>
+
+    <!-- Spending Edit -->
+    <string name="spending_updated">Spending updated successfully</string>
+    <string name="error_updating_spending">Error updating spending</string>
+    <string name="please_select_type">Please select a type</string>
+    <string name="please_enter_valid_amount">Please enter a valid amount</string>
+
+    <string name="type">Type</string>
+
+    <!-- Spending Types -->
+    <string name="type_food">Food</string>
+    <string name="type_shopping">Shopping</string>
+    <string name="type_transport">Transport</string>
+    <string name="type_housing">Housing</string>
+    <string name="type_entertainment">Entertainment</string>
+    <string name="type_healthcare">Healthcare</string>
+    <string name="type_education">Education</string>
+    <string name="please_enter_name">Please enter name</string>
+
+    <!-- Image Related -->
+    <string name="image_loaded">Image loaded successfully</string>
+    <string name="image_selected">Image selected successfully</string>
+    <string name="images">Images</string>
+
+    <!-- Actions -->
+    <string name="add">Add</string>
+
+    <!-- Validation Messages -->
+    <string name="amount_too_large">Amount is too large</string>
+
+    <!-- Filter Actions -->
+    <string name="apply_filter">Apply Filter</string>
+    <string name="reset_filter">Reset Filter</string>
+
+    <!-- Filter Screen -->
+    <string name="enter_amount">Enter Amount</string>
+
+    <string name="invalid_input">Invalid input</string>
+    <string name="invalid_date_range">Invalid date range</string>
+
+    <string name="group">Group</string>
+    <string name="enter_friend_name">Enter friend name</string>
+    <string name="added_friends">Added friends (%d)</string>
+    <string name="add_friends">Add Friends</string>
+    <string name="filter_reset">Filter has been reset</string>
+
+    <!-- Arrays for Filter -->
+    <string-array name="money_list">
+        <item>All</item>
+        <item>Equal to</item>
+        <item>Greater than</item>
+        <item>Between</item>
+        <item>Less than</item>
+    </string-array>
+
+    <string-array name="time_list">
+        <item>All</item>
+        <item>On</item>
+        <item>After</item>
+        <item>Between</item>
+        <item>Before</item>
+    </string-array>
+
+    <string-array name="group_list">
+        <item>All</item>
+        <item>Income</item>
+        <item>Expense</item>
+    </string-array>
+
+    <!-- Filter Dialog Titles -->
+    <string name="select_money_filter">Select Money Filter</string>
+    <string name="select_time_filter">Select Time Filter</string>
+
+    <!-- Validation Messages -->
+    <string name="number_too_large">Number is too large</string>
+    <string name="invalid_range">Invalid range</string>
+
+    <!-- Amount Range Input -->
+    <string name="amount_from">Amount from</string>
+    <string name="min_amount">Minimum amount</string>
+    <string name="amount_to">Amount to</string>
+    <string name="max_amount">Maximum amount</string>
+
+    <!-- List Type Screen -->
+    <string name="list_type_title">List of type %d</string>
+
+    <!-- Spending Types Array -->
+    <string-array name="spending_types">
+        <item>Other</item>          <!-- 0 -->
+        <item>Food &amp; Drinks</item>    <!-- 1 -->
+        <item>Shopping</item>       <!-- 2 -->
+        <item>Transportation</item> <!-- 3 -->
+        <item>Housing</item>        <!-- 4 -->
+        <item>Entertainment</item>  <!-- 5 -->
+        <item>Healthcare</item>     <!-- 6 -->
+        <item>Education</item>      <!-- 7 -->
+        <item>Bills</item>          <!-- 8 -->
+        <item>Investment</item>     <!-- 9 -->
+        <item>Salary</item>         <!-- 10 -->
+        <item>Business</item>       <!-- 11 -->
+        <item>Gifts</item>          <!-- 12 -->
+        <item>Insurance</item>      <!-- 13 -->
+        <item>Taxes</item>          <!-- 14 -->
+        <item>Savings</item>        <!-- 15 -->
+    </string-array>
+
+    <!-- Spending Reports -->
+    <string name="week_spending_report">Weekly Spending Report</string>
+    <string name="month_spending_report">Monthly Spending Report</string>
+    <string name="year_spending_report">Yearly Spending Report</string>
+    <string name="spending_report_for">Spending report for %s</string>
+
+    <!-- About Screen -->
+    <string name="contact">Contact</string>
+    <string name="buy_me_a_coffee">Buy me a coffee</string>
+
+    <!-- Location and Friends -->
+    <string name="location_and_friends">Location and Friends</string>
+    <string name="add_friend">Add Friend</string>
+
+    <!-- Time Periods -->
+    <string name="day">Day</string>
+    <string name="week">Week</string>
+    <string name="month">Month</string>
+    <string name="year">Year</string>
+
+    <!-- Password Change -->
+    <string name="current_password">Current Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_new_password">Confirm New Password</string>
+    <string name="update_password">Update Password</string>
+
+    <!-- Password Change Validation Messages -->
+    <string name="please_enter_current_password">Please enter your current password</string>
+    <string name="please_enter_new_password">Please enter your new password</string>
+    <string name="password_must_be_at_least_6_chars">Password must be at least 6 characters long</string>
+    <string name="please_confirm_new_password">Please confirm your new password</string>
+    <string name="password_not_match">Passwords do not match</string>
+    <string name="incorrect_password">Incorrect password</string>
+    <string name="password_changed_successfully">Password changed successfully</string>
+    <string name="failed_to_change_password">Failed to change password</string>
+
+    <!-- Type Selection -->
+    <string name="all">All</string>
+    <string name="spending">Spending</string>
+    <string name="income">Income</string>
+    <string name="new_spending_type">New Spending Type</string>
+    <string name="new_income_type">New Income Type</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Spending Types -->
+    <string name="food">Food</string>
+    <string name="transport">Transport</string>
+    <string name="shopping">Shopping</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="salary">Salary</string>
+    <string name="bonus">Bonus</string>
+    <string name="other">Other</string>
+    <string name="other_income">Other Income</string>
+    <string name="type_name">Type name</string>
+    <string name="amount">Amount</string>
+
+    <string name="profile">Profile</string>
+    <string name="edit">Edit</string>
+    <string name="settings">Settings</string>
+
+    <string name="clear">Clear</string>
+    <string name="no_search_results">No search results found</string>
+
+    <string name="expense">Expense</string>
+    <string name="date_range">Date Range</string>
+    <string name="start_date">Start Date</string>
+    <string name="end_date">End Date</string>
+
+    <string name="verify_email">Verify Email</string>
+    <string name="verify_now">Verify Now</string>
+    <string name="go_to_home">Go to Home</string>
+    <string name="resend_email">Resend Email</string>
+
+    <string name="view_image">View Image</string>
+    <string name="error_image">Error Image</string>
+    <string name="image_load_failed">Failed to load image</string>
+
+    <string name="download">Download</string>
+    <string name="cannot_share_image">Cannot share image</string>
+    <string name="share_image">Share Image</string>
+    <string name="share_failed">Failed to share image</string>
+    <string name="cannot_download_image">Cannot download image</string>
+    <string name="download_success">Image downloaded successfully</string>
+    <string name="download_failed">Failed to download image</string>
+
+    <string name="spending_details">Spending Details</string>
+    <string name="delete">Delete</string>
+    <string name="details">Details</string>
+    <string name="receipt_image">Receipt Image</string>
+    <string name="you_want_delete">Do you want to delete this item?</string>
+    <string name="default_type">Other</string>
+    <string name="no_data_available">No data available</string>
+
+    <!-- History screen -->
+    <string name="no_history_found">No history found</string>
+    <string name="add_spending_to_see_history">Add spending to see history</string>
+    <string name="error_user_not_logged_in">User not logged in error</string>
+
+    <string name="previous_date">Previous date</string>
+    <string name="next_date">Next date</string>
+
+    <string name="pie_chart">Pie chart</string>
+    <string name="bar_chart">Bar chart</string>
+    <string name="balance">Balance</string>
+    <string name="total">Total</string>
+    <string name="spending_not_found">No spending records found</string>
+    <string name="share_spending">Share spending</string>
+    <string name="search_registered_friend">Search registered friends</string>
+    <string name="enter_friend_email">Enter friend\'s email</string>
+    <string name="add_non_registered_friend">Add non-registered friend</string>
+    <string name="enter_name_or_email">Enter name or email</string>
+    <string name="user_avatar">User avater</string>
+    <string name="choose_category">Choose Category</string>
+
+    <string name="spending_saved_successfully">Spending saved successfully</string>
+    <string name="error_saving_spending">Error saving spending</string>
+    <string name="error_uploading_image">Error uploading image</string>
+    <string name="please_wait_upload">Please wait while uploading...</string>
+
+    <string name="error_loading_data">Error loading data</string>
+
+    <string name="error_loading_spending">Error loading expenses</string>
+    <string name="data_refreshed_automatically">Data has been refreshed automatically</string>
+    <string name="search_spending">Search spending...</string>
+    <string name="type_icon">Type icon</string>
+
+    <!-- Basic expenses -->
+    <string name="eating">Food and Dining</string>
+    <string name="move">Transportation</string>
+    <string name="rent_house">Rent</string>
+    <string name="water_money">Water Bill</string>
+    <string name="telephone_fee">Phone Bill</string>
+    <string name="electricity_bill">Electricity Bill</string>
+    <string name="gas_money">Gas Bill</string>
+    <string name="tv_money">TV Bill</string>
+    <string name="internet_money">Internet Bill</string>
+
+    <!-- Essential expenses -->
+    <string name="family_service">Family Services</string>
+    <string name="repair_and_decorate_the_house">Home Repair and Decoration</string>
+    <string name="vehicle_maintenance">Vehicle Maintenance</string>
+    <string name="physical_examination">Healthcare</string>
+    <string name="insurance">Insurance</string>
+    <string name="education">Education</string>
+    <string name="housewares">Household Items</string>
+    <string name="personal_belongings">Personal Items</string>
+    <string name="pet">Pet Care</string>
+
+    <!-- Entertainment -->
+    <string name="sport">Sports</string>
+    <string name="beautify">Beauty</string>
+    <string name="gifts_donations">Gifts and Donations</string>
+    <string name="fun_play">Entertainment</string>
+
+    <string name="error_invalid_spending_id">Invalid spend ID</string>
+    <string name="error_invalid_money">Invalid amount</string>
+
+    <string name="error_no_valid_spendings_in_group">No valid spendings in this group</string>
+    <string name="error_loading_last_month_balance">Error loading last month\'s balance</string>
+    <string name="error_loading_transactions">Error loading transactions</string>
+    <string name="error_loading_timeout">Could not load data. Please try again.</string> <string name="error_loading_current_balance">Error loading current balance</string>
+
+    <string name="please_enter_email_to_add">Please enter an email to add friend</string>
+    <string name="please_enter_name_or_email">Please enter name or email</string>
+    <string name="cannot_add_yourself">You cannot add yourself</string>
+    <string name="error_parsing_user_data">Error processing user data</string>
+    <string name="user_not_found_with_email">User not found with this email</string>
+    <string name="error_checking_user">Error checking user</string>
+    <string name="error_invalid_user_data">Invalid user data</string>
+    <string name="friend_already_added">Friend already added</string>
+    <string name="remove_image">Remove image</string>
+    <string name="image_removed_toast">Image removed</string>
+    <string name="select_picture">Select Picture</string>
+    <string name="error_creating_user">Error creating user</string>
+
+    <string name="error_saving_profile">Error saving profile</string>
+    <string name="error_uploading_avatar">Error uploading avatar</string>
+    <string name="please_complete_profile">Please complete your profile</string>
+    <string name="spending_list_default_title">Title of spending list default</string>
+
+    <string name="confirm_delete_title">Confirm Delete</string>
+    <string name="confirm_delete_message">Are you sure you want to delete this spending?</string>
+    <string name="error_deleting_spending">Error deleting spending</string>
+    <string name="spending_deleted_success">Spending deleted successfully</string>
+
+    <string name="permission_denied_download">Permission denied for download. Please grant permission and try again.</string>
+    <string name="error_loading_image_url">Failed to load image URL. Please try again later.</string>
+
+    <string name="please_enter_initial_balance">Please enter initial balance</string>
+    <string name="please_select_birthday">Please select your birthday</string>
+    <string name="error_user_too_young">You must be at least %d years old to use this app</string>
+
+    <string name="new_month_budget_title">New Month Budget</string>
+    <string name="ask_update_budget">Would you like to update your budget for this month?</string>
+
+    <string name="error_min_max_amount">Minimum amount cannot be greater than maximum amount</string>
+    <string name="error_invalid_amount_filter">Please enter a valid amount</string>
+    <string name="change_language">Change Language</string>
+    <string name="error_loading_spending_details">Error loading spending details</string>
+    <string name="restore">Restore</string>
+    <string name="unknown">Unknown</string>
+
+    <string name="deleted_spending_history_title">Deleted Spending History</string>
+    <string name="error_firestore_index_required">Error: Firestore index required. Please contact administrator.</string>
+    <string name="error_no_item_selected">Please select at least one item</string>
+    <string name="confirm_restore_title">Restore Spending</string>
+    <string name="confirm_restore_message">Do you want to restore %d selected items?</string>
+    <string name="confirm_permanent_delete_title">Permanent Delete</string>
+    <string name="confirm_permanent_delete_message">Permanently delete %d selected items? This action cannot be undone.</string>
+    <string name="error_restore_some_failed">Failed to restore %d items. Please try again.</string>
+    <string name="success_restore_items">Successfully restored %d items</string>
+    <string name="error_delete_some_failed">Failed to delete %d items. Please try again.</string>
+    <string name="success_delete_items">Permanently deleted %d items</string>
+    <string name="date_not_available">Date not available</string>
+    <string name="facebook_login_cancelled">Facebook login was cancelled</string>
+    <string name="facebook_login_failed">Facebook login failed</string>
+    <string name="error_firebase_user_null">Error: Unable to get user information</string>
+    <string name="error_firebase_auth_failed">Firebase authentication failed</string>
+    <string name="error_checking_profile">Error checking user profile</string>
+    <string name="error_creating_profile">Error creating user profile</string>
+    <string name="error_update_play_services">Please update Google Play Services to continue</string>
+    <string name="error_unrecoverable_play_services">Unrecoverable error with Google Play Services</string>
+    <string name="error_permission_denied">Permission denied. Please login again.</string>
+    <string name="error_firestore_index_required_short">Firestore index required</string>
+    <string name="error_permission_denied_update">Permission denied for update. Please login again.</string>
+    <string name="error_invalid_money_format">Invalid money format</string>
+    <string name="error_loading_user_data">Failed to load user data</string>
+    <string name="birthday_age_requirement">You must be 10 years or older</string>
+
+    <!-- Error messages -->
+    <string name="error_spending_not_found">Spending not found</string>
+    <string name="please_select_date_time">Please select date and time</string>
+</resources>

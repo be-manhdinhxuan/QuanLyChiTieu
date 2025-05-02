@@ -11,16 +11,20 @@ import com.example.quanlychitieu.domain.model.spending.Spending;
 import com.google.android.gms.tasks.Task;
 import com.google.android.gms.tasks.Tasks;
 import com.google.android.gms.tasks.TaskCompletionSource;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException; // Thêm import
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import dagger.hilt.android.qualifiers.ApplicationContext;
 
+import javax.inject.Inject;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -31,535 +35,494 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.UUID;
 
-/**
- * Implementation of FirestoreSpendingDataSource
- * Handles all spending-related Firestore operations
- */
 public class FirestoreSpendingDataSourceImpl implements FirestoreSpendingDataSource {
-  private static final String TAG = "FirestoreSpendingSource";
+    private static final String TAG = "FirestoreSpendingSource";
+    // Giữ lại các hằng số nếu vẫn dùng ở restore/softDelete
+    private static final String FIELD_IS_DELETED = "isDeleted";
+    private static final String FIELD_DELETED_AT = "deletedAt";
 
-  private final FirebaseFirestore firestore;
-  private final FirebaseStorage storage;
-  private final FirebaseAuth auth;
-  private final CollectionReference spendingsCollection;
-  private final SimpleDateFormat dateFormat = new SimpleDateFormat("MM_yyyy", Locale.getDefault());
-  private final Context context;
+    private final FirebaseFirestore firestore;
+    private final FirebaseStorage storage; // Giữ lại nếu dùng Firebase Storage cho ảnh
+    private final FirebaseAuth auth;
+    private final CollectionReference spendingsCollection;
+    // private final SimpleDateFormat dateFormat = new SimpleDateFormat("MM_yyyy", Locale.getDefault()); // Không cần nếu không cập nhật data collection
+    private final Context context; // Cần cho Cloudinary
 
-  public FirestoreSpendingDataSourceImpl(Context context) {
-    this.context = context;
-    this.firestore = FirebaseFirestore.getInstance();
-    this.storage = FirebaseStorage.getInstance();
-    this.auth = FirebaseAuth.getInstance();
-    this.spendingsCollection = firestore.collection(FirestoreConstants.COLLECTION_SPENDINGS);
-  }
-
-  @Override
-  public Task<String> addSpending(Spending spending) {
-    // Lấy ID của người dùng hiện tại
-    String userId = auth.getCurrentUser().getUid();
-
-    // Tạo document reference mới cho spending
-    DocumentReference spendingRef = spendingsCollection.document();
-    String spendingId = spendingRef.getId();
-
-    // Cập nhật ID cho spending
-    spending.setId(spendingId);
-
-    // Lấy dữ liệu của spending
-    Map<String, Object> spendingData = spending.toMap();
-    spendingData.put(FirestoreConstants.FIELD_USER_ID, userId);
-    spendingData.put(FirestoreConstants.FIELD_CREATED_AT, System.currentTimeMillis());
-    spendingData.put(FirestoreConstants.FIELD_UPDATED_AT, System.currentTimeMillis());
-
-    // Lấy reference đến document data của user
-    DocumentReference dataRef = firestore.collection(FirestoreConstants.COLLECTION_DATA)
-        .document(userId);
-
-    // Tạo task để cập nhật thông tin
-    return dataRef.get().continueWithTask(task -> {
-      if (!task.isSuccessful()) {
-        throw task.getException();
-      }
-
-      // Lấy tháng từ ngày chi tiêu
-      String monthKey = dateFormat.format(spending.getDateTime());
-
-      // Lấy danh sách spending IDs hiện tại
-      DocumentSnapshot dataSnapshot = task.getResult();
-      List<String> spendingIds = new ArrayList<>();
-      if (dataSnapshot.exists() && dataSnapshot.getData() != null &&
-          dataSnapshot.getData().containsKey(monthKey)) {
-        spendingIds = (List<String>) dataSnapshot.getData().get(monthKey);
-      }
-
-      if (spendingIds == null) {
-        spendingIds = new ArrayList<>();
-      }
-
-      // Thêm ID mới vào danh sách
-      List<String> finalSpendingIds = new ArrayList<>(spendingIds);
-      finalSpendingIds.add(spendingId);
-
-      // Lưu spending vào Firestore
-      return spendingRef.set(spendingData)
-          .continueWithTask(saveTask -> {
-            if (!saveTask.isSuccessful()) {
-              throw saveTask.getException();
-            }
-
-            // Cập nhật data để thêm ID vào tháng tương ứng
-            return dataRef.update(monthKey, finalSpendingIds);
-          })
-          .continueWith(updateTask -> {
-            if (!updateTask.isSuccessful()) {
-              throw updateTask.getException();
-            }
-
-            return spendingId;
-          });
-    });
-  }
-
-  @Override
-  public Task<String> uploadSpendingImage(String spendingId, Uri imageUri) {
-    if (imageUri == null) {
-      return Tasks.forException(new IllegalArgumentException("Image URI cannot be null"));
+    @Inject
+    public FirestoreSpendingDataSourceImpl(
+            FirebaseFirestore firestore,
+            FirebaseStorage storage, // Giữ lại nếu dùng
+            FirebaseAuth auth,
+            @ApplicationContext Context context) {
+        this.firestore = firestore;
+        this.storage = storage;
+        this.auth = auth;
+        this.context = context;
+        this.spendingsCollection = firestore.collection(FirestoreConstants.COLLECTION_SPENDINGS);
     }
 
-    TaskCompletionSource<String> taskCompletionSource = new TaskCompletionSource<>();
-    String userId = auth.getCurrentUser().getUid();
-
-    CloudinaryManager.getInstance(context)
-        .uploadImage(
-            context,
-            imageUri,
-            "spendings/" + userId + "/" + spendingId,
-            new CloudinaryManager.UploadCallback() {
-                @Override
-                public void onSuccess(String imageUrl) {
-                    taskCompletionSource.setResult(imageUrl);
-                }
-
-                @Override
-                public void onError(Exception e) {
-                    taskCompletionSource.setException(e);
-                }
-            });
-
-    return taskCompletionSource.getTask();
-  }
-
-  @Override
-  public Task<Spending> getSpending(String spendingId) {
-    return spendingsCollection.document(spendingId).get()
-        .continueWith(task -> {
-          if (!task.isSuccessful()) {
-            throw task.getException();
-          }
-
-          DocumentSnapshot document = task.getResult();
-          if (document == null || !document.exists()) {
-            return null;
-          }
-
-          return Spending.fromFirestore(document);
-        });
-  }
-
-  @Override
-  public Task<List<Spending>> getAllSpendings() {
-    String userId = auth.getCurrentUser().getUid();
-
-    return spendingsCollection
-        .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
-        .orderBy(FirestoreConstants.FIELD_SPENDING_DATE_TIME, Query.Direction.DESCENDING)
-        .get()
-        .continueWith(task -> {
-          if (!task.isSuccessful()) {
-            throw task.getException();
-          }
-
-          QuerySnapshot querySnapshot = task.getResult();
-          List<Spending> spendings = new ArrayList<>();
-
-          for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-            Spending spending = Spending.fromFirestore(document);
-            if (spending != null) {
-              spendings.add(spending);
-            }
-          }
-
-          return spendings;
-        });
-  }
-
-  @Override
-  public Task<List<Spending>> getSpendingsByMonth(Date date) {
-    String userId = auth.getCurrentUser().getUid();
-    String monthKey = dateFormat.format(date);
-
-    // Lấy danh sách IDs từ tài liệu "data"
-    return firestore.collection(FirestoreConstants.COLLECTION_DATA)
-        .document(userId)
-        .get()
-        .continueWithTask(task -> {
-          if (!task.isSuccessful()) {
-            throw task.getException();
-          }
-
-          DocumentSnapshot dataSnapshot = task.getResult();
-          if (!dataSnapshot.exists() || dataSnapshot.getData() == null ||
-              !dataSnapshot.getData().containsKey(monthKey)) {
-            return Tasks.forResult(new ArrayList<>());
-          }
-
-          List<String> spendingIds = (List<String>) dataSnapshot.getData().get(monthKey);
-          if (spendingIds == null || spendingIds.isEmpty()) {
-            return Tasks.forResult(new ArrayList<>());
-          }
-
-          // Truy vấn tất cả spending theo IDs
-          List<Task<DocumentSnapshot>> spendingTasks = new ArrayList<>();
-          for (String id : spendingIds) {
-            spendingTasks.add(spendingsCollection.document(id).get());
-          }
-
-          return Tasks.whenAllComplete(spendingTasks)
-              .continueWith(spendingsTask -> {
-                List<Spending> spendingList = new ArrayList<>();
-
-                for (Task<DocumentSnapshot> docTask : spendingTasks) {
-                  if (docTask.isSuccessful() && docTask.getResult() != null &&
-                      docTask.getResult().exists()) {
-                    Spending spending = Spending.fromFirestore(docTask.getResult());
-                    if (spending != null) {
-                      spendingList.add(spending);
-                    }
-                  }
-                }
-
-                return spendingList;
-              });
-        });
-  }
-
-  @Override
-  public Task<List<Spending>> getSpendingsByDateRange(Date startDate, Date endDate) {
-    String userId = auth.getCurrentUser().getUid();
-
-    // Lấy tất cả các tháng giữa ngày bắt đầu và ngày kết thúc
-    List<Date> monthsToQuery = getMonthsBetweenDates(startDate, endDate);
-    List<Task<List<Spending>>> tasks = new ArrayList<>();
-
-    // Truy vấn chi tiêu cho mỗi tháng
-    for (Date month : monthsToQuery) {
-      tasks.add(getSpendingsByMonth(month));
-    }
-
-    // Kết hợp tất cả các task và lọc theo khoảng thời gian cụ thể
-    return Tasks.whenAllSuccess(tasks).continueWith(task -> {
-      List<Spending> allSpendings = new ArrayList<>();
-
-      for (Object result : task.getResult()) {
-        allSpendings.addAll((List<Spending>) result);
-      }
-
-      // Lọc chi tiêu theo khoảng thời gian cụ thể
-      List<Spending> filteredSpendings = new ArrayList<>();
-      for (Spending spending : allSpendings) {
-        Date spendingDate = spending.getDateTime();
-        if (!spendingDate.before(startDate) && !spendingDate.after(endDate)) {
-          filteredSpendings.add(spending);
+    // --- addSpending (Giữ nguyên logic cũ đã đúng) ---
+    @Override
+    public Task<String> addSpending(Spending spending) {
+        if (auth.getCurrentUser() == null) {
+            return Tasks.forException(new IllegalStateException("User not authenticated"));
         }
-      }
+        String userId = auth.getCurrentUser().getUid();
+        DocumentReference spendingRef = spendingsCollection.document();
+        String newSpendingId = spendingRef.getId();
 
-      return filteredSpendings;
-    });
-  }
+        spending.setUserId(userId);
+        spending.setCreatedAt(System.currentTimeMillis());
+        spending.setUpdatedAt(System.currentTimeMillis());
 
-  @Override
-  public Task<List<Spending>> getSpendingsByType(int type) {
-    String userId = auth.getCurrentUser().getUid();
+        int absoluteMoney = Math.abs(spending.getMoney());
+        spending.setMoney(spending.isIncome() ? absoluteMoney : -absoluteMoney);
 
-    return spendingsCollection
-        .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
-        .whereEqualTo(FirestoreConstants.FIELD_SPENDING_TYPE, type)
-        .orderBy(FirestoreConstants.FIELD_SPENDING_DATE_TIME, Query.Direction.DESCENDING)
-        .get()
-        .continueWith(task -> {
-          if (!task.isSuccessful()) {
-            throw task.getException();
-          }
+        Log.d(TAG, "Attempting to add spending with generated ID: " + newSpendingId);
+        Log.d(TAG, "User ID: " + userId);
+        Map<String, Object> spendingData = spending.toMap(); // Dùng toMap() đã bỏ ID
+        Log.d(TAG, "Data to save: " + spendingData.toString());
 
-          QuerySnapshot querySnapshot = task.getResult();
-          List<Spending> spendings = new ArrayList<>();
-
-          for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-            Spending spending = Spending.fromFirestore(document);
-            if (spending != null) {
-              spendings.add(spending);
-            }
-          }
-
-          return spendings;
-        });
-  }
-
-  @Override
-  public Task<Void> updateSpending(Spending spending) {
-    String userId = auth.getCurrentUser().getUid();
-
-    // Lấy spending hiện tại để so sánh thời gian
-    return spendingsCollection.document(spending.getId()).get()
-        .continueWithTask(task -> {
-          if (!task.isSuccessful()) {
-            throw task.getException();
-          }
-
-          DocumentSnapshot spendingSnapshot = task.getResult();
-          Map<String, Object> data = spendingSnapshot.getData();
-          if (data == null) {
-            return Tasks.forException(new IllegalStateException("Spending not found"));
-          }
-
-          // Lấy ngày cũ
-          Date oldDate = null;
-          if (data.containsKey(FirestoreConstants.FIELD_SPENDING_DATE_TIME)) {
-            oldDate = ((com.google.firebase.Timestamp) data.get(FirestoreConstants.FIELD_SPENDING_DATE_TIME)).toDate();
-          } else if (data.containsKey("date")) {
-            oldDate = ((com.google.firebase.Timestamp) data.get("date")).toDate();
-          }
-
-          if (oldDate == null) {
-            oldDate = new Date();
-          }
-
-          // Kiểm tra xem tháng có thay đổi hay không
-          boolean monthChanged = !isSameMonth(oldDate, spending.getDateTime());
-          Date finalOldDate = oldDate;
-
-          // Nếu tháng thay đổi, cần cập nhật lại ở bảng data
-          if (monthChanged) {
-            return firestore.collection(FirestoreConstants.COLLECTION_DATA)
-                .document(userId)
-                .get()
-                .continueWithTask(dataTask -> {
-                  if (!dataTask.isSuccessful()) {
-                    throw dataTask.getException();
-                  }
-
-                  DocumentSnapshot dataSnapshot = dataTask.getResult();
-                  Map<String, Object> dataMap = dataSnapshot.getData();
-                  if (dataMap == null) {
-                    dataMap = new HashMap<>();
-                  }
-
-                  // Xóa ID khỏi tháng cũ
-                  String oldMonthKey = dateFormat.format(finalOldDate);
-                  List<String> oldMonthSpendingIds = (List<String>) dataMap.get(oldMonthKey);
-                  if (oldMonthSpendingIds != null) {
-                    oldMonthSpendingIds.remove(spending.getId());
-                  }
-
-                  // Thêm ID vào tháng mới
-                  String newMonthKey = dateFormat.format(spending.getDateTime());
-                  List<String> newMonthSpendingIds = dataMap.containsKey(newMonthKey)
-                      ? (List<String>) dataMap.get(newMonthKey)
-                      : new ArrayList<>();
-                  if (newMonthSpendingIds == null) {
-                    newMonthSpendingIds = new ArrayList<>();
-                  }
-                  if (!newMonthSpendingIds.contains(spending.getId())) {
-                    newMonthSpendingIds.add(spending.getId());
-                  }
-
-                  // Cập nhật cả hai tháng
-                  Map<String, Object> updates = new HashMap<>();
-                  updates.put(oldMonthKey, oldMonthSpendingIds);
-                  updates.put(newMonthKey, newMonthSpendingIds);
-
-                  return firestore.collection(FirestoreConstants.COLLECTION_DATA)
-                      .document(userId)
-                      .update(updates);
+        return spendingRef.set(spendingData)
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.e(TAG, "Error setting spending document", task.getException());
+                        throw task.getException();
+                    }
+                    Log.d(TAG, "Successfully added spending with ID: " + newSpendingId);
+                    return newSpendingId;
                 });
-          }
-
-          // Nếu tháng không thay đổi, không cần cập nhật ở bảng data
-          return Tasks.forResult(null);
-        })
-        .continueWithTask(updateDataTask -> {
-          // Cập nhật thông tin spending
-          Map<String, Object> updates = spending.toMap();
-          updates.put(FirestoreConstants.FIELD_UPDATED_AT, System.currentTimeMillis());
-
-          return spendingsCollection.document(spending.getId()).update(updates);
-        });
-  }
-
-  @Override
-  public Task<Void> deleteSpending(String spendingId) {
-    String userId = auth.getCurrentUser().getUid();
-
-    // Lấy thông tin spending
-    return spendingsCollection.document(spendingId).get()
-        .continueWithTask(task -> {
-          if (!task.isSuccessful()) {
-            throw task.getException();
-          }
-
-          DocumentSnapshot spendingSnapshot = task.getResult();
-          if (!spendingSnapshot.exists() || spendingSnapshot.getData() == null) {
-            return Tasks.forResult(null);
-          }
-
-          Spending spending = Spending.fromFirestore(spendingSnapshot);
-          if (spending == null) {
-            return Tasks.forResult(null);
-          }
-
-          // Lấy tháng của spending
-          String monthKey = dateFormat.format(spending.getDateTime());
-
-          // Cập nhật bảng data để xóa ID
-          return firestore.collection(FirestoreConstants.COLLECTION_DATA)
-              .document(userId)
-              .get()
-              .continueWithTask(dataTask -> {
-                if (!dataTask.isSuccessful()) {
-                  throw dataTask.getException();
-                }
-
-                DocumentSnapshot dataSnapshot = dataTask.getResult();
-                if (!dataSnapshot.exists() || dataSnapshot.getData() == null ||
-                    !dataSnapshot.getData().containsKey(monthKey)) {
-                  return Tasks.forResult(null);
-                }
-
-                List<String> spendingIds = (List<String>) dataSnapshot.getData().get(monthKey);
-                if (spendingIds != null) {
-                  spendingIds.remove(spendingId);
-                  return firestore.collection(FirestoreConstants.COLLECTION_DATA)
-                      .document(userId)
-                      .update(monthKey, spendingIds);
-                }
-
-                return Tasks.forResult(null);
-              })
-              .continueWithTask(updateDataTask -> {
-                // Xóa ảnh nếu có
-                if (spending.getImage() != null && !spending.getImage().isEmpty()) {
-                  // Lấy reference từ URL
-                  StorageReference storageRef = storage.getReferenceFromUrl(spending.getImage());
-                  return storageRef.delete()
-                      .continueWithTask(deleteImageTask -> {
-                        // Xóa document spending
-                        return spendingsCollection.document(spendingId).delete();
-                      });
-                }
-
-                // Nếu không có ảnh, chỉ xóa document spending
-                return spendingsCollection.document(spendingId).delete();
-              });
-        });
-  }
-
-  /**
-   * Lấy danh sách các tháng giữa hai ngày
-   */
-  private List<Date> getMonthsBetweenDates(Date startDate, Date endDate) {
-    List<Date> months = new ArrayList<>();
-    Calendar calendar = Calendar.getInstance();
-
-    // Thiết lập tháng bắt đầu
-    calendar.setTime(startDate);
-    calendar.set(Calendar.DAY_OF_MONTH, 1);
-
-    // Clone ngày kết thúc để so sánh
-    Calendar endCalendar = Calendar.getInstance();
-    endCalendar.setTime(endDate);
-
-    // Thêm từng tháng vào danh sách
-    while (calendar.get(Calendar.YEAR) <= endCalendar.get(Calendar.YEAR) &&
-        calendar.get(Calendar.MONTH) <= endCalendar.get(Calendar.MONTH)) {
-      months.add(calendar.getTime());
-
-      // Chuyển sang tháng tiếp theo
-      calendar.add(Calendar.MONTH, 1);
     }
 
-    return months;
-  }
+    // --- uploadSpendingImage (Giữ nguyên) ---
+    @Override
+    public Task<String> uploadSpendingImage(String spendingId, Uri imageUri) {
+        if (imageUri == null) return Tasks.forException(new IllegalArgumentException("Image URI cannot be null"));
+        if (auth.getCurrentUser() == null) return Tasks.forException(new IllegalStateException("User not authenticated"));
 
-  /**
-   * Kiểm tra xem hai ngày có cùng tháng không
-   */
-  private boolean isSameMonth(Date date1, Date date2) {
-    Calendar cal1 = Calendar.getInstance();
-    Calendar cal2 = Calendar.getInstance();
-    cal1.setTime(date1);
-    cal2.setTime(date2);
-    return cal1.get(Calendar.YEAR) == cal2.get(Calendar.YEAR) &&
-        cal1.get(Calendar.MONTH) == cal2.get(Calendar.MONTH);
-  }
+        TaskCompletionSource<String> taskCompletionSource = new TaskCompletionSource<>();
+        String userId = auth.getCurrentUser().getUid();
 
-  @Override
-  public Task<Integer> getTotalSpending(String userId, Date startDate, Date endDate) {
-    return spendingsCollection
-        .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
-        .whereGreaterThanOrEqualTo(FirestoreConstants.FIELD_SPENDING_DATE_TIME, startDate)
-        .whereLessThanOrEqualTo(FirestoreConstants.FIELD_SPENDING_DATE_TIME, endDate)
-        .get()
-        .continueWith(task -> {
-          if (!task.isSuccessful()) {
-            throw task.getException();
-          }
+        CloudinaryManager.getInstance(context)
+                .uploadImage(context, imageUri, "spendings/" + userId + "/" + spendingId,
+                        new CloudinaryManager.UploadCallback() {
+                            @Override
+                            public void onSuccess(String imageUrl) { taskCompletionSource.setResult(imageUrl); }
+                            @Override
+                            public void onError(Exception e) { taskCompletionSource.setException(e); }
+                        });
+        return taskCompletionSource.getTask();
+    }
 
-          QuerySnapshot querySnapshot = task.getResult();
-          int total = 0;
+    // --- getSpending (Giữ nguyên) ---
+    @Override
+    public Task<Spending> getSpending(String spendingId) {
+        if (spendingId == null || spendingId.isEmpty()) {
+            return Tasks.forException(new IllegalArgumentException("Spending ID cannot be null or empty"));
+        }
+        Log.d(TAG, "Getting spending with ID: " + spendingId);
+        return spendingsCollection.document(spendingId).get()
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.e(TAG, "Error getting spending document: " + spendingId, task.getException());
+                        throw task.getException();
+                    }
+                    DocumentSnapshot document = task.getResult();
+                    if (document != null && document.exists()) {
+                        Spending spending = document.toObject(Spending.class);
+                        if (spending != null) {
+                            Log.d(TAG, "Successfully retrieved and parsed spending: " + spendingId);
+                        } else {
+                            Log.w(TAG, "Failed to parse document to Spending object: " + spendingId);
+                            return null;
+                        }
+                        return spending;
+                    } else {
+                        Log.w(TAG, "Spending document not found: " + spendingId);
+                        return null;
+                    }
+                });
+    }
 
-          for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-            Spending spending = Spending.fromFirestore(document);
-            if (spending != null) {
-              total += spending.getMoney();
-            }
-          }
+    // --- getAllSpendings (Đã sửa đúng để lọc isDeleted=false) ---
+    @Override
+    public Task<List<Spending>> getAllSpendings() {
+        if (auth.getCurrentUser() == null) {
+            return Tasks.forException(new IllegalStateException("User not authenticated"));
+        }
+        String userId = auth.getCurrentUser().getUid();
+        Log.d(TAG, "Getting all active spendings for user: " + userId);
 
-          return total;
-        });
-  }
+        return spendingsCollection
+                .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
+                .whereEqualTo(FIELD_IS_DELETED, false) // Chỉ lấy chi tiêu chưa bị xóa
+                .orderBy(FirestoreConstants.FIELD_SPENDING_DATE_TIME, Query.Direction.DESCENDING)
+                .get()
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.e(TAG, "Error getting all spendings for user: " + userId, task.getException());
+                        throw task.getException();
+                    }
+                    List<Spending> spendings = new ArrayList<>();
+                    QuerySnapshot querySnapshot = task.getResult();
+                    if (querySnapshot != null) {
+                        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                            Spending spending = document.toObject(Spending.class);
+                            if (spending != null) {
+                                spendings.add(spending);
+                            }
+                        }
+                    }
+                    return spendings;
+                });
+    }
 
-  @Override
-  public Task<List<Object[]>> getSpendingGroupByCategory(String userId, Date startDate, Date endDate) {
-    return spendingsCollection
-        .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
-        .whereGreaterThanOrEqualTo(FirestoreConstants.FIELD_SPENDING_DATE_TIME, startDate)
-        .whereLessThanOrEqualTo(FirestoreConstants.FIELD_SPENDING_DATE_TIME, endDate)
-        .get()
-        .continueWith(task -> {
-          if (!task.isSuccessful()) {
-            throw task.getException();
-          }
+    // --- getSpendingsByMonth (Đã sửa đúng để lọc isDeleted=false) ---
+    @Override
+    public Task<List<Spending>> getSpendingsByMonth(Date date) {
+        if (auth.getCurrentUser() == null) {
+            return Tasks.forException(new IllegalStateException("User not authenticated"));
+        }
+        String userId = auth.getCurrentUser().getUid();
+        SimpleDateFormat monthKeyFormat = new SimpleDateFormat("MM_yyyy", Locale.getDefault()); // Định dạng key tháng
+        String monthKey = monthKeyFormat.format(date);
+        Log.d(TAG, "Getting spendings for user " + userId + " and monthKey " + monthKey);
 
-          QuerySnapshot querySnapshot = task.getResult();
-          Map<Integer, Integer> categoryTotals = new HashMap<>();
+        return spendingsCollection
+                .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
+                .whereEqualTo(FirestoreConstants.FIELD_MONTH_KEY, monthKey)
+                .whereEqualTo(FIELD_IS_DELETED, false) // Chỉ lấy chưa xóa
+                .orderBy(FirestoreConstants.FIELD_SPENDING_DATE_TIME, Query.Direction.DESCENDING)
+                .get()
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.e(TAG, "Error getting spendings for month: " + monthKey, task.getException());
+                        throw task.getException();
+                    }
+                    List<Spending> spendings = new ArrayList<>();
+                    QuerySnapshot querySnapshot = task.getResult();
+                    if (querySnapshot != null) {
+                        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                            Spending spending = document.toObject(Spending.class);
+                            if (spending != null) {
+                                spendings.add(spending);
+                            }
+                        }
+                    }
+                    return spendings;
+                });
+    }
 
-          // Tính tổng cho mỗi category
-          for (DocumentSnapshot document : querySnapshot.getDocuments()) {
-            Spending spending = Spending.fromFirestore(document);
-            if (spending != null) {
-              int categoryId = spending.getType();
-              int currentTotal = categoryTotals.getOrDefault(categoryId, 0);
-              categoryTotals.put(categoryId, currentTotal + spending.getMoney());
-            }
-          }
+    // --- getSpendingsByDateRange (Đã sửa đúng để lọc isDeleted=false) ---
+    @Override
+    public Task<List<Spending>> getSpendingsByDateRange(Date startDate, Date endDate) {
+        if (auth.getCurrentUser() == null) {
+            return Tasks.forException(new IllegalStateException("User not authenticated"));
+        }
+        String userId = auth.getCurrentUser().getUid();
 
-          // Chuyển đổi Map thành List<Object[]>
-          List<Object[]> result = new ArrayList<>();
-          for (Map.Entry<Integer, Integer> entry : categoryTotals.entrySet()) {
-            result.add(new Object[]{entry.getKey(), entry.getValue()});
-          }
+        return spendingsCollection
+                .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
+                .whereEqualTo(FIELD_IS_DELETED, false) // Chỉ lấy chưa xóa
+                .whereGreaterThanOrEqualTo(FirestoreConstants.FIELD_SPENDING_DATE_TIME, startDate)
+                .whereLessThanOrEqualTo(FirestoreConstants.FIELD_SPENDING_DATE_TIME, endDate) // Dùng <= cho endDate
+                .orderBy(FirestoreConstants.FIELD_SPENDING_DATE_TIME, Query.Direction.DESCENDING)
+                .get()
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.e(TAG, "Error getting spendings by date range", task.getException());
+                        throw task.getException();
+                    }
+                    List<Spending> spendings = new ArrayList<>();
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        Spending spending = doc.toObject(Spending.class);
+                        if (spending != null) {
+                            spendings.add(spending);
+                        }
+                    }
+                    return spendings;
+                });
+    }
 
-          return result;
-        });
-  }
+
+    // *** HÀM updateSpending ĐÃ SỬA ĐỔI ***
+    @Override
+    public Task<Void> updateSpending(Spending spending) {
+        if (auth.getCurrentUser() == null) {
+            return Tasks.forException(new IllegalStateException("User not authenticated"));
+        }
+        if (spending == null || spending.getId() == null || spending.getId().isEmpty()) {
+            return Tasks.forException(new IllegalArgumentException("Spending or Spending ID cannot be null or empty for update"));
+        }
+        // Không cần lấy userId ở đây vì không dùng để cập nhật collection data nữa
+        String spendingId = spending.getId();
+
+        Log.d(TAG, "Updating spending with ID: " + spendingId);
+
+        // Đảm bảo money đúng
+        int absoluteMoney = Math.abs(spending.getMoney());
+        spending.setMoney(spending.isIncome() ? absoluteMoney : -absoluteMoney);
+
+        // Cập nhật thời gian
+        spending.setUpdatedAt(System.currentTimeMillis());
+
+        // *** LOẠI BỎ HOÀN TOÀN LOGIC KIỂM TRA THAY ĐỔI THÁNG VÀ CẬP NHẬT COLLECTION data/spending/{userId} ***
+        // Chỉ cần cập nhật trực tiếp document chi tiêu trong collection "spending"
+
+        // Sử dụng toMap() đã bỏ ID
+        Map<String, Object> spendingUpdates = spending.toMap();
+
+        return spendingsCollection.document(spendingId).update(spendingUpdates)
+                .addOnSuccessListener(aVoid -> Log.d(TAG, "Successfully updated spending document: " + spendingId))
+                .addOnFailureListener(e -> Log.e(TAG, "Error updating spending document: " + spendingId, e));
+
+        // Code cũ liên quan đến kiểm tra tháng và cập nhật collection "data" đã được xóa.
+    }
+
+
+    // *** SỬA TÊN HÀM VÀ LOGIC ĐỂ BỎ CẬP NHẬT COLLECTION DATA ***
+    @Override
+    public Task<Void> hardDeleteSpending(String spendingId) { // *** ĐỔI TÊN HÀM ***
+        if (auth.getCurrentUser() == null) {
+            return Tasks.forException(new IllegalStateException("User not authenticated"));
+        }
+        if (spendingId == null || spendingId.isEmpty()) {
+            return Tasks.forException(new IllegalArgumentException("Spending ID cannot be null or empty for delete"));
+        }
+        // Không cần lấy userId ở đây nữa
+
+        Log.d(TAG, "Hard deleting spending with ID: " + spendingId);
+
+        // Lấy thông tin spending chỉ để xóa ảnh (nếu cần)
+        return spendingsCollection.document(spendingId).get()
+                .continueWithTask(getTask -> {
+                    if (!getTask.isSuccessful()) {
+                        // Nếu không lấy được thông tin, vẫn tiếp tục xóa document
+                        Log.w(TAG, "Error getting spending before hard delete (continuing anyway): " + spendingId, getTask.getException());
+                    }
+
+                    DocumentSnapshot spendingSnapshot = getTask.getResult();
+                    String imageUrl = null;
+                    if (spendingSnapshot != null && spendingSnapshot.exists()) {
+                        imageUrl = spendingSnapshot.getString("image");
+                    }
+
+                    // *** LOẠI BỎ LOGIC CẬP NHẬT COLLECTION DATA ***
+
+                    // Xóa ảnh nếu có
+                    Task<Void> deleteImageTask = Tasks.forResult(null);
+                    if (imageUrl != null && !imageUrl.isEmpty()) {
+                        try {
+                            Log.d(TAG, "Attempting to delete image associated with spending: " + imageUrl);
+                            // Thêm logic xóa ảnh từ Cloudinary hoặc Firebase Storage ở đây nếu cần
+                            // Ví dụ Firebase Storage:
+                            // StorageReference storageRef = storage.getReferenceFromUrl(imageUrl);
+                            // deleteImageTask = storageRef.delete();
+                            Log.w(TAG, "Image deletion logic (Cloudinary/Firebase Storage) needs implementation here.");
+                        } catch (Exception e) {
+                            Log.e(TAG, "Error initiating image deletion for: " + imageUrl, e);
+                            // Quyết định xem có nên dừng hay tiếp tục
+                        }
+                    }
+
+                    // Chờ xóa ảnh xong rồi xóa document
+                    return deleteImageTask.continueWithTask(taskAfterImageDelete -> {
+                        if (!taskAfterImageDelete.isSuccessful()) {
+                            Log.e(TAG, "Error deleting image during hard delete (continuing anyway)", taskAfterImageDelete.getException());
+                        }
+                        Log.d(TAG, "Proceeding to hard delete spending document: " + spendingId);
+                        return spendingsCollection.document(spendingId).delete(); // Thực hiện xóa cứng
+                    });
+                });
+    }
+
+
+    // --- Các hàm helper (getMonthsBetweenDates, isSameMonth - không cần thiết nữa nếu không cập nhật data) ---
+    /*
+    private List<Date> getMonthsBetweenDates(Date startDate, Date endDate) { ... }
+    private boolean isSameMonth(Date date1, Date date2) { ... }
+    private List<String> getListFromMap(Map<String, Object> map, String key) { ... } // Vẫn có thể hữu ích ở nơi khác
+    */
+
+    // --- getTotalSpending (Giữ nguyên) ---
+    @Override
+    public Task<Integer> getTotalSpending(String userId, Date startDate, Date endDate) {
+        if (userId == null || userId.isEmpty() || startDate == null || endDate == null || startDate.after(endDate)) {
+            return Tasks.forException(new IllegalArgumentException("Invalid arguments for getTotalSpending"));
+        }
+        Log.d(TAG, "Calculating total spending for user " + userId + " between " + startDate + " and " + endDate);
+
+        return spendingsCollection
+                .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
+                .whereEqualTo(FIELD_IS_DELETED, false) // Chỉ tính các khoản chưa xóa
+                .whereGreaterThanOrEqualTo(FirestoreConstants.FIELD_SPENDING_DATE_TIME, startDate)
+                .whereLessThanOrEqualTo(FirestoreConstants.FIELD_SPENDING_DATE_TIME, endDate)
+                .get()
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.e(TAG, "Error getting spendings for total calculation", task.getException());
+                        throw task.getException();
+                    }
+                    QuerySnapshot querySnapshot = task.getResult();
+                    int total = 0;
+                    if (querySnapshot != null) {
+                        for (DocumentSnapshot document : querySnapshot.getDocuments()) {
+                            // Ưu tiên lấy kiểu Long để tránh lỗi ClassCastException
+                            Number moneyNum = (Number) document.get("money");
+                            if (moneyNum != null) {
+                                int money = moneyNum.intValue();
+                                if (money < 0) { // Chỉ cộng các khoản chi
+                                    total += Math.abs(money);
+                                }
+                            }
+                        }
+                    }
+                    Log.d(TAG, "Total spending calculated: " + total);
+                    return total;
+                });
+    }
+
+
+    // --- updateSpendingImage (Giữ nguyên) ---
+    @Override
+    public Task<Void> updateSpendingImage(String spendingId, String imageUrl) {
+        if (auth.getCurrentUser() == null) return Tasks.forException(new IllegalStateException("User not authenticated"));
+        if (spendingId == null || spendingId.isEmpty()) return Tasks.forException(new IllegalArgumentException("Spending ID cannot be null or empty"));
+
+        Log.d(TAG, "Updating image URL for spending: " + spendingId);
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("image", imageUrl);
+        updates.put("updatedAt", System.currentTimeMillis());
+
+        return spendingsCollection.document(spendingId).update(updates)
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) {
+                        Log.e(TAG, "Error updating spending image", task.getException());
+                        throw task.getException();
+                    }
+                    Log.d(TAG, "Successfully updated image URL for spending: " + spendingId);
+                    return null;
+                });
+    }
+
+    // --- getAllActiveSpendings (Đã đúng) ---
+    @Override
+    public Task<List<Spending>> getAllActiveSpendings() {
+        if (auth.getCurrentUser() == null) return Tasks.forException(new IllegalStateException("User not authenticated"));
+        String userId = auth.getCurrentUser().getUid();
+        return spendingsCollection
+                .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
+                .whereEqualTo(FIELD_IS_DELETED, false)
+                .orderBy(FirestoreConstants.FIELD_SPENDING_DATE_TIME, Query.Direction.DESCENDING)
+                .get()
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) throw task.getException();
+                    List<Spending> spendings = new ArrayList<>();
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        Spending spending = doc.toObject(Spending.class);
+                        if (spending != null) spendings.add(spending);
+                    }
+                    return spendings;
+                });
+    }
+
+    // --- getDeletedSpendings (Đã đúng) ---
+    @Override
+    public Task<List<Spending>> getDeletedSpendings() {
+        if (auth.getCurrentUser() == null) return Tasks.forException(new IllegalStateException("User not authenticated"));
+        String userId = auth.getCurrentUser().getUid();
+        return spendingsCollection
+                .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
+                .whereEqualTo(FIELD_IS_DELETED, true)
+                .orderBy(FIELD_DELETED_AT, Query.Direction.DESCENDING) // Sắp xếp theo thời gian xóa
+                .get()
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) throw task.getException();
+                    List<Spending> spendings = new ArrayList<>();
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        Spending spending = doc.toObject(Spending.class);
+                        if (spending != null) spendings.add(spending);
+                    }
+                    return spendings;
+                });
+    }
+
+    // --- softDeleteSpending (Sửa lại tên trường nếu cần) ---
+    @Override
+    public Task<Void> softDeleteSpending(String spendingId) {
+        if (auth.getCurrentUser() == null) return Tasks.forException(new IllegalStateException("User not authenticated"));
+        if (spendingId == null || spendingId.isEmpty()) return Tasks.forException(new IllegalArgumentException("Spending ID cannot be null or empty"));
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("isDeleted", true); // Đảm bảo tên trường đúng là "isDeleted"
+        updates.put("deletedAt", System.currentTimeMillis()); // Đảm bảo tên trường đúng là "deletedAt"
+        updates.put("updatedAt", System.currentTimeMillis()); // Cập nhật cả updatedAt
+
+        return spendingsCollection.document(spendingId).update(updates)
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) throw task.getException();
+                    Log.d(TAG, "Successfully soft deleted spending: " + spendingId);
+                    return null;
+                });
+    }
+
+    // --- restoreSpending (Sửa lại tên trường nếu cần) ---
+    @Override
+    public Task<Void> restoreSpending(String spendingId) {
+        if (auth.getCurrentUser() == null) return Tasks.forException(new IllegalStateException("User not authenticated"));
+        if (spendingId == null || spendingId.isEmpty()) return Tasks.forException(new IllegalArgumentException("Spending ID cannot be null or empty"));
+
+        Map<String, Object> updates = new HashMap<>();
+        updates.put("isDeleted", false); // Đảm bảo tên trường đúng
+        updates.put("deletedAt", null);   // Đảm bảo tên trường đúng và giá trị null
+        updates.put("updatedAt", System.currentTimeMillis());
+
+        return spendingsCollection.document(spendingId).update(updates)
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) throw task.getException();
+                    Log.d(TAG, "Successfully restored spending: " + spendingId);
+                    return null;
+                });
+    }
+
+    // --- hardDeleteSpending (Đã đúng tên) ---
+    // @Override // Annotation này đã đúng vì interface có hardDeleteSpending
+    // public Task<Void> hardDeleteSpending(String spendingId) { ... } // Logic bên trong giữ nguyên như đã sửa
+
+    // --- getDeletedSpendingsCount (Đã đúng) ---
+    @Override
+    public Task<Integer> getDeletedSpendingsCount() {
+        if (auth.getCurrentUser() == null) return Tasks.forException(new IllegalStateException("User not authenticated"));
+        String userId = auth.getCurrentUser().getUid();
+        return spendingsCollection
+                .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
+                .whereEqualTo(FIELD_IS_DELETED, true)
+                .get()
+                .continueWith(task -> {
+                    if (!task.isSuccessful()) throw task.getException();
+                    return task.getResult().size();
+                });
+    }
+
+    // --- purgeOldDeletedSpendings (Đã đúng) ---
+    @Override
+    public Task<Void> purgeOldDeletedSpendings(Date date) {
+        if (auth.getCurrentUser() == null) return Tasks.forException(new IllegalStateException("User not authenticated"));
+        String userId = auth.getCurrentUser().getUid();
+        long cutoffTime = date.getTime();
+        return spendingsCollection
+                .whereEqualTo(FirestoreConstants.FIELD_USER_ID, userId)
+                .whereEqualTo(FIELD_IS_DELETED, true)
+                .whereLessThan(FIELD_DELETED_AT, cutoffTime)
+                .get()
+                .continueWithTask(task -> {
+                    if (!task.isSuccessful()) throw task.getException();
+                    List<Task<Void>> deleteTasks = new ArrayList<>();
+                    for (DocumentSnapshot doc : task.getResult()) {
+                        deleteTasks.add(doc.getReference().delete());
+                    }
+                    // Sử dụng whenAll chứ không phải whenAllComplete nếu bạn muốn trả về Task<Void>
+                    return Tasks.whenAll(deleteTasks);
+                });
+    }
 }

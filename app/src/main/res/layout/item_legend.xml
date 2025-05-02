@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:paddingVertical="8dp"
+              android:paddingHorizontal="16dp"
+              android:gravity="center_vertical">
+
+    <View
+            android:id="@+id/legendColorView"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@color/primary" /> <ImageView
+        android:id="@+id/legendIconImageView"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="12dp"
+        tools:src="@drawable/ic_eat" /> <TextView
+        android:id="@+id/legendNameTextView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        tools:text="Ăn uống"/>
+
+    <TextView
+            android:id="@+id/legendValueTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            tools:text="35.5%"/>
+
+</LinearLayout>

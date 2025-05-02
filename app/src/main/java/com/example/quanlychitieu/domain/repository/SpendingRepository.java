@@ -1,83 +1,108 @@
 package com.example.quanlychitieu.domain.repository;
 
 import android.net.Uri;
-
 import com.example.quanlychitieu.domain.model.spending.Spending;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FieldPath;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Calendar;
 
 /**
- * Interface định nghĩa các hoạt động liên quan đến khoản chi tiêu
+ * Interface defining operations related to spending management
  */
 public interface SpendingRepository {
-  /**
-   * Lấy tất cả khoản chi tiêu của người dùng hiện tại
-   */
-  Task<List<Spending>> getAllSpendings();
+    /**
+     * Get all spendings for the current user
+     */
+    Task<List<Spending>> getAllSpendings();
 
-  /**
-   * Lấy khoản chi tiêu trong khoảng thời gian
-   */
-  Task<List<Spending>> getSpendingsByDate(Date startDate, Date endDate);
+    /**
+     * Get spendings within a date range
+     */
+    Task<List<Spending>> getSpendingsByDate(Date startDate, Date endDate);
 
-  /**
-   * Lấy khoản chi tiêu theo danh mục
-   */
-  Task<List<Spending>> getSpendingsByCategory(String categoryId);
+    /**
+     * Get spending details by ID
+     */
+    Task<Spending> getSpendingById(String spendingId);
 
-  /**
-   * Lấy chi tiết khoản chi tiêu theo ID
-   */
-  Task<Spending> getSpending(String spendingId);
+    /**
+     * Add a new spending
+     *
+     * @param spending The spending information
+     * @return Task containing the ID of the new spending
+     */
+    Task<String> addSpending(Spending spending);
 
-  /**
-   * Thêm khoản chi tiêu mới
-   * 
-   * @return ID của khoản chi tiêu mới
-   */
-  Task<String> addSpending(Spending spending);
+    /**
+     * Add a new spending with an image
+     *
+     * @param spending The spending information
+     * @param imageUri The URI of the image
+     * @return Task containing the ID of the new spending
+     */
+    Task<String> addSpendingWithImage(Spending spending, Uri imageUri);
 
-  /**
-   * Cập nhật khoản chi tiêu
-   */
-  Task<Void> updateSpending(Spending spending);
+    /**
+     * Update an existing spending
+     */
+    Task<Void> updateSpending(Spending spending);
 
-  /**
-   * Xóa khoản chi tiêu
-   */
-  Task<Void> deleteSpending(String spendingId);
+    /**
+     * Update a spending with image handling
+     *
+     * @param spending The spending information to update
+     * @param newImageUri The URI of the new image (null if unchanged)
+     * @param isImageRemoved true if the existing image should be deleted
+     */
+    Task<Void> updateSpendingWithImage(Spending spending, Uri newImageUri, boolean isImageRemoved);
 
-  /**
-   * Đồng bộ hóa khoản chi tiêu từ remote đến local
-   */
-  Task<Void> syncSpendings();
+    /**
+     * Delete a spending by ID
+     */
+    Task<Void> deleteSpending(String spendingId);
 
-  /**
-   * Tính tổng chi tiêu trong khoảng thời gian
-   */
-  Task<Integer> getTotalSpending(Date startDate, Date endDate);
+    /**
+     * Synchronize spendings from remote to local storage
+     */
+    Task<Void> syncSpendings();
 
-  /**
-   * Lấy thống kê chi tiêu theo danh mục trong khoảng thời gian
-   * 
-   * @return List<Object[]> Mỗi phần tử là một mảng chứa [categoryId, tổng chi
-   *         tiêu]
-   */
-  Task<List<Object[]>> getSpendingGroupByCategory(Date startDate, Date endDate);
+    /**
+     * Calculate total spending within a date range
+     */
+    Task<Integer> getTotalSpending(Date startDate, Date endDate);
+
+    /**
+     * Get the URL of a spending's image
+     */
+    Task<String> getSpendingImageUrl(String spendingId);
+
+    /**
+     * Delete a spending's image
+     */
+    Task<Void> deleteSpendingImage(String spendingId);
+
+    /**
+     * Upload a new image for a spending
+     */
+    Task<String> uploadSpendingImage(String spendingId, Uri imageUri);
+
+    /**
+     * Soft delete a spending by ID
+     * @param spendingId ID of the spending to soft delete
+     * @return Task<Void>
+     */
+    Task<Void> softDeleteSpending(String spendingId);
+
+    /**
+     * Get all soft-deleted spendings
+     * @return Task containing list of deleted spendings
+     */
+    Task<List<Spending>> getDeletedSpendings();
+
+    /**
+     * Restore a soft-deleted spending
+     * @param spendingId ID of the spending to restore
+     * @return Task<Void>
+     */
+    Task<Void> restoreSpending(String spendingId);
 }

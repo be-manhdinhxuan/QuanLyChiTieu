@@ -4,7 +4,6 @@ public class FirestoreConstants {
     // Collections
     public static final String COLLECTION_USERS = "users";
     public static final String COLLECTION_SPENDINGS = "spendings";
-    public static final String COLLECTION_CATEGORIES = "categories";
 
     // Common fields
     public static final String FIELD_ID = "id";
@@ -26,5 +25,4 @@ public class FirestoreConstants {
     public static final String FIELD_SPENDING_LOCATION = "location";
     public static final String FIELD_SPENDING_IMAGE = "image";
     public static final String FIELD_SPENDING_FRIENDS = "friends";
-    public static final String FIELD_SPENDING_CATEGORY_ID = "categoryId";
 }

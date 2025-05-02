@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <!-- Progress Bar -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <!-- Main Content -->
+    <LinearLayout
+            android:id="@+id/contentLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+        <!-- Tab Layout -->
+        <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:tabGravity="fill"
+                app:tabMode="fixed"
+                app:tabMaxWidth="0dp"
+                app:tabTextColor="@color/teal_500"
+                app:tabSelectedTextColor="@color/black"
+                app:tabTextAppearance="@style/CustomTabStyle"/>
+
+        <!-- Include Summary Spending View -->
+        <include
+                android:id="@+id/summarySpendingView"
+                layout="@layout/view_summary_spending"/>
+
+        <!-- Tiêu đề danh sách chi tiêu -->
+        <TextView
+                android:id="@+id/textSpendingList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:gravity="center"
+                android:text="@string/spending_list"
+                android:textColor="@color/gray_500"
+                android:textSize="18sp"/>
+
+        <!-- Danh sách chi tiêu sử dụng item_type layout -->
+
+        <!-- Message khi không có dữ liệu -->
+        <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:padding="8dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_type"
+                tools:itemCount="5"/>
+        <TextView
+                android:id="@+id/textNoData"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="No data available"
+                android:textSize="16sp"
+                android:textStyle="italic"
+                android:textColor="@color/gray_500"
+                android:visibility="gone"/>
+
+    </LinearLayout>
+</FrameLayout>

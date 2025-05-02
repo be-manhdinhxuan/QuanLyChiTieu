@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@color/bg">
 
-    <!-- Toolbar được thay thế bằng MaterialToolbar -->
+    <!-- Toolbar -->
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -35,6 +35,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             android:layout_marginEnd="48dp" />
+
     </com.google.android.material.appbar.MaterialToolbar>
 
     <!-- Đường kẻ phân cách -->
@@ -43,37 +44,64 @@
         android:layout_height="1dp"
         android:background="#E0E0E0"/>
 
-    <!-- Nội dung chính -->
+    <!-- Main Content -->
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         android:padding="16dp">
 
-        <!-- TextInputLayout được cập nhật với style đồng bộ -->
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/layoutFriend"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <!-- Input Section -->
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:hint="@string/add_friends">
+            app:cardCornerRadius="10dp"
+            app:cardElevation="2dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/input_friend"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:maxLines="1"
-                android:textSize="16sp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal"
+                android:padding="16dp">
 
-        <!-- Material Card để chứa danh sách bạn bè -->
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/layoutInput"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:hint="@string/enter_name_or_email">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/inputNameOrEmail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="1"
+                        android:textSize="16sp" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/buttonAdd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/add"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    android:textColor="@color/white"
+                    app:elevation="0dp"
+                    app:backgroundTint="@color/button_login"
+                    app:cornerRadius="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Friends List -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
+            android:layout_marginTop="16dp"
             app:cardCornerRadius="10dp"
             app:cardElevation="2dp">
 
@@ -97,11 +125,27 @@
                     android:background="#E0E0E0"/>
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_friends"
+                    android:id="@+id/recyclerFriends"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:padding="8dp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
+
+    <!-- Save Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:padding="12dp"
+        android:text="@string/save"
+        android:textAllCaps="false"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        app:cornerRadius="8dp"
+        app:elevation="0dp"
+        app:backgroundTint="@color/button_login"/>
+
 </LinearLayout>

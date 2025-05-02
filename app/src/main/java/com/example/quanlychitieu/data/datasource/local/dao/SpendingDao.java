@@ -14,9 +14,6 @@ public interface SpendingDao {
     @Query("SELECT * FROM spendings WHERE userId = :userId AND dateTime BETWEEN :startDate AND :endDate")
     List<SpendingEntity> getSpendingsByDate(String userId, Date startDate, Date endDate);
 
-    @Query("SELECT * FROM spendings WHERE userId = :userId AND categoryId = :categoryId")
-    List<SpendingEntity> getSpendingsByCategory(String userId, String categoryId);
-
     @Query("SELECT * FROM spendings WHERE userId = :userId AND id = :spendingId")
     SpendingEntity getSpendingById(String userId, String spendingId);
 
@@ -31,4 +28,7 @@ public interface SpendingDao {
 
     @Query("DELETE FROM spendings WHERE userId = :userId")
     void deleteAllSpendingsByUser(String userId);
+
+    @Query("SELECT * FROM spendings WHERE userId = :userId AND type = :type")
+    List<SpendingEntity> getSpendingsByType(String userId, int type);
 }

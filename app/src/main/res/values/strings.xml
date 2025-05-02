@@ -1,524 +1,672 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App Configuration -->
-    <string name="app_name">Expense Manager</string>
+    <string name="app_name">Quản Lý Chi Tiêu</string>
 
     <!-- Non-translatable Keys -->
     <string name="facebook_app_id" translatable="false">2268861543571852</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb2268861543571852</string>
     <string name="facebook_client_token" translatable="false">4ebf7a2a3404cc2d0e8012e7d2be3a53</string>
-    <string name="facebook_auth_protocol_scheme" translatable="false">fb2268861543571852</string>
-    <string name="default_web_client_id" translatable="false">753170906061-rkqtim39rmdnqqnkk3bkpcv5hff98o4o.apps.googleusercontent.com</string>
+<!--    <string name="facebook_auth_protocol_scheme" translatable="false">fb2268861543571852</string>-->
+    <string name="default_web_client_id" translatable="false">753170906061-d4n8o276b5ulijhf1623jivbbacoha2f.apps.googleusercontent.com</string>
 
     <!-- Feature: Auth -->
-    <string name="login">Login</string>
-    <string name="password">Password</string>
+    <string name="login">Đăng nhập</string>
+    <string name="password">Mật khẩu</string>
     <string name="email">Email</string>
-    <string name="enter_new_password">Enter new password</string>
-    <string name="confirm_password">Confirm Password</string>
-    <string name="change_password">Change Password</string>
-    <string name="enter_current_password">Enter current password</string>
-    <string name="please_enter_password">Please enter password</string>
-    <string name="please_enter_your_new_password">Please enter your new password</string>
-    <string name="passwords_do_not_match">New password does not match</string>
-    <string name="change_password_successfully">Password changed successfully</string>
-    <string name="forgot_password_message">Don\'t worry! Enter your email and we\'ll send you a link to reset your password.</string>
-    <string name="forgot_password">Forgot Password?</string>
-    <string name="password_required">Please enter password</string>
-    <string name="confirm_password_required">Please confirm password</string>
-    <string name="hint_password">Password is incorrect</string>
-    <string name="you_want_change_your_password">You want to change your password?</string>
-    <string name="please_enter_your_current_password">Please Enter Your Current Password</string>
-    <string name="hello_again">Welcome back!</string>
-    <string name="welcome_back_you_been_missed">Welcome back, you\'ve been missed!</string>
-    <string name="hello_new_user">Hello new user!</string>
-    <string name="welcome_to_app">Welcome to the app</string>
+    <string name="enter_new_password">Nhập mật khẩu mới</string>
+    <string name="confirm_password">Xác nhận mật khẩu</string>
+    <string name="change_password">Đổi mật khẩu</string>
+    <string name="enter_current_password">Nhập mật khẩu hiện tại</string>
+    <string name="please_enter_password">Vui lòng nhập mật khẩu</string>
+    <string name="please_enter_your_new_password">Vui lòng nhập vào mật khẩu mới của bạn</string>
+    <string name="passwords_do_not_match">Mật khẩu mới không khớp</string>
+    <string name="change_password_successfully">Đổi mật khẩu thành công</string>
+    <string name="forgot_password_message">Đừng lo! Nhập email của bạn và chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="password_required">Vui lòng nhập mật khẩu</string>
+    <string name="confirm_password_required">Vui lòng xác nhận mật khẩu</string>
+    <string name="hint_password">Mật khẩu không chính xác</string>
+    <string name="you_want_change_your_password">Bạn Muốn Thay Đổi Mật Khẩu?</string>
+    <string name="please_enter_your_current_password">Vui Lòng Nhập Mật Khẩu Hiện Tại</string>
+    <string name="hello_again">Chào mừng trở lại!</string>
+    <string name="welcome_back_you_been_missed">Chào mừng trở lại, chúng tôi rất nhớ bạn!</string>
+    <string name="sign_in">Đăng nhập</string>
+    <string name="do_not_have_account">Chưa có tài khoản?</string>
+    <string name="register_now">Đăng ký ngay</string>
+    <string name="hello_new_user">Chào người dùng mới!</string>
+    <string name="welcome_to_app">Chào mừng đến với ứng dụng</string>
+    <string name="sign_up">Đăng ký</string>
+    <string name="sign_up_button_desc">Nút đăng ký</string>
+    <string name="already_have_account">Đã có tài khoản?</string>
 
     <!-- Feature: Spending -->
-    <string name="add_spending">Add Spending</string>
-    <string name="total_spending">Total Spending</string>
+    <string name="add_spending">Thêm chi tiêu</string>
 
-    <string name="total_income">Total Income</string>
-    <string name="revenue_expenditure">Total Revenue</string>
-    <string name="first_balance">Opening Balance</string>
-    <string name="final_balance">Closing Balance</string>
-    <string name="monthly_money">Monthly Budget</string>
-    <string name="enter_monthly_spending_amount">Enter Monthly Spending Amount You Want To Manager</string>
-    <string name="please_enter_amount">Please Enter Amount</string>
-    <string name="spending_details_scroll">Spending Details Scroll</string>
-    <string name="select_spending_type">Select Spending Type</string>
-    <string name="note_input">Note input</string>
-    <string name="location">Location</string>
-    <string name="enter_monthly_spending_amount_you_want_manage">Enter the monthly spending amount you want to manage</string>
-    <string name="spending_amount_hint">Enter amount</string>
-    <string name="spending_type_icon">Spending type icon</string>
-    <string name="input_spending_container">Enter spending</string>
-    <string name="spending_summary_card">Spending summary</string>
+    <string name="total_income">Tổng thu nhập</string>
+    <string name="revenue_expenditure">Tổng doanh thu</string>
+
+    <string name="monthly_money">Ngân sách tháng</string>
+    <string name="enter_monthly_spending_amount">Nhập số tiền chi tiêu hàng tháng bạn muốn quản lý</string>
+    <string name="please_enter_amount">Vui lòng nhập số tiền</string>
+    <string name="spending_details_scroll">Cuộn chi tiết chi tiêu</string>
+    <string name="select_spending_type">Chọn loại chi tiêu</string>
+    <string name="note_input">Nhập ghi chú</string>
+    <string name="location">Địa điểm</string>
+    <string name="enter_monthly_spending_amount_you_want_manage">Nhập số tiền chi tiêu hàng tháng bạn muốn quản lý</string>
+    <string name="spending_amount_hint">Nhập số tiền</string>
+    <string name="spending_type_icon">Biểu tượng loại chi tiêu</string>
+    <string name="input_spending_container">Nhập chi tiêu</string>
+    <string name="spending_summary_card">Tổng hợp chi tiêu</string>
 
     <!-- Feature: Analytics -->
-    <string name="analytic">Analysis</string>
-    <string name="statistical">Statistical</string>
-    <string name="this_month">This Month</string>
-    <string name="next_month">Next Month</string>
-    <string name="last_month">Last Month</string>
-    <string name="filter_title">Filter Title</string>
-    <string name="this_month_spending_list">This Month Spending List</string>
-    <string name="spending_list">Spending List %s</string>
-    <string name="no_data">No Data %s!</string>
-    <string name="view_your_spending_and_income_reports_through_graphs">View Your Spending And Income Reports Through Graphs</string>
-    <string name="analytics_tab_description">Analytics navigation tabs</string>
-    <string name="chart_type_tabs_description">Chart type selection tabs</string>
-    <string name="spending_type_tabs_description">Spending type selection tabs</string>
+    <string name="analytic">Phân tích</string>
+    <string name="statistical">Thống kê</string>
+    <string name="statistical_spending">Thống kê chi tiêu</string>
+    <string name="this_month">Tháng này</string>
+    <string name="next_month">Tháng sau</string>
+    <string name="last_month">Tháng trước</string>
+    <string name="filter_title">Tiêu đề bộ lọc</string>
+    <string name="this_month_spending_list">Danh sách chi tiêu tháng này</string>
+    <string name="spending_list">Danh sách chi tiêu %s</string>
+    <string name="no_data">Không có dữ liệu %s!</string>
+    <string name="view_your_spending_and_income_reports_through_graphs">Xem báo cáo chi tiêu và thu nhập qua biểu đồ</string>
+    <string name="analytics_tab_description">Tab điều hướng phân tích</string>
+    <string name="chart_type_tabs_description">Tab lựa chọn loại biểu đồ</string>
+    <string name="spending_type_tabs_description">Tab lựa chọn loại chi tiêu</string>
 
-    <string name="total_report_description">Total spending and income report</string>
+    <string name="total_report_description">Báo cáo tổng chi tiêu và thu nhập</string>
 
     <!-- Feature: Profile -->
-    <string name="account">Account</string>
-    <string name="language">Language</string>
-    <string name="dark_mode">Dark mode</string>
-    <string name="export_csv">Export to CSV</string>
-    <string name="about">About</string>
-    <string name="logout">Logout</string>
-    <string name="edit_personal_information_and_other_settings">Edit Personal Information And Other Settings</string>
-    <string name="profile_avatar">Profile avatar</string>
-    <string name="birthday">Birthday</string>
-    <string name="birthday_selector">Birthday selector</string>
-    <string name="gender_selection_description">Gender selection</string>
-    <string name="male">Male</string>
-    <string name="female">Female</string>
-    <string name="other_gender">Other</string>
-    <string name="male_option">Male gender option</string>
-    <string name="female_option">Female gender option</string>
-    <string name="other_gender_option">Other gender option</string>
-    <string name="full_name">Full Name</string>
-    <string name="gender">Gender</string>
+    <string name="account">Tài khoản</string>
+    <string name="language">Ngôn ngữ</string>
+    <string name="dark_mode">Chế độ tối</string>
+    <string name="export_csv">Xuất ra CSV</string>
+    <string name="about">Giới thiệu</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="edit_personal_information_and_other_settings">Chỉnh sửa thông tin cá nhân và các cài đặt khác</string>
+    <string name="profile_avatar">Ảnh đại diện</string>
+    <string name="birthday">Ngày sinh</string>
+    <string name="birthday_selector">Chọn ngày sinh</string>
+    <string name="gender_selection_description">Lựa chọn giới tính</string>
+    <string name="male">Nam</string>
+    <string name="female">Nữ</string>
+    <string name="other_gender">Khác</string>
+    <string name="male_option">Lựa chọn giới tính nam</string>
+    <string name="female_option">Lựa chọn giới tính nữ</string>
+    <string name="other_gender_option">Lựa chọn giới tính khác</string>
+    <string name="full_name">Họ và tên</string>
+    <string name="gender">Giới tính</string>
 
     <!-- Feature: Social -->
-    <string name="friend">Friend</string>
-    <string name="remove_friend">Remove Friend</string>
-    <string name="friend_list">Friend List</string>
-    <string name="no_friends">No Friends</string>
-    <string name="friend_added">Friend Added</string>
-    <string name="friend_removed">Friend Removed</string>
-    <string name="friend_exists">Friend Already Exists</string>
-    <string name="add_friend_widget">Add friend widget</string>
-    <string name="friend_added_with_name">Friend added: %s</string>
-    <string name="friend_removed_with_name">Friend removed: %s</string>
-    <string name="friends_list">Friends List</string>
-    <string name="share_your_spending_with_friends">Share Your Spending With Friends</string>
-    <string name="circle_text_container">Initial letter in circle</string>
-    <string name="circle_text_clicked">Circle Text Clicked</string>
+    <string name="friend">Bạn bè</string>
+    <string name="remove_friend">Xóa bạn</string>
+    <string name="friend_list">Danh sách bạn bè</string>
+    <string name="no_friends">Không có bạn bè</string>
+    <string name="friend_added">Đã thêm bạn</string>
+    <string name="friend_removed">Đã xóa bạn</string>
+    <string name="friend_exists">Bạn đã tồn tại</string>
+    <string name="add_friend_widget">Widget thêm bạn</string>
+    <string name="friend_added_with_name">Đã thêm bạn: %s</string>
+    <string name="friend_removed_with_name">Đã xóa bạn: %s</string>
+    <string name="friends_list">Danh sách bạn bè</string>
+    <string name="share_your_spending_with_friends">Chia sẻ chi tiêu với bạn bè</string>
+    <string name="circle_text_container">Chữ cái đầu trong vòng tròn</string>
+    <string name="circle_text_clicked">Đã nhấn vào chữ trong vòng tròn</string>
 
     <!-- Feature: Calendar -->
-    <string name="calendar">Calendar</string>
-    <string name="calendar_icon">Calendar icon</string>
-    <string name="date_selector_description">Date selector</string>
-    <string name="choose_date">Select date</string>
-    <string name="date_navigation_container">Date navigation</string>
-    <string name="calendar_view_container">Calendar</string>
-    <string name="calendar_grid">Calendar days grid</string>
-    <string name="build_spending">Build Spending</string>
-    <string name="monday_short">Mon</string>
-    <string name="tuesday_short">Tue</string>
-    <string name="wednesday_short">Wed</string>
-    <string name="thursday_short">Thu</string>
-    <string name="friday_short">Fri</string>
-    <string name="saturday_short">Sat</string>
-    <string name="sunday_short">Sun</string>
-
-    <!-- Categories -->
+    <string name="calendar">Lịch</string>
+    <string name="calendar_icon">Biểu tượng lịch</string>
+    <string name="date_selector_description">Bộ chọn ngày</string>
+    <string name="choose_date">Chọn ngày</string>
+    <string name="date_navigation_container">Điều hướng ngày</string>
+    <string name="calendar_view_container">Lịch</string>
+    <string name="calendar_grid">Lưới ngày trong lịch</string>
+    <string name="build_spending">Xây dựng chi tiêu</string>
+    <string name="monday_short">T2</string>
+    <string name="tuesday_short">T3</string>
+    <string name="wednesday_short">T4</string>
+    <string name="thursday_short">T5</string>
+    <string name="friday_short">T6</string>
+    <string name="saturday_short">T7</string>
+    <string name="sunday_short">CN</string>
 
 
-    <string name="new_type">New type</string>
+    <string name="new_type">Loại mới</string>
 
     <!-- Navigation -->
-    <string name="home">Home</string>
-    <string name="history">History</string>
-    <string name="wallet">Wallet</string>
+    <string name="home">Trang chủ</string>
+    <string name="history">Lịch sử</string>
+    <string name="wallet">Ví</string>
 
     <!-- Common Actions -->
-    <string name="back">Back</string>
-    <string name="save">Save</string>
-    <string name="done">Done</string>
-    <string name="yes">Yes</string>
-    <string name="no">No</string>
-    <string name="share">Share</string>
-    <string name="search">Search</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
-    <string name="submit">Submit</string>
-    <string name="confirm">Confirm</string>
-    <string name="get_started">Get Started</string>
-    <string name="skip">Skip</string>
-    <string name="remove_item">Remove item</string>
-    <string name="confirm_remove">Confirm Remove</string>
-    <string name="item_removed">Item Removed</string>
-    <string name="add_image">Add Image</string>
-    <string name="selected_image">Selected Image</string>
+    <string name="back">Quay lại</string>
+
+    <string name="save">Lưu</string>
+    <string name="done">Hoàn thành</string>
+    <string name="yes">Có</string>
+    <string name="no">Không</string>
+    <string name="share">Chia sẻ</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="next">Tiếp theo</string>
+    <string name="previous">Trước đó</string>
+    <string name="submit">Gửi</string>
+    <string name="confirm">Xác nhận</string>
+    <string name="get_started">Bắt đầu</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="remove_item">Xóa mục</string>
+    <string name="confirm_remove">Xác nhận xóa</string>
+    <string name="item_removed">Đã xóa mục</string>
+    <string name="add_image">Thêm ảnh</string>
+    <string name="attached_photo">Ảnh đính kèm</string>
+    <string name="selected_image">Ảnh đã chọn</string>
 
     <!-- UI Components -->
-    <string name="more_options">More options</string>
-    <string name="more_button_description">View more</string>
-    <string name="arrow_icon_description">Navigation arrow</string>
-    <string name="button_action_description">Action button</string>
-    <string name="button_text">Continue</string>
-    <string name="progress_button_action">Action button</string>
-    <string name="progress_button_container">Button with loading</string>
-    <string name="loading_indicator">Loading</string>
-    <string name="or_continue_with">Or continue with</string>
-    <string name="setting_item_container">Settings item</string>
-    <string name="setting_icon">Settings icon</string>
-    <string name="setting_item_icon">Setting icon</string>
-    <string name="setting_item_arrow">Page navigation arrow</string>
-    <string name="open_setting">Open setting</string>
-    <string name="custom_tab_bar_description">Navigation tabs</string>
-    <string name="type_tab_bar_description">Type selection tabs</string>
+    <string name="more_options">Thêm tùy chọn</string>
+    <string name="more_button_description">Xem thêm</string>
+    <string name="arrow_icon_description">Mũi tên điều hướng</string>
+    <string name="button_action_description">Nút hành động</string>
+    <string name="button_text">Tiếp tục</string>
+    <string name="progress_button_action">Nút hành động</string>
+    <string name="progress_button_container">Nút với biểu tượng đang tải</string>
+    <string name="loading_indicator">Đang tải</string>
+    <string name="or_continue_with">Hoặc tiếp tục với</string>
+    <string name="setting_item_container">Mục cài đặt</string>
+    <string name="setting_icon">Biểu tượng cài đặt</string>
+    <string name="setting_item_icon">Biểu tượng mục cài đặt</string>
+    <string name="setting_item_arrow">Mũi tên chuyển trang</string>
+    <string name="open_setting">Mở cài đặt</string>
+    <string name="custom_tab_bar_description">Tab điều hướng</string>
+    <string name="type_tab_bar_description">Tab lựa chọn loại</string>
 
     <!-- Form Fields -->
-    <string name="money_input">Input money</string>
-    <string name="money_input_container">Money input field</string>
-    <string name="money_input_hint">Enter amount</string>
-    <string name="money_in_words_description">Amount in words</string>
-    <string name="input_text_hint">Input text</string>
-    <string name="input_text_description">Input text field</string>
-    <string name="filter_item_container">Filter item</string>
-    <string name="filter_dropdown_card">Filter dropdown card</string>
-    <string name="filter_dropdown_description">Dropdown to select filter value</string>
-    <string name="filter_value_dropdown">Select value from list</string>
-    <string name="select_value">Select value</string>
+    <string name="money_input">Nhập tiền</string>
+    <string name="money_input_container">Trường nhập tiền</string>
+    <string name="money_input_hint">Nhập số tiền</string>
+    <string name="money_in_words_description">Số tiền bằng chữ</string>
+    <string name="input_text_hint">Nhập văn bản</string>
+    <string name="input_text_description">Trường nhập văn bản</string>
+    <string name="filter_item_container">Mục bộ lọc</string>
+    <string name="filter_dropdown_card">Thẻ dropdown bộ lọc</string>
+    <string name="filter_dropdown_description">Dropdown để chọn giá trị bộ lọc</string>
+    <string name="filter_value_dropdown">Chọn giá trị từ danh sách</string>
+    <string name="select_value">Chọn giá trị</string>
 
     <!-- Toolbars and Content Areas -->
-    <string name="toolbar">Toolbar</string>
-    <string name="toolbar_add_spending">Add Spending Toolbar</string>
-    <string name="content_scroll_view">Content scroll view</string>
-    <string name="time_icon">Time icon</string>
+    <string name="toolbar">Thanh công cụ</string>
+    <string name="toolbar_add_spending">Thanh công cụ thêm chi tiêu</string>
+    <string name="content_scroll_view">Cuộn xem nội dung</string>
+    <string name="time_icon">Biểu tượng thời gian</string>
 
     <!-- Search -->
-    <string name="search_hint">Search by name, note or location</string>
-    <string name="search_by_country_name_or_currency">Search By Country Name Or Currency</string>
-    <string name="search_for_your_expenses">Search for your expenses</string>
+    <string name="search_hint">Tìm theo tên, ghi chú hoặc địa điểm</string>
+    <string name="search_by_country_name_or_currency">Tìm theo tên quốc gia hoặc tiền tệ</string>
+    <string name="search_for_your_expenses">Tìm kiếm các khoản chi tiêu</string>
 
     <!-- Filters -->
-    <string name="filter_all">All</string>
-    <string name="filter_income">Income</string>
-    <string name="filter_spending">Spending</string>
-    <string name="filter_today">Today</string>
-    <string name="filter_week">This Week</string>
-    <string name="filter_month">This Month</string>
-    <string name="filter_year">This Year</string>
+    <string name="filter_all">Tất cả</string>
+    <string name="filter_income">Thu nhập</string>
+    <string name="filter_spending">Chi tiêu</string>
+    <string name="filter_today">Hôm nay</string>
+    <string name="filter_week">Tuần này</string>
+    <string name="filter_month">Tháng này</string>
+    <string name="filter_year">Năm nay</string>
 
     <!-- Media -->
-    <string name="pick_image_from_gallery">Pick image from gallery</string>
-    <string name="gallery">Gallery</string>
-    <string name="camera">Camera</string>
-    <string name="choose_image_source">Select image source</string>
-    <string name="select_from_gallery">Select from gallery</string>
-    <string name="take_photo">Take new photo</string>
+    <string name="pick_image_from_gallery">Chọn ảnh từ thư viện</string>
+    <string name="gallery">Thư viện</string>
+    <string name="camera">Máy ảnh</string>
+    <string name="choose_image_source">Chọn nguồn ảnh</string>
+    <string name="select_from_gallery">Chọn từ thư viện</string>
+    <string name="take_photo">Chụp ảnh mới</string>
 
     <!-- Messages -->
-    <string name="press_back_again_to_exit">Press back again to exit</string>
-    <string name="file_successfully_saved">File successfully saved</string>
-    <string name="invalid_name">Invalid name</string>
-    <string name="confirm_remove_message">Are you sure you want to remove this item?</string>
-    <string name="you_have_spending_the_day">You have spending on %s</string>
-    <string name="dont_worry_it_happens">Don\'t worry! Enter your email and we\'ll send you a link to reset your password.</string>
+    <string name="press_back_again_to_exit">Nhấn quay lại lần nữa để thoát</string>
+    <string name="file_successfully_saved">Đã lưu tệp thành công</string>
+    <string name="invalid_name">Tên không hợp lệ</string>
+    <string name="confirm_remove_message">Bạn có chắc chắn muốn xóa mục này?</string>
+    <string name="you_have_spending_the_day">Bạn đã chi tiêu vào %s</string>
+    <string name="dont_worry_it_happens">Đừng lo! Nhập email của bạn và chúng tôi sẽ gửi liên kết để đặt lại mật khẩu.</string>
 
     <!-- Onboarding -->
-    <string name="view_monthly_spending_summary_and_remaining_balance">View monthly spending summary and remaining balance</string>
-    <string name="review_your_scheduled_expenses">Review your scheduled expenses</string>
-    <string name="add_and_edit_your_daily_spending">Add and edit your daily spending</string>
+    <string name="view_monthly_spending_summary_and_remaining_balance">Xem tổng kết chi tiêu hàng tháng và số dư còn lại</string>
+    <string name="review_your_scheduled_expenses">Xem lại các khoản chi tiêu đã lên lịch</string>
+    <string name="add_and_edit_your_daily_spending">Thêm và chỉnh sửa chi tiêu hàng ngày</string>
 
     <!-- About -->
-    <string name="version">Version</string>
-    <string name="developed_by">Developed by Đinh Xuân Mạnh</string>
-    <string name="currency_exchange_rate">Currency Exchange Rate</string>
-    <string name="contact_me_via_facebook" translatable="false">Contact me via Facebook</string>
-    <string name="contact_me_via_zalo" translatable="false">Contact me via Zalo</string>
-    <string name="contact_me_via_telegram" translatable="false">Contact me via Telegram</string>
-    <string name="contact_me_via_email" translatable="false">Contact me via Email</string>
+    <string name="version">Phiên bản</string>
+    <string name="developed_by">Phát triển bởi</string>
+    <string name="currency_exchange_rate">Tỷ giá tiền tệ</string>
+    <string name="contact_me_via_facebook" >Liên hệ với tôi qua Facebook</string>
+    <string name="contact_me_via_zalo">Liên hệ với tôi qua Zalo</string>
+    <string name="contact_me_via_telegram">Liên hệ với tôi qua Telegram</string>
+    <string name="contact_me_via_email">Liên hệ với tôi qua Email</string>
 
     <!-- Validation Messages -->
-    <string name="enter_valid_email">Please enter a valid email address</string>
-    <string name="enter_valid_name">Please enter a valid name</string>
-    <string name="enter_valid_otp">Please enter a valid verification code</string>
+    <string name="enter_valid_email">Vui lòng nhập địa chỉ email hợp lệ</string>
+    <string name="enter_valid_name">Vui lòng nhập tên hợp lệ</string>
+    <string name="enter_valid_otp">Vui lòng nhập mã xác minh hợp lệ</string>
 
-    <string name="more">More</string>
-    <string name="less">Less</string>
-    <string name="user_initial">User Initial</string>
+    <!-- New strings -->
+    <string name="less">Ẩn bớt</string>
+    <string name="more">Xem thêm</string>
+    <string name="user_initial">Chữ cái đầu của tên người dùng</string>
 
     <!-- Spending List -->
-    <string name="spending_by_category">Spending by Category</string>
-    <string name="no_spending_data">No spending data</string>
-    <string name="spending_list_title_description">Spending list title</string>
-    <string name="spending_list_description">List of spending items</string>
-    <string name="empty_state_description">No spending data available</string>
-    <string name="loading_description">Loading data</string>
-
-    <!-- Auth -->
-    <string name="sign_in">Sign In</string>
-    <string name="do_not_have_account">Don\'t have an account?</string>
-    <string name="register_now">Register now</string>
-    <string name="sign_up">Sign Up</string>
-    <string name="sign_up_button_desc">Sign up button</string>
-    <string name="already_have_account">Already have an account?</string>
+    <string name="spending_by_category">Chi tiêu theo danh mục</string>
+    <string name="no_spending_data">Không có dữ liệu chi tiêu</string>
+    <string name="spending_list_title_description">Tiêu đề danh sách chi tiêu</string>
+    <string name="spending_list_description">Danh sách các khoản chi tiêu</string>
+    <string name="empty_state_description">Không có dữ liệu chi tiêu</string>
+    <string name="loading_description">Đang tải dữ liệu</string>
+    <string name="no_spending_found">Không tìm thấy khoản chi tiêu</string>
 
     <!-- Social Login -->
     <string name="google">Google</string>
     <string name="facebook">Facebook</string>
-    <string name="continue_with_facebook">Continue with Facebook</string>
-    <string name="continue_with_google">Continue with Google</string>
+    <string name="continue_with_facebook">Tiếp tục với Facebook</string>
+    <string name="continue_with_google">Tiếp tục với Google</string>
 
     <!-- Spending -->
-    <string name="edit_spending">Edit Spending</string>
-    <string name="date">Date</string>
-    <string name="time">Time</string>
+    <string name="edit_spending">Sửa chi tiêu</string>
+    <string name="date">Ngày</string>
+    <string name="time">Giờ</string>
 
     <!-- Filter -->
-    <string name="filter">Filter</string>
-    <string name="money">Money</string>
-    <string name="note">Note</string>
-
-    <!-- Filter Lists -->
-
-
-
-
-    <!-- Auth -->
-    <string name="success">Success</string>
-    <string name="check_your_email_make_password_change">Please check your email and make a new password change!</string>
-    <string name="go_to_login">Go to Login</string>
-    <string name="please_enter_email">Please enter your email</string>
-
-    <!-- Password reset strings -->
-    <string name="reset_email_sent">Password reset email has been sent</string>
-    <string name="failed_to_send_reset_email">Failed to send password reset email</string>
-
-
-    <string name="select_date">Select date</string>
-
-    <!-- Profile -->
-    <string name="error_loading_profile">Failed to load profile</string>
-    <string name="invalid_money_format">Invalid money format</string>
-    <string name="profile_updated">Profile updated successfully</string>
-    <string name="error_updating_profile">Failed to update profile</string>
-
-    <!-- Summary -->
-    <string name="summary">Summary</string>
-
-    <!-- Budget Management -->
-    <string name="monthly_budget">Monthly Budget</string>
-    <string name="enter_monthly_budget">Enter your monthly budget</string>
-    <string name="budget_amount">Budget Amount</string>
-    <string name="budget_exceeded">Budget Exceeded</string>
-    <string name="budget_remaining">Budget Remaining</string>
-
-    <!-- Auth Messages -->
-    <string name="create_account_success">Account created successfully</string>
-    <string name="enter_valid_password">Please enter a valid password</string>
-    <string name="enter_valid_confirm_password">Passwords do not match</string>
-    <string name="email_required">Please enter your email</string>
-    <string name="login_success">Login successful</string>
-
-    <!-- Spending Edit -->
-    <string name="spending_updated">Spending updated successfully</string>
-    <string name="error_updating_spending">Error updating spending</string>
-    <string name="please_select_type">Please select a type</string>
-    <string name="please_enter_valid_amount">Please enter a valid amount</string>
-
-    <string name="type">Type</string>
-
-    <!-- Spending Types -->
-    <string name="type_food">Food</string>
-    <string name="type_shopping">Shopping</string>
-    <string name="type_transport">Transport</string>
-    <string name="type_housing">Housing</string>
-    <string name="type_entertainment">Entertainment</string>
-    <string name="type_healthcare">Healthcare</string>
-    <string name="type_education">Education</string>
-    <string name="please_enter_name">Please enter name</string>
-
-    <!-- Image Related -->
-    <string name="image_loaded">Image loaded successfully</string>
-    <string name="image_selected">Image selected successfully</string>
-    <string name="images">Images</string>
-    
-    <!-- Actions -->
-    <string name="add">Add</string>
-    
-    <!-- Validation Messages -->
-    <string name="amount_too_large">Amount is too large</string>
+    <string name="money">Tiền</string>
+    <string name="note">Ghi chú</string>
 
     <!-- Filter Actions -->
-    <string name="apply_filter">Apply Filter</string>
-    <string name="reset_filter">Reset Filter</string>
+    <string name="apply_filter">Áp dụng bộ lọc</string>
+    <string name="reset_filter">Đặt lại bộ lọc</string>
+
+    <!-- Auth -->
+    <string name="success">Thành công</string>
+    <string name="check_your_email_make_password_change">Vui lòng kiểm tra email và thực hiện thay đổi mật khẩu mới!</string>
+    <string name="go_to_login">Đến trang đăng nhập</string>
+
+    <!-- Password reset strings -->
+    <string name="reset_email_sent">Email đặt lại mật khẩu đã được gửi</string>
+    <string name="failed_to_send_reset_email">Không thể gửi email đặt lại mật khẩu</string>
+    <string name="please_enter_email">Vui lòng nhập email của bạn</string>
+
+    <!-- New strings -->
+    <string name="select_date">Chọn ngày sinh</string>
+
+    <!-- Profile -->
+    <string name="error_loading_profile">Không thể tải thông tin cá nhân</string>
+    <string name="invalid_money_format">Định dạng tiền không hợp lệ</string>
+    <string name="profile_updated">Cập nhật thông tin thành công</string>
+    <string name="error_updating_profile">Không thể cập nhật thông tin</string>
+
+    <!-- Summary -->
+    <string name="summary">Tổng quan</string>
+    <string name="budget">Ngân sách</string>
+    <string name="total_spending">Tổng chi tiêu</string>
+
+    <!-- Budget Management -->
+    <string name="monthly_budget">Ngân sách hàng tháng</string>
+    <string name="enter_monthly_budget">Nhập ngân sách hàng tháng của bạn</string>
+    <string name="budget_amount">Số tiền ngân sách</string>
+    <string name="budget_exceeded">Đã vượt ngân sách</string>
+    <string name="budget_remaining">Ngân sách còn lại</string>
+
+    <!-- Auth Messages -->
+    <string name="create_account_success">Tạo tài khoản thành công</string>
+    <string name="enter_valid_password">Vui lòng nhập mật khẩu hợp lệ</string>
+    <string name="enter_valid_confirm_password">Mật khẩu không khớp</string>
+    <string name="email_required">Vui lòng nhập email</string>
+    <string name="login_success">Đăng nhập thành công</string>
+
+    <!-- Spending Edit -->
+    <string name="spending_updated">Cập nhật chi tiêu thành công</string>
+    <string name="error_updating_spending">Lỗi khi cập nhật chi tiêu</string>
+    <string name="please_select_type">Vui lòng chọn loại chi tiêu</string>
+    <string name="please_enter_valid_amount">Vui lòng nhập số tiền hợp lệ</string>
+
+    <string name="type">Loại</string>
+
+    <!-- Spending Types -->
+    <string name="type_food">Ăn uống</string>
+    <string name="type_shopping">Mua sắm</string>
+    <string name="type_transport">Di chuyển</string>
+    <string name="type_housing">Nhà ở</string>
+    <string name="type_entertainment">Giải trí</string>
+    <string name="type_healthcare">Sức khỏe</string>
+    <string name="type_education">Giáo dục</string>
+
+    <string name="please_enter_name">Vui lòng nhập tên</string>
+
+    <!-- Image Related -->
+    <string name="images">Hình ảnh</string>
+    <string name="image_loaded">Đã tải ảnh thành công</string>
+    <string name="image_selected">Đã chọn ảnh thành công</string>
+
+    <!-- Actions -->
+    <string name="add">Thêm</string>
+
+    <!-- Validation Messages -->
+    <string name="amount_too_large">Số tiền quá lớn</string>
 
     <!-- Filter Screen -->
-    <string name="enter_amount">Enter Amount</string>
+    <string name="enter_amount">Nhập số tiền</string>
 
-    <string name="invalid_input">Invalid input</string>
-    <string name="invalid_date_range">Invalid date range</string>
+    <string name="invalid_input">Dữ liệu không hợp lệ</string>
+    <string name="invalid_date_range">Khoảng thời gian không hợp lệ</string>
 
-    <string name="group">Group</string>
-    <string name="enter_friend_name">Enter friend name</string>
-    <string name="added_friends">Added friends (%d)</string>
-    <string name="add_friends">Add Friends</string>
-    <string name="filter_reset">Filter has been reset</string>
-    
+    <string name="group">Nhóm</string>
+
+    <string name="enter_friend_name">Nhập tên bạn</string>
+    <string name="added_friends">Đã thêm %d bạn</string>
+    <string name="add_friends">Thêm bạn</string>
+    <string name="filter_reset">Đã đặt lại bộ lọc</string>
+
     <!-- Arrays for Filter -->
     <string-array name="money_list">
-        <item>All</item>
-        <item>Equal to</item>
-        <item>Greater than</item>
-        <item>Between</item>
-        <item>Less than</item>
+        <item>Tất cả</item>
+        <item>Bằng</item>
+        <item>Lớn hơn</item>
+        <item>Trong khoảng</item>
+        <item>Nhỏ hơn</item>
     </string-array>
 
     <string-array name="time_list">
-        <item>All</item>
-        <item>On</item>
-        <item>After</item>
-        <item>Between</item>
-        <item>Before</item>
+        <item>Tất cả</item>
+        <item>Vào ngày</item>
+        <item>Sau ngày</item>
+        <item>Trong khoảng</item>
+        <item>Trước ngày</item>
     </string-array>
 
     <string-array name="group_list">
-        <item>All</item>
-        <item>Income</item>
-        <item>Expense</item>
+        <item>Tất cả</item>
+        <item>Thu nhập</item>
+        <item>Chi tiêu</item>
     </string-array>
 
     <!-- Filter Dialog Titles -->
-    <string name="select_money_filter">Select Money Filter</string>
-    <string name="select_time_filter">Select Time Filter</string>
+    <string name="select_money_filter">Chọn bộ lọc tiền</string>
+    <string name="select_time_filter">Chọn bộ lọc thời gian</string>
 
     <!-- Validation Messages -->
-    <string name="number_too_large">Number is too large</string>
-    <string name="invalid_range">Invalid range</string>
+    <string name="number_too_large">Số quá lớn</string>
+    <string name="invalid_range">Khoảng không hợp lệ</string>
 
     <!-- Amount Range Input -->
-    <string name="amount_from">Amount from</string>
-    <string name="min_amount">Minimum amount</string>
-    <string name="amount_to">Amount to</string>
-    <string name="max_amount">Maximum amount</string>
+    <string name="amount_from">Số tiền từ</string>
+    <string name="min_amount">Số tiền tối thiểu</string>
+    <string name="amount_to">Số tiền đến</string>
+    <string name="max_amount">Số tiền tối đa</string>
 
     <!-- List Type Screen -->
-    <string name="list_type_title">List of type %d</string>
+    <string name="list_type_title">Danh sách loại %d</string>
 
-    <!-- Spending Types Array -->
     <string-array name="spending_types">
-        <item>Other</item>          <!-- 0 -->
-        <item>Food &amp; Drinks</item>    <!-- 1 -->
-        <item>Shopping</item>       <!-- 2 -->
-        <item>Transportation</item> <!-- 3 -->
-        <item>Housing</item>        <!-- 4 -->
-        <item>Entertainment</item>  <!-- 5 -->
-        <item>Healthcare</item>     <!-- 6 -->
-        <item>Education</item>      <!-- 7 -->
-        <item>Bills</item>          <!-- 8 -->
-        <item>Investment</item>     <!-- 9 -->
-        <item>Salary</item>         <!-- 10 -->
-        <item>Business</item>       <!-- 11 -->
-        <item>Gifts</item>          <!-- 12 -->
-        <item>Insurance</item>      <!-- 13 -->
-        <item>Taxes</item>          <!-- 14 -->
-        <item>Savings</item>        <!-- 15 -->
+        <item>Khác</item>           <!-- 0 -->
+        <item>Ăn uống</item>        <!-- 1 -->
+        <item>Mua sắm</item>        <!-- 2 -->
+        <item>Giao thông</item>     <!-- 3 -->
+        <item>Nhà ở</item>          <!-- 4 -->
+        <item>Giải trí</item>       <!-- 5 -->
+        <item>Sức khỏe</item>       <!-- 6 -->
+        <item>Giáo dục</item>       <!-- 7 -->
+        <item>Hóa đơn</item>        <!-- 8 -->
+        <item>Đầu tư</item>         <!-- 9 -->
+        <item>Lương</item>          <!-- 10 -->
+        <item>Kinh doanh</item>     <!-- 11 -->
+        <item>Quà tặng</item>       <!-- 12 -->
+        <item>Bảo hiểm</item>       <!-- 13 -->
+        <item>Thuế</item>           <!-- 14 -->
+        <item>Tiết kiệm</item>      <!-- 15 -->
     </string-array>
 
     <!-- Spending Reports -->
-    <string name="week_spending_report">Weekly Spending Report</string>
-    <string name="month_spending_report">Monthly Spending Report</string>
-    <string name="year_spending_report">Yearly Spending Report</string>
+    <string name="week_spending_report">Báo Cáo Chi Tiêu Theo Tuần</string>
+    <string name="month_spending_report">Báo Cáo Chi Tiêu Theo Tháng</string>
+    <string name="year_spending_report">Báo Cáo Chi Tiêu Theo Năm</string>
+    <string name="spending_report_for">Báo cáo chi tiêu cho %s</string>
 
     <!-- About Screen -->
-    <string name="contact">Contact</string>
-    <string name="buy_me_a_coffee">Buy me a coffee</string>
+    <string name="contact">Liên hệ</string>
+    <string name="buy_me_a_coffee">Ủng hộ tôi một ly cà phê</string>
+    <string name="developer_name">Đinh Xuân Mạnh</string>
+    <string name="facebook_url">https://www.facebook.com/XuanManh.Coder</string>
+    <string name="zalo_url">https://zalo.me/0914828548</string>
+    <string name="telegram_url">https://t.me/manhbeoit8</string>
+    <string name="momo_url" >https://me.momo.vn/manhdinhxuan18</string>
+    <string name="contact_email">manhbeo.it8@gmail.com</string>
+    <string name="email_subject" translatable="false">Expense Manager</string>
+    <string name="email_body" translatable="false">Hello Dinh Xuan Manh</string>
 
     <!-- Location and Friends -->
-    <string name="location_and_friends">Location and Friends</string>
-    <string name="add_friend">Add Friend</string>
+    <string name="location_and_friends">Địa điểm và Bạn bè</string>
+    <string name="add_friend">Thêm bạn</string>
 
     <!-- Time Periods -->
-    <string name="day">Day</string>
-    <string name="week">Week</string>
-    <string name="month">Month</string>
-    <string name="year">Year</string>
+    <string name="day">Ngày</string>
+    <string name="week">Tuần</string>
+    <string name="month">Tháng</string>
+    <string name="year">Năm</string>
 
     <!-- Password Change -->
-    <string name="current_password">Current Password</string>
-    <string name="new_password">New Password</string>
-    <string name="confirm_new_password">Confirm New Password</string>
-    <string name="update_password">Update Password</string>
+    <string name="current_password">Mật khẩu hiện tại</string>
+    <string name="new_password">Mật khẩu mới</string>
+    <string name="confirm_new_password">Xác nhận mật khẩu mới</string>
+    <string name="update_password">Cập nhật mật khẩu</string>
 
     <!-- Password Change Validation Messages -->
-    <string name="please_enter_current_password">Please enter your current password</string>
-    <string name="please_enter_new_password">Please enter your new password</string>
-    <string name="password_must_be_at_least_6_chars">Password must be at least 6 characters long</string>
-    <string name="please_confirm_new_password">Please confirm your new password</string>
-    <string name="password_not_match">Passwords do not match</string>
-    <string name="incorrect_password">Incorrect password</string>
-    <string name="password_changed_successfully">Password changed successfully</string>
-    <string name="failed_to_change_password">Failed to change password</string>
+    <string name="please_enter_current_password">Vui lòng nhập mật khẩu hiện tại</string>
+    <string name="please_enter_new_password">Vui lòng nhập mật khẩu mới</string>
+    <string name="password_must_be_at_least_6_chars">Mật khẩu phải có ít nhất 6 ký tự</string>
+    <string name="please_confirm_new_password">Vui lòng xác nhận mật khẩu mới</string>
+    <string name="password_not_match">Mật khẩu không khớp</string>
+    <string name="incorrect_password">Mật khẩu không đúng</string>
+    <string name="password_changed_successfully">Đổi mật khẩu thành công</string>
+    <string name="failed_to_change_password">Đổi mật khẩu thất bại</string>
 
     <!-- Type Selection -->
-    <string name="all">All</string>
-    <string name="spending">Spending</string>
-    <string name="income">Income</string>
-    <string name="new_spending_type">New Spending Type</string>
-    <string name="new_income_type">New Income Type</string>
-    <string name="ok">OK</string>
-    <string name="cancel">Cancel</string>
-    
+    <string name="all">Tất cả</string>
+    <string name="spending">Chi tiêu</string>
+    <string name="income">Thu nhập</string>
+    <string name="new_spending_type">Loại chi tiêu mới</string>
+    <string name="new_income_type">Loại thu nhập mới</string>
+    <string name="ok">Đồng ý</string>
+    <string name="cancel">Hủy</string>
+
     <!-- Spending Types -->
-    <string name="food">Food</string>
-    <string name="transport">Transport</string>
-    <string name="shopping">Shopping</string>
-    <string name="entertainment">Entertainment</string>
-    <string name="salary">Salary</string>
-    <string name="bonus">Bonus</string>
-    <string name="other">Other</string>
-    <string name="other_income">Other Income</string>
-    <string name="type_name">Type name</string>
-    <string name="amount">Amount</string>
+    <string name="food">Ăn uống</string>
+    <string name="transport">Di chuyển</string>
+    <string name="shopping">Mua sắm</string>
+    <string name="entertainment">Giải trí</string>
+    <string name="salary">Lương</string>
+    <string name="bonus">Thưởng</string>
+    <string name="other">Khác</string>
+    <string name="other_income">Thu nhập khác</string>
+    <string name="type_name">Tên loại</string>
+    <string name="amount">Số tiền</string>
 
-    <string name="profile">Profile</string>
-    <string name="edit">Edit</string>
-    <string name="settings">Settings</string>
+    <!-- New strings -->
+    <string name="profile">Hồ sơ</string>
+    <string name="edit">Chỉnh sửa</string>
+    <string name="settings">Cài đặt</string>
+    <string name="clear">Xóa</string>
+    <string name="no_search_results">Không tìm thấy kết quả</string>
 
-    <string name="clear">Clear</string>
-    <string name="no_search_results">No search results found</string>
+    <!-- Additional strings -->
+    <string name="expense">Chi tiêu</string>
+    <string name="date_range">Khoảng thời gian</string>
+    <string name="start_date">Ngày bắt đầu</string>
+    <string name="end_date">Ngày kết thúc</string>
 
-    <string name="expense">Expense</string>
-    <string name="date_range">Date Range</string>
-    <string name="start_date">Start Date</string>
-    <string name="end_date">End Date</string>
+    <!-- New strings -->
+    <string name="verify_email">Xác thực Email</string>
+    <string name="verify_now">Xác thực ngay</string>
+    <string name="go_to_home">Về trang chủ</string>
+    <string name="resend_email">Gửi lại email</string>
 
-    <string name="verify_email">Verify Email</string>
-    <string name="verify_now">Verify Now</string>
-    <string name="go_to_home">Go to Home</string>
-    <string name="resend_email">Resend Email</string>
+    <!-- Image Related -->
+    <string name="view_image">Xem ảnh</string>
+    <string name="error_image">Ảnh lỗi</string>
+    <string name="image_load_failed">Không thể tải ảnh</string>
 
-    <string name="view_image">View Image</string>
-    <string name="error_image">Error Image</string>
-    <string name="image_load_failed">Failed to load image</string>
+    <!-- New string -->
+    <string name="download">Tải xuống</string>
 
-    <string name="download">Download</string>
-    <string name="cannot_share_image">Cannot share image</string>
-    <string name="share_image">Share Image</string>
-    <string name="share_failed">Failed to share image</string>
-    <string name="cannot_download_image">Cannot download image</string>
-    <string name="download_success">Image downloaded successfully</string>
-    <string name="download_failed">Failed to download image</string>
+    <!-- New strings -->
+    <string name="cannot_share_image">Không thể chia sẻ ảnh</string>
+    <string name="share_image">Chia sẻ ảnh</string>
+    <string name="share_failed">Chia sẻ ảnh thất bại</string>
+    <string name="cannot_download_image">Không thể tải ảnh xuống</string>
+    <string name="download_success">Tải ảnh xuống thành công</string>
+    <string name="download_failed">Tải ảnh xuống thất bại</string>
 
-    <string name="spending_details">Spending Details</string>
-    <string name="delete">Delete</string>
-    <string name="details">Details</string>
-    <string name="receipt_image">Receipt Image</string>
-    <string name="you_want_delete">Do you want to delete this item?</string>
-    <string name="default_type">Other</string>
-    <string name="no_data_available">No data available</string>
+    <!-- New strings -->
+    <string name="spending_details">Chi tiết chi tiêu</string>
+    <string name="delete">Xóa</string>
+    <string name="details">Chi tiết</string>
+    <string name="receipt_image">Ảnh hóa đơn</string>
+    <string name="you_want_delete">Bạn có muốn xóa mục này?</string>
+    <string name="default_type">Khác</string>
+    <string name="no_data_available">Không có dữ liệu</string>
+    <string name="no_history_found">Không tìm thấy lịch sử</string>
+    <string name="add_spending_to_see_history">Thêm chi tiêu để xem lịch sử</string>
+    <string name="error_user_not_logged_in">Lỗi người dùng chưa đăng nhập</string>
 
-    <!-- History screen -->
-    <string name="no_history_found">No history found</string>
-    <string name="add_spending_to_see_history">Add spending to see history</string>
-    <string name="error_user_not_logged_in">User not logged in error</string>
+    <string name="previous_date">Ngày trước</string>
+    <string name="next_date">Ngày tiếp theo</string>
+
+    <string name="pie_chart">Biểu đồ tròn</string>
+    <string name="bar_chart">Biểu đồ cột</string>
+    <string name="balance">Số dư</string>
+    <string name="total">Tổng cộng</string>
+    <string name="spending_not_found">Không tìm thấy khoản chi</string>
+    <string name="share_spending">Chia sẻ khoản chi</string>
+
+    <string name="search_registered_friend">Tìm bạn bè đã đăng ký</string>
+    <string name="enter_friend_email">Nhập email của bạn bè</string>
+    <string name="add_non_registered_friend">Thêm bạn chưa đăng ký</string>
+    <string name="enter_name_or_email">Nhập tên hoặc email</string>\
+    <string name="user_avatar">Ảnh đại diện người dùng</string>
+    <string name="choose_category">Chọn danh mục</string>
+    <string name="spending_saved_successfully">Đã lưu chi tiêu thành công</string>
+    <string name="error_saving_spending">Lỗi khi lưu chi tiêu</string>
+    <string name="error_uploading_image">Lỗi khi tải ảnh lên</string>
+    <string name="please_wait_upload">Vui lòng đợi trong khi đang tải lên...</string>
+    <string name="error_loading_data">Lỗi khi tải dữ liệu</string>
+    <string name="error_loading_spending">Lỗi khi tải chi tiêu</string>
+
+    <string name="data_refreshed_automatically">Dữ liệu đã được làm mới tự động</string>
+
+    <string name="search_spending">Tìm kiếm chi tiêu...</string>
+    <string name="filter">Bộ lọc</string>
+    <string name="type_icon">Biểu tượng loại</string>
+
+    <string name="eating">Ăn uống</string>
+    <string name="move">Di chuyển</string>
+    <string name="rent_house">Thuê nhà</string>
+    <string name="water_money">Tiền nước</string>
+    <string name="telephone_fee">Phí điện thoại</string>
+    <string name="electricity_bill">Hóa đơn điện</string>
+    <string name="gas_money">Tiền gas</string>
+    <string name="tv_money">Tiền truyền hình</string>
+    <string name="internet_money">Tiền internet</string>
+
+    <!-- Chi tiêu cần thiết -->
+    <string name="family_service">Dịch vụ gia đình</string>
+    <string name="repair_and_decorate_the_house">Sửa chữa và trang trí nhà</string>
+    <string name="vehicle_maintenance">Bảo trì phương tiện</string>
+    <string name="physical_examination">Khám sức khỏe</string>
+    <string name="insurance">Bảo hiểm</string>
+    <string name="education">Giáo dục</string>
+    <string name="housewares">Đồ gia dụng</string>
+    <string name="personal_belongings">Đồ dùng cá nhân</string>
+    <string name="pet">Thú cưng</string>
+
+    <!-- Giải trí -->
+    <string name="sport">Thể thao</string>
+    <string name="beautify">Làm đẹp</string>
+    <string name="gifts_donations">Quà tặng, quyên góp</string>
+    <string name="fun_play">Giải trí, vui chơi</string>
+
+    <string name="error_invalid_spending_id">ID chi tiêu không hợp lệ</string>
+    <string name="error_invalid_money">Số tiền không hợp lệ</string>
+
+
+    <string name="error_no_valid_spendings_in_group">Không có chi tiêu hợp lệ trong nhóm này</string>
+    <string name="error_loading_last_month_balance">Lỗi khi tải số dư tháng trước</string>
+    <string name="error_loading_transactions">Lỗi khi tải giao dịch</string>
+    <string name="error_loading_timeout">Không thể tải dữ liệu. Vui lòng thử lại.</string> <string name="error_loading_current_balance">Lỗi khi tải số dư hiện tại</string>
+
+    <string name="please_enter_email_to_add">Vui lòng nhập email để thêm bạn</string>
+    <string name="please_enter_name_or_email">Vui lòng nhập tên hoặc email</string>
+    <string name="cannot_add_yourself">Bạn không thể thêm chính mình</string>
+    <string name="error_parsing_user_data">Lỗi xử lý dữ liệu người dùng</string>
+    <string name="user_not_found_with_email">Không tìm thấy người dùng với email này</string>
+    <string name="error_checking_user">Lỗi khi kiểm tra người dùng</string>
+    <string name="error_invalid_user_data">Dữ liệu người dùng không hợp lệ</string>
+    <string name="friend_already_added">Bạn bè đã được thêm</string>
+    <string name="remove_image">Xoá ảnh</string>
+    <string name="image_removed_toast">Đã xóa ảnh</string>
+    <string name="select_picture">Chọn ảnh</string>
+    <string name="error_creating_user">Lỗi khi tạo người dùng</string>
+    <string name="error_saving_profile">Lỗi khi lưu hồ sơ</string>
+    <string name="error_uploading_avatar">Lỗi khi tải lên ảnh đại diện</string>
+    <string name="please_complete_profile">Vui lòng hoàn tất hồ sơ của bạn</string>
+    <string name="spending_list_default_title">Tiêu đề danh sách chi tiêu mặc định</string>
+
+    <string name="confirm_delete_title">Xác nhận xóa</string>
+    <string name="confirm_delete_message">Bạn có chắc chắn muốn xóa khoản chi tiêu này?</string>
+    <string name="error_deleting_spending">Lỗi khi xóa chi tiêu</string>
+    <string name="spending_deleted_success">Đã xóa chi tiêu thành công</string>
+
+    <string name="permission_denied_download">Không có quyền tải xuống. Vui lòng cấp quyền và thử lại.</string>
+    <string name="error_loading_image_url">Không thể tải URL ảnh. Vui lòng thử lại sau.</string>
+
+    <string name="please_enter_initial_balance">Vui lòng nhập số dư ban đầu</string>
+    <string name="please_select_birthday">Vui lòng chọn ngày sinh</string>
+    <string name="error_user_too_young">Bạn phải đủ %d tuổi để sử dụng ứng dụng</string>
+
+    <string name="new_month_budget_title">Ngân sách tháng mới</string>
+    <string name="ask_update_budget">Bạn có muốn cập nhật ngân sách cho tháng này không?</string>
+
+    <string name="error_min_max_amount">Số tiền tối thiểu không được lớn hơn số tiền tối đa</string>
+    <string name="error_invalid_amount_filter">Vui lòng nhập số tiền hợp lệ</string>
+    <string name="change_language">Thay đổi ngôn ngữ</string>
+    <string name="error_loading_spending_details">Lỗi khi tải chi tiết chi tiêu</string>
+    <string name="restore">Khôi phục</string>
+    <string name="unknown">Không xác định</string>
+
+    <string name="deleted_spending_history_title">Lịch sử chi tiêu đã xóa</string>
+    <string name="error_firestore_index_required">Lỗi: Cần tạo chỉ mục cho Firestore. Vui lòng liên hệ quản trị viên.</string>
+    <string name="error_no_item_selected">Vui lòng chọn ít nhất một mục</string>
+    <string name="confirm_restore_title">Khôi phục chi tiêu</string>
+    <string name="confirm_restore_message">Bạn có muốn khôi phục %d mục đã chọn?</string>
+    <string name="confirm_permanent_delete_title">Xóa vĩnh viễn</string>
+    <string name="confirm_permanent_delete_message">Xóa vĩnh viễn %d mục đã chọn? Hành động này không thể hoàn tác.</string>
+    <string name="error_restore_some_failed">Không thể khôi phục %d mục. Vui lòng thử lại.</string>
+    <string name="success_restore_items">Đã khôi phục thành công %d mục</string>
+    <string name="error_delete_some_failed">Không thể xóa %d mục. Vui lòng thử lại.</string>
+    <string name="success_delete_items">Đã xóa vĩnh viễn %d mục</string>
+    <string name="date_not_available">Không có ngày</string>
+    <string name="facebook_login_cancelled">Đăng nhập Facebook đã bị hủy</string>
+    <string name="facebook_login_failed">Đăng nhập Facebook thất bại</string>
+
+    <string name="error_firebase_user_null">Lỗi: Không thể lấy thông tin người dùng</string>
+    <string name="error_firebase_auth_failed">Xác thực Firebase thất bại</string>
+    <string name="error_checking_profile">Lỗi kiểm tra thông tin người dùng</string>
+    <string name="error_creating_profile">Lỗi tạo hồ sơ người dùng</string>
+
+    <string name="error_update_play_services">Vui lòng cập nhật Google Play Services để tiếp tục</string>
+    <string name="error_unrecoverable_play_services">Lỗi không thể khắc phục với Google Play Services</string>
+
+    <string name="error_permission_denied">Không có quyền truy cập. Vui lòng đăng nhập lại.</string>
+    <string name="error_permission_denied_update">Không có quyền cập nhật. Vui lòng đăng nhập lại.</string>
+    <string name="error_invalid_money_format">Định dạng tiền không hợp lệ</string>
+    <string name="error_loading_user_data">Không thể tải thông tin người dùng</string>
+    <string name="error_firestore_index_required_short">Cần tạo chỉ mục Firestore</string>
+    <string name="birthday_age_requirement">Bạn phải đủ 10 tuổi trở lên</string>
+
+    <!-- Error messages -->
+    <string name="error_spending_not_found">Không tìm thấy chi tiêu</string>
+    <string name="please_select_date_time">Vui lòng chọn ngày và giờ</string>
 </resources>

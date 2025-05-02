@@ -20,6 +20,14 @@ public class CurrencyUtils {
         return numberFormat.format(number);
     }
 
+    public static String formatAmount(double amount) {
+        if (amount >= 0) {
+            return formatCurrency((long) amount);
+        } else {
+            return "-" + formatCurrency((long) Math.abs(amount));
+        }
+    }
+
     public static long parseCurrencyString(String currencyString) {
         try {
             String cleanString = currencyString.replaceAll("[^\\d]", "");
