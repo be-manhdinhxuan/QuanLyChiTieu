@@ -49,7 +49,8 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
         // this.calendar = Calendar.getInstance();
         // this.dayOfWeek = new String[]{"CN", "T2", "T3", "T4", "T5", "T6", "T7"};
         // Nhóm danh sách ban đầu (chỉ lấy chi tiêu)
-        this.groupedSpendingList = groupSpendingsByType(initialSpendingList != null ? initialSpendingList : new ArrayList<>());
+        this.groupedSpendingList = groupSpendingsByType(
+                initialSpendingList != null ? initialSpendingList : new ArrayList<>());
     }
 
     public void setOnSpendingClickListener(OnSpendingClickListener listener) {
@@ -59,6 +60,7 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
     /**
      * Cập nhật dữ liệu adapter với danh sách spending mới.
      * Chỉ các khoản chi tiêu sẽ được nhóm và hiển thị.
+     * 
      * @param spendingList Danh sách Spending mới (bao gồm cả thu và chi).
      */
     public void setItems(List<Spending> spendingList) {
@@ -70,8 +72,10 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
 
     /**
      * Nhóm các khoản CHI TIÊU theo loại.
+     * 
      * @param spendingList Danh sách Spending (có thể lẫn thu và chi).
-     * @return Danh sách các nhóm TypeSpending (chỉ chứa chi tiêu), sắp xếp theo ngày mới nhất.
+     * @return Danh sách các nhóm TypeSpending (chỉ chứa chi tiêu), sắp xếp theo
+     *         ngày mới nhất.
      */
     private List<TypeSpending> groupSpendingsByType(List<Spending> spendingList) {
         if (spendingList == null || spendingList.isEmpty()) {
@@ -96,8 +100,8 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
             typeGroup.addSpending(spending);
 
             Log.d(TAG, "Grouped spending: type=" + type
-                + ", typeName=" + typeName
-                + ", money=" + spending.getMoney());
+                    + ", typeName=" + typeName
+                    + ", money=" + spending.getMoney());
         }
 
         List<TypeSpending> sortedList = new ArrayList<>(groupMap.values());
@@ -159,14 +163,16 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
                         TypeSpending typeSpending = groupedSpendingList.get(position);
                         onSpendingClickListener.onTypeGroupClick(typeSpending);
                     } else {
-                        Log.e(TAG, "Invalid position clicked: " + position + ", list size: " + groupedSpendingList.size());
+                        Log.e(TAG,
+                                "Invalid position clicked: " + position + ", list size: " + groupedSpendingList.size());
                     }
                 }
             });
         }
 
         void bind(TypeSpending typeSpending) {
-            if (typeSpending == null) return;
+            if (typeSpending == null)
+                return;
 
             imageIcon.setImageResource(getDefaultIconResource(typeSpending.getType()));
             textTypeName.setText(typeSpending.getTypeName());
@@ -209,11 +215,12 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
         }
 
         public void addSpending(Spending spending) {
-            if (spending == null) return;
+            if (spending == null)
+                return;
 
             Log.d(TAG, "Adding spending: type=" + spending.getType()
-                + ", typeName=" + spending.getTypeName()
-                + ", money=" + spending.getMoney());
+                    + ", typeName=" + spending.getTypeName()
+                    + ", money=" + spending.getMoney());
 
             spendings.add(spending);
             totalAmount += spending.getMoney(); // Cộng dồn số tiền (luôn là số âm vì là chi tiêu)
@@ -228,11 +235,25 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
         }
 
         // Getters giữ nguyên
-        public int getType() { return type; }
-        public String getTypeName() { return typeName; }
-        public List<Spending> getSpendings() { return spendings; }
-        public double getTotalAmount() { return totalAmount; }
-        public Date getLatestSpendingDate() { return latestDate != null ? latestDate : new Date(0); }
+        public int getType() {
+            return type;
+        }
+
+        public String getTypeName() {
+            return typeName;
+        }
+
+        public List<Spending> getSpendings() {
+            return spendings;
+        }
+
+        public double getTotalAmount() {
+            return totalAmount;
+        }
+
+        public Date getLatestSpendingDate() {
+            return latestDate != null ? latestDate : new Date(0);
+        }
     }
 
     // --- Hàm Helper của Adapter ---
@@ -240,39 +261,64 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
         // ... (Giữ nguyên logic switch case trả về R.drawable.*) ...
         switch (type) {
             // Chi tiêu hàng tháng
-            case SpendingType.EATING:           return R.drawable.ic_eat;
-            case SpendingType.TRANSPORTATION:   return R.drawable.ic_taxi;
-            case SpendingType.HOUSING:          return R.drawable.ic_house;
-            case SpendingType.UTILITIES:        return R.drawable.ic_water;
-            case SpendingType.PHONE:            return R.drawable.ic_phone;
-            case SpendingType.ELECTRICITY:      return R.drawable.ic_electricity;
-            case SpendingType.GAS:              return R.drawable.ic_gas;
-            case SpendingType.TV:               return R.drawable.ic_tv;
-            case SpendingType.INTERNET:         return R.drawable.ic_internet;
+            case SpendingType.EATING:
+                return R.drawable.ic_eat;
+            case SpendingType.TRANSPORTATION:
+                return R.drawable.ic_taxi;
+            case SpendingType.HOUSING:
+                return R.drawable.ic_house;
+            case SpendingType.UTILITIES:
+                return R.drawable.ic_water;
+            case SpendingType.PHONE:
+                return R.drawable.ic_phone;
+            case SpendingType.ELECTRICITY:
+                return R.drawable.ic_electricity;
+            case SpendingType.GAS:
+                return R.drawable.ic_gas;
+            case SpendingType.TV:
+                return R.drawable.ic_tv;
+            case SpendingType.INTERNET:
+                return R.drawable.ic_internet;
 
             // Chi tiêu cần thiết
-            case SpendingType.FAMILY:           return R.drawable.ic_family;
-            case SpendingType.HOME_REPAIR:      return R.drawable.ic_house_2;
-            case SpendingType.VEHICLE:          return R.drawable.ic_tools;
-            case SpendingType.HEALTHCARE:       return R.drawable.ic_doctor;
-            case SpendingType.INSURANCE:        return R.drawable.ic_health_insurance;
-            case SpendingType.EDUCATION:        return R.drawable.ic_education;
-            case SpendingType.HOUSEWARES:       return R.drawable.ic_armchair;
-            case SpendingType.PERSONAL:         return R.drawable.ic_toothbrush;
-            case SpendingType.PET:              return R.drawable.ic_pet;
+            case SpendingType.FAMILY:
+                return R.drawable.ic_family;
+            case SpendingType.HOME_REPAIR:
+                return R.drawable.ic_house_2;
+            case SpendingType.VEHICLE:
+                return R.drawable.ic_tools;
+            case SpendingType.HEALTHCARE:
+                return R.drawable.ic_doctor;
+            case SpendingType.INSURANCE:
+                return R.drawable.ic_health_insurance;
+            case SpendingType.EDUCATION:
+                return R.drawable.ic_education;
+            case SpendingType.HOUSEWARES:
+                return R.drawable.ic_armchair;
+            case SpendingType.PERSONAL:
+                return R.drawable.ic_toothbrush;
+            case SpendingType.PET:
+                return R.drawable.ic_pet;
 
             // Giải trí
-            case SpendingType.SPORTS:           return R.drawable.ic_sports;
-            case SpendingType.BEAUTY:           return R.drawable.ic_diamond;
-            case SpendingType.GIFTS:            return R.drawable.ic_give_love;
-            case SpendingType.ENTERTAINMENT:    return R.drawable.ic_game_pad;
-            case SpendingType.SHOPPING:      return R.drawable.ic_shopping;
+            case SpendingType.SPORTS:
+                return R.drawable.ic_sports;
+            case SpendingType.BEAUTY:
+                return R.drawable.ic_diamond;
+            case SpendingType.GIFTS:
+                return R.drawable.ic_give_love;
+            case SpendingType.ENTERTAINMENT:
+                return R.drawable.ic_game_pad;
+            case SpendingType.SHOPPING:
+                return R.drawable.ic_shopping;
 
             // Khác
-            case SpendingType.OTHER:            return R.drawable.ic_box;
+            case SpendingType.OTHER:
+                return R.drawable.ic_box;
 
             // Trường hợp mặc định
-            default:                            return R.drawable.ic_question_mark; // Default icon                           return R.drawable.ic_other;
+            default:
+                return R.drawable.ic_tag; // Default icon return R.drawable.ic_other;
         }
     }
 
@@ -280,35 +326,59 @@ public class SpendingAdapter extends RecyclerView.Adapter<SpendingAdapter.ViewHo
     private String getTypeNameDefault(int type) {
         // ... (Giữ nguyên logic switch case trả về tên mặc định) ...
         switch (type) {
-            case SpendingType.EATING:           return "Ăn uống";
-            case SpendingType.TRANSPORTATION:   return "Di chuyển";
-            case SpendingType.HOUSING:          return "Thuê nhà";
-            case SpendingType.UTILITIES:        return "Tiền nước";
-            case SpendingType.PHONE:            return "Tiền điện thoại";
-            case SpendingType.ELECTRICITY:      return "Tiền điện";
-            case SpendingType.GAS:              return "Tiền gas";
-            case SpendingType.TV:               return "Tiền TV";
-            case SpendingType.INTERNET:         return "Tiền internet";
-            case SpendingType.FAMILY:           return "Dịch vụ gia đình";
-            case SpendingType.HOME_REPAIR:      return "Sửa chữa nhà cửa";
-            case SpendingType.VEHICLE:          return "Vé xe";
-            case SpendingType.HEALTHCARE:       return "Khám chữa bệnh";
-            case SpendingType.INSURANCE:        return "Bảo hiểm";
-            case SpendingType.EDUCATION:        return "Học tập";
-            case SpendingType.HOUSEWARES:       return "Mua sắm";
-            case SpendingType.PERSONAL:         return "Sinh hoạt cá nhân";
-            case SpendingType.PET:              return "Thú cưng";
+            case SpendingType.EATING:
+                return "Ăn uống";
+            case SpendingType.TRANSPORTATION:
+                return "Di chuyển";
+            case SpendingType.HOUSING:
+                return "Thuê nhà";
+            case SpendingType.UTILITIES:
+                return "Tiền nước";
+            case SpendingType.PHONE:
+                return "Tiền điện thoại";
+            case SpendingType.ELECTRICITY:
+                return "Tiền điện";
+            case SpendingType.GAS:
+                return "Tiền gas";
+            case SpendingType.TV:
+                return "Tiền TV";
+            case SpendingType.INTERNET:
+                return "Tiền internet";
+            case SpendingType.FAMILY:
+                return "Dịch vụ gia đình";
+            case SpendingType.HOME_REPAIR:
+                return "Sửa chữa nhà cửa";
+            case SpendingType.VEHICLE:
+                return "Vé xe";
+            case SpendingType.HEALTHCARE:
+                return "Khám chữa bệnh";
+            case SpendingType.INSURANCE:
+                return "Bảo hiểm";
+            case SpendingType.EDUCATION:
+                return "Học tập";
+            case SpendingType.HOUSEWARES:
+                return "Mua sắm";
+            case SpendingType.PERSONAL:
+                return "Sinh hoạt cá nhân";
+            case SpendingType.PET:
+                return "Thú cưng";
 
-            case SpendingType.SPORTS:           return "Thể thao";
-            case SpendingType.BEAUTY:           return "Chăm sóc sắc đẹp";
-            case SpendingType.GIFTS:            return "Quà tặng";
-            case SpendingType.ENTERTAINMENT:    return "Giải trí";
-            case SpendingType.SHOPPING:      return "Mua sắm";
-            case SpendingType.OTHER:            return "Chi tiêu khác";
-
+            case SpendingType.SPORTS:
+                return "Thể thao";
+            case SpendingType.BEAUTY:
+                return "Chăm sóc sắc đẹp";
+            case SpendingType.GIFTS:
+                return "Quà tặng";
+            case SpendingType.ENTERTAINMENT:
+                return "Giải trí";
+            case SpendingType.SHOPPING:
+                return "Mua sắm";
+            case SpendingType.OTHER:
+                return "Chi tiêu khác";
 
             // ... các case khác ...
-            default:                            return "Chi tiêu khác";
+            default:
+                return "Chi tiêu khác";
         }
     }
 }

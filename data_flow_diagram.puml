@@ -1,0 +1,82 @@
+@startuml "Data Flow Diagram - Quan ly Chi tieu"
+
+' Định nghĩa style
+skinparam backgroundColor white
+skinparam roundCorner 15
+skinparam ArrowColor #0066CC
+skinparam componentStyle uml2
+
+' Định nghĩa màu sắc cho các thành phần
+skinparam rectangleBackgroundColor #85BBF0
+skinparam circleBackgroundColor #FFD700
+skinparam databaseBackgroundColor #A9DCDF
+
+' External Entities (Sử dụng rectangle)
+rectangle "Nguoi dung" as user
+rectangle "He thong thong bao" as notification_system
+rectangle "Dich vu vi tri" as location_service
+rectangle "May anh" as camera
+
+' Processes (Sử dụng circle)
+circle "1.0\nDang nhap/\nDang ky" as login_process
+circle "2.0\nQuan ly\nchi tieu" as spending_process
+circle "3.0\nPhan tich\nchi tieu" as analytics_process
+circle "4.0\nQuan ly\nngan sach" as budget_process
+circle "5.0\nQuan ly\nban be" as friend_process
+circle "6.0\nDong bo\ndu lieu" as sync_process
+
+' Data Stores (Sử dụng database)
+database "D1: Nguoi dung" as user_store
+database "D2: Chi tieu" as spending_store
+database "D3: Ngan sach" as budget_store
+database "D4: Ban be" as friend_store
+database "D5: Thong bao" as notification_store
+database "D6: Hinh anh" as image_store
+
+' Data Flows - User to Processes
+user --> login_process : "Thong tin dang nhap/dang ky"
+user --> spending_process : "Thong tin chi tieu"
+user --> analytics_process : "Yeu cau phan tich"
+user --> budget_process : "Thong tin ngan sach"
+user --> friend_process : "Thong tin ban be"
+
+' Data Flows - Processes to User
+login_process --> user : "Ket qua dang nhap/dang ky"
+spending_process --> user : "Danh sach chi tieu"
+analytics_process --> user : "Bao cao phan tich"
+budget_process --> user : "Thong tin ngan sach"
+friend_process --> user : "Danh sach ban be"
+notification_system --> user : "Thong bao"
+
+' Data Flows - External Entities to Processes
+location_service --> spending_process : "Du lieu vi tri"
+camera --> spending_process : "Hinh anh chi tieu"
+
+' Data Flows - Processes to Data Stores
+login_process --> user_store : "Luu thong tin nguoi dung"
+spending_process --> spending_store : "Luu thong tin chi tieu"
+spending_process --> image_store : "Luu hinh anh chi tieu"
+budget_process --> budget_store : "Luu thong tin ngan sach"
+friend_process --> friend_store : "Luu thong tin ban be"
+friend_process --> notification_store : "Tao thong bao ket ban"
+
+' Data Flows - Data Stores to Processes
+user_store --> login_process : "Doc thong tin nguoi dung"
+user_store --> friend_process : "Doc thong tin nguoi dung"
+spending_store --> spending_process : "Doc thong tin chi tieu"
+spending_store --> analytics_process : "Doc du lieu chi tieu"
+budget_store --> budget_process : "Doc thong tin ngan sach"
+budget_store --> analytics_process : "Doc du lieu ngan sach"
+friend_store --> friend_process : "Doc thong tin ban be"
+notification_store --> notification_system : "Doc thong bao"
+image_store --> spending_process : "Doc hinh anh chi tieu"
+
+' Data Flows - Sync Process
+sync_process --> user_store : "Dong bo du lieu nguoi dung"
+sync_process --> spending_store : "Dong bo du lieu chi tieu"
+sync_process --> budget_store : "Dong bo du lieu ngan sach"
+sync_process --> friend_store : "Dong bo du lieu ban be"
+sync_process --> notification_store : "Dong bo thong bao"
+sync_process --> image_store : "Dong bo hinh anh"
+
+@enduml

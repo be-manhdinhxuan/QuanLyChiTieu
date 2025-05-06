@@ -1,0 +1,129 @@
+@startuml "Quản lý chi tiêu - Clean Architecture"
+
+' Định nghĩa các style
+skinparam packageStyle rectangle
+skinparam backgroundColor white
+skinparam arrowColor black
+skinparam componentStyle uml2
+
+' Định nghĩa các layer
+package "Presentation Layer" {
+  package "UI" {
+    component "Activities" as Activities
+    component "Fragments" as Fragments
+    component "Adapters" as Adapters
+    component "ViewHolders" as ViewHolders
+  }
+  
+  package "ViewModels" {
+    component "SpendingViewModel" as SpendingViewModel
+    component "UserViewModel" as UserViewModel
+    component "AnalyticsViewModel" as AnalyticsViewModel
+  }
+}
+
+package "Domain Layer" {
+  package "Use Cases" {
+    component "GetSpendingsUseCase" as GetSpendingsUseCase
+    component "AddSpendingUseCase" as AddSpendingUseCase
+    component "UpdateUserUseCase" as UpdateUserUseCase
+    component "GetAnalyticsUseCase" as GetAnalyticsUseCase
+  }
+  
+  package "Entities" {
+    component "Spending" as Spending
+    component "User" as User
+    component "TypeSpending" as TypeSpending
+  }
+  
+  package "Repository Interfaces" {
+    interface "SpendingRepository" as SpendingRepository
+    interface "UserRepository" as UserRepository
+  }
+}
+
+package "Data Layer" {
+  package "Repositories" {
+    component "SpendingRepositoryImpl" as SpendingRepositoryImpl
+    component "UserRepositoryImpl" as UserRepositoryImpl
+  }
+  
+  package "Data Sources" {
+    package "Remote" {
+      component "FirestoreSpendingDataSource" as FirestoreSpendingDataSource
+      component "FirestoreUserDataSource" as FirestoreUserDataSource
+    }
+    
+    package "Local" {
+      component "RoomSpendingDataSource" as RoomSpendingDataSource
+      component "RoomUserDataSource" as RoomUserDataSource
+      
+      package "Entities" {
+        component "SpendingEntity" as SpendingEntity
+        component "UserEntity" as UserEntity
+      }
+      
+      package "DAOs" {
+        component "SpendingDao" as SpendingDao
+        component "UserDao" as UserDao
+      }
+    }
+  }
+  
+  package "Mappers" {
+    component "SpendingMapper" as SpendingMapper
+    component "UserMapper" as UserMapper
+  }
+}
+
+' Định nghĩa các mối quan hệ
+' Presentation -> Domain
+Activities --> Fragments
+Fragments --> Adapters
+Adapters --> ViewHolders
+Fragments --> SpendingViewModel
+Fragments --> UserViewModel
+Fragments --> AnalyticsViewModel
+
+SpendingViewModel --> GetSpendingsUseCase
+SpendingViewModel --> AddSpendingUseCase
+UserViewModel --> UpdateUserUseCase
+AnalyticsViewModel --> GetAnalyticsUseCase
+
+' Domain Use Cases -> Domain Repositories
+GetSpendingsUseCase --> SpendingRepository
+AddSpendingUseCase --> SpendingRepository
+UpdateUserUseCase --> UserRepository
+GetAnalyticsUseCase --> SpendingRepository
+
+' Domain Use Cases -> Domain Entities
+GetSpendingsUseCase --> Spending
+AddSpendingUseCase --> Spending
+UpdateUserUseCase --> User
+GetAnalyticsUseCase --> TypeSpending
+
+' Data Repositories -> Domain Repositories
+SpendingRepositoryImpl ..|> SpendingRepository
+UserRepositoryImpl ..|> UserRepository
+
+' Data Repositories -> Data Sources
+SpendingRepositoryImpl --> FirestoreSpendingDataSource
+SpendingRepositoryImpl --> RoomSpendingDataSource
+UserRepositoryImpl --> FirestoreUserDataSource
+UserRepositoryImpl --> RoomUserDataSource
+
+' Data Sources -> Entities
+RoomSpendingDataSource --> SpendingEntity
+RoomUserDataSource --> UserEntity
+RoomSpendingDataSource --> SpendingDao
+RoomUserDataSource --> UserDao
+
+' Mappers
+SpendingRepositoryImpl --> SpendingMapper
+UserRepositoryImpl --> UserMapper
+SpendingMapper --> Spending
+SpendingMapper --> SpendingEntity
+UserMapper --> User
+UserMapper --> UserEntity
+
+@enduml

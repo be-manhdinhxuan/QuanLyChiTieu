@@ -294,7 +294,7 @@
     <!-- Password reset strings -->
     <string name="reset_email_sent">Password reset email has been sent</string>
     <string name="failed_to_send_reset_email">Failed to send password reset email</string>
-
+    <string name="error_checking_email">Error checking email</string>
 
     <string name="select_date">Select date</string>
 
@@ -458,7 +458,7 @@
     <string name="password_must_be_at_least_6_chars">Password must be at least 6 characters long</string>
     <string name="please_confirm_new_password">Please confirm your new password</string>
     <string name="password_not_match">Passwords do not match</string>
-    <string name="incorrect_password">Incorrect password</string>
+
     <string name="password_changed_successfully">Password changed successfully</string>
     <string name="failed_to_change_password">Failed to change password</string>
 
@@ -659,4 +659,14 @@
     <!-- Error messages -->
     <string name="error_spending_not_found">Spending not found</string>
     <string name="please_select_date_time">Please select date and time</string>
+
+    <!-- Error messages for login -->
+    <string name="email_not_registered">This email is not registered</string>
+    <string name="incorrect_password">Incorrect password</string>
+    <string name="account_temporarily_blocked">Account temporarily blocked due to multiple failed login attempts</string>
+    <string name="network_error">Network error. Please check your connection and try again</string>
+    <string name="login_failed">Login failed. Please try again</string>
+
+    <!-- Thêm chuỗi mới cho đăng ký -->
+    <string name="email_already_registered">This email is already registered. Please use a different email or sign in</string>
 </resources>

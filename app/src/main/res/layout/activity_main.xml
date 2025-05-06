@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <FrameLayout
-        android:id="@+id/container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="56dp" />
-
     <!-- BottomBar có split ở giữa cho FAB -->
+    <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="56dp"/>
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -42,17 +41,17 @@
 
                 <ImageView
                     android:id="@+id/iconHome"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_home"
-                    app:tint="@color/teal_500" />
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_home" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/home"
                     android:textSize="12sp"
-                    android:layout_marginTop="2dp" />
+                    android:layout_marginTop="2dp"
+                    android:tag="tab_text" />
             </LinearLayout>
 
             <!-- Calendar -->
@@ -69,17 +68,17 @@
 
                 <ImageView
                     android:id="@+id/iconCalendar"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_calendar"
-                    app:tint="@color/gray_500" />
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_calendar" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/calendar"
                     android:textSize="12sp"
-                    android:layout_marginTop="2dp" />
+                    android:layout_marginTop="2dp"
+                    android:tag="tab_text" />
             </LinearLayout>
         </LinearLayout>
 
@@ -109,10 +108,9 @@
 
                 <ImageView
                     android:id="@+id/iconAnalytic"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_analytic"
-                    app:tint="@color/gray_500" />
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_analytic" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -136,10 +134,9 @@
 
                 <ImageView
                     android:id="@+id/iconProfile"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:src="@drawable/ic_profile"
-                    app:tint="@color/gray_500" />
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:src="@drawable/ic_setting_account" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -158,18 +155,20 @@
         android:layout_gravity="bottom|center"
         android:elevation="8dp">
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
+         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/fabAdd"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="14dp"
             android:src="@drawable/ic_add"
-            android:backgroundTint="#009688"
+            android:backgroundTint="#FE646F"
             app:tint="@android:color/white"
             app:elevation="6dp"
             app:borderWidth="0dp"
-            app:maxImageSize="24dp" />
+            app:maxImageSize="24dp"
+            app:fabCustomSize="56dp"
+            app:shapeAppearanceOverlay="@style/CircleFab" />
     </FrameLayout>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

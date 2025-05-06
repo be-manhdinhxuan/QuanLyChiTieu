@@ -31,7 +31,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_person" />
+                    android:src="@drawable/ic_profile" />
             </com.google.android.material.card.MaterialCardView>
 
             <Space
@@ -93,7 +93,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="20sp"
-                        android:textColor="@color/primary"
+                        android:textColor="@color/balance_color"
                         android:textStyle="bold"
                         android:text="1.000.000 VND" />
                 </LinearLayout>
@@ -138,8 +138,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_person"
-                        app:tint="@color/primary" />
+                        android:src="@drawable/ic_person" />
 
                     <Space
                         android:layout_width="16dp"
@@ -185,8 +184,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_lock"
-                        app:tint="@color/primary" />
+                        android:src="@drawable/ic_lock" />
 
                     <Space
                         android:layout_width="16dp"
@@ -280,8 +278,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_history"
-                        app:tint="@color/primary" />
+                        android:src="@drawable/ic_history" />
 
                     <Space
                         android:layout_width="16dp"
@@ -327,8 +324,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:layout_gravity="center_vertical"
-                        android:src="@drawable/ic_info"
-                        app:tint="@color/primary" />
+                        android:src="@drawable/ic_info" />
 
                     <Space
                         android:layout_width="16dp"

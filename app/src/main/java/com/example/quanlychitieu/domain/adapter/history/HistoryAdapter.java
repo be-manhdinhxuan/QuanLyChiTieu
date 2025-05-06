@@ -29,6 +29,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     public interface OnHistoryItemClickListener {
         void onItemClick(Spending spending);
+
         void onCheckboxChanged(Spending spending, boolean isChecked);
     }
 
@@ -114,8 +115,8 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             // Set amount with currency format
             String amount = currencyFormat.format(Math.abs(spending.getMoney()));
             tvAmount.setText(amount);
-            tvAmount.setTextColor(context.getColor(spending.getMoney() < 0 ? 
-                    R.color.expense_red : R.color.income_green));
+            tvAmount.setTextColor(
+                    context.getColor(spending.getMoney() < 0 ? R.color.expense_red : R.color.income_green));
 
             // Set click listener for the whole item
             itemView.setOnClickListener(v -> {
@@ -127,30 +128,54 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
         private int getTypeIcon(int type) {
             switch (type) {
-                case SpendingType.EATING: return R.drawable.ic_eat;
-                case SpendingType.TRANSPORTATION: return R.drawable.ic_taxi;
-                case SpendingType.HOUSING: return R.drawable.ic_house;
-                case SpendingType.UTILITIES: return R.drawable.ic_water;
-                case SpendingType.PHONE: return R.drawable.ic_phone;
-                case SpendingType.ELECTRICITY: return R.drawable.ic_electricity;
-                case SpendingType.GAS: return R.drawable.ic_gas;
-                case SpendingType.TV: return R.drawable.ic_tv;
-                case SpendingType.INTERNET: return R.drawable.ic_internet;
-                case SpendingType.FAMILY: return R.drawable.ic_family;
-                case SpendingType.HOME_REPAIR: return R.drawable.ic_house_2;
-                case SpendingType.VEHICLE: return R.drawable.ic_tools;
-                case SpendingType.HEALTHCARE: return R.drawable.ic_doctor;
-                case SpendingType.INSURANCE: return R.drawable.ic_health_insurance;
-                case SpendingType.EDUCATION: return R.drawable.ic_education;
-                case SpendingType.HOUSEWARES: return R.drawable.ic_armchair;
-                case SpendingType.PERSONAL: return R.drawable.ic_toothbrush;
-                case SpendingType.PET: return R.drawable.ic_pet;
-                case SpendingType.SPORTS: return R.drawable.ic_sports;
-                case SpendingType.BEAUTY: return R.drawable.ic_diamond;
-                case SpendingType.GIFTS: return R.drawable.ic_give_love;
-                case SpendingType.ENTERTAINMENT: return R.drawable.ic_game_pad;
-                case SpendingType.OTHER: return R.drawable.ic_box;
-                default: return R.drawable.ic_question_mark;
+                case SpendingType.EATING:
+                    return R.drawable.ic_eat;
+                case SpendingType.TRANSPORTATION:
+                    return R.drawable.ic_taxi;
+                case SpendingType.HOUSING:
+                    return R.drawable.ic_house;
+                case SpendingType.UTILITIES:
+                    return R.drawable.ic_water;
+                case SpendingType.PHONE:
+                    return R.drawable.ic_phone;
+                case SpendingType.ELECTRICITY:
+                    return R.drawable.ic_electricity;
+                case SpendingType.GAS:
+                    return R.drawable.ic_gas;
+                case SpendingType.TV:
+                    return R.drawable.ic_tv;
+                case SpendingType.INTERNET:
+                    return R.drawable.ic_internet;
+                case SpendingType.FAMILY:
+                    return R.drawable.ic_family;
+                case SpendingType.HOME_REPAIR:
+                    return R.drawable.ic_house_2;
+                case SpendingType.VEHICLE:
+                    return R.drawable.ic_tools;
+                case SpendingType.HEALTHCARE:
+                    return R.drawable.ic_doctor;
+                case SpendingType.INSURANCE:
+                    return R.drawable.ic_health_insurance;
+                case SpendingType.EDUCATION:
+                    return R.drawable.ic_education;
+                case SpendingType.HOUSEWARES:
+                    return R.drawable.ic_armchair;
+                case SpendingType.PERSONAL:
+                    return R.drawable.ic_toothbrush;
+                case SpendingType.PET:
+                    return R.drawable.ic_pet;
+                case SpendingType.SPORTS:
+                    return R.drawable.ic_sports;
+                case SpendingType.BEAUTY:
+                    return R.drawable.ic_diamond;
+                case SpendingType.GIFTS:
+                    return R.drawable.ic_give_love;
+                case SpendingType.ENTERTAINMENT:
+                    return R.drawable.ic_game_pad;
+                case SpendingType.OTHER:
+                    return R.drawable.ic_box;
+                default:
+                    return R.drawable.ic_tag;
             }
         }
     }

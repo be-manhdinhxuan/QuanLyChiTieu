@@ -1,0 +1,122 @@
+@startuml "Sơ đồ Màn hình và Luồng Người dùng - Quản lý Chi tiêu"
+
+' Định nghĩa style
+skinparam backgroundColor white
+skinparam roundCorner 15
+skinparam ArrowColor #0066CC
+skinparam componentStyle uml2
+
+' Định nghĩa các stereotype
+!define SCREEN rectangle
+!define DIALOG rectangle
+!define FLOW_START circle
+!define FLOW_END circle
+
+' Định nghĩa màu sắc
+!define PRIMARY_COLOR #4285F4
+!define SECONDARY_COLOR #34A853
+!define ACCENT_COLOR #FBBC05
+!define DIALOG_COLOR #EA4335
+!define START_COLOR #000000
+!define END_COLOR #000000
+
+' Định nghĩa các màn hình
+FLOW_START "Bắt đầu" as start #START_COLOR
+FLOW_END "Kết thúc" as end #END_COLOR
+
+' Màn hình Onboarding & Đăng nhập
+SCREEN "Màn hình Splash" as splash #PRIMARY_COLOR
+SCREEN "Màn hình Onboarding" as onboarding #PRIMARY_COLOR
+SCREEN "Đăng nhập" as login #PRIMARY_COLOR
+SCREEN "Đăng ký" as register #PRIMARY_COLOR
+SCREEN "Quên mật khẩu" as forgot_password #PRIMARY_COLOR
+
+' Màn hình chính
+SCREEN "Màn hình chính\n(Bottom Navigation)" as main #SECONDARY_COLOR {
+  SCREEN "Trang chủ" as home #SECONDARY_COLOR
+  SCREEN "Lịch" as calendar #SECONDARY_COLOR
+  SCREEN "Phân tích" as analytics #SECONDARY_COLOR
+  SCREEN "Cá nhân" as profile #SECONDARY_COLOR
+}
+
+' Màn hình Chi tiêu
+SCREEN "Thêm chi tiêu" as add_spending #ACCENT_COLOR
+SCREEN "Xem chi tiêu" as view_spending #ACCENT_COLOR
+SCREEN "Chỉnh sửa chi tiêu" as edit_spending #ACCENT_COLOR
+DIALOG "Xác nhận xóa" as delete_spending_confirm #DIALOG_COLOR
+
+' Màn hình Ngân sách
+SCREEN "Quản lý ngân sách" as budget_management #ACCENT_COLOR
+SCREEN "Thêm ngân sách" as add_budget #ACCENT_COLOR
+SCREEN "Chỉnh sửa ngân sách" as edit_budget #ACCENT_COLOR
+
+' Màn hình Bạn bè
+SCREEN "Quản lý bạn bè" as friend_management #ACCENT_COLOR
+SCREEN "Tìm kiếm bạn" as search_friend #ACCENT_COLOR
+SCREEN "Thông tin bạn" as friend_profile #ACCENT_COLOR
+DIALOG "Xác nhận kết bạn" as friend_request_confirm #DIALOG_COLOR
+
+' Màn hình Cài đặt
+SCREEN "Cài đặt" as settings #ACCENT_COLOR
+SCREEN "Thông tin cá nhân" as personal_info #ACCENT_COLOR
+SCREEN "Đổi mật khẩu" as change_password #ACCENT_COLOR
+SCREEN "Cài đặt thông báo" as notification_settings #ACCENT_COLOR
+
+' Luồng người dùng - Onboarding & Đăng nhập
+start --> splash
+splash --> onboarding : "Lần đầu sử dụng"
+splash --> login : "Đã sử dụng trước đó"
+onboarding --> login
+login --> register : "Chưa có tài khoản"
+login --> forgot_password : "Quên mật khẩu"
+register --> login
+forgot_password --> login
+
+' Luồng người dùng - Đăng nhập thành công
+login --> main : "Đăng nhập thành công"
+
+' Luồng người dùng - Điều hướng chính
+main --> home : "Tab Trang chủ"
+main --> calendar : "Tab Lịch"
+main --> analytics : "Tab Phân tích"
+main --> profile : "Tab Cá nhân"
+
+' Luồng người dùng - Chi tiêu
+home --> add_spending : "Thêm chi tiêu mới"
+calendar --> add_spending : "Thêm chi tiêu mới"
+home --> view_spending : "Xem chi tiết"
+calendar --> view_spending : "Xem chi tiết"
+view_spending --> edit_spending : "Chỉnh sửa"
+view_spending --> delete_spending_confirm : "Xóa"
+delete_spending_confirm --> home : "Xác nhận xóa"
+add_spending --> home : "Lưu"
+edit_spending --> view_spending : "Lưu"
+
+' Luồng người dùng - Ngân sách
+home --> budget_management : "Quản lý ngân sách"
+profile --> budget_management : "Quản lý ngân sách"
+budget_management --> add_budget : "Thêm ngân sách"
+budget_management --> edit_budget : "Chỉnh sửa"
+add_budget --> budget_management : "Lưu"
+edit_budget --> budget_management : "Lưu"
+
+' Luồng người dùng - Bạn bè
+profile --> friend_management : "Quản lý bạn bè"
+friend_management --> search_friend : "Tìm bạn"
+friend_management --> friend_profile : "Xem thông tin"
+search_friend --> friend_request_confirm : "Gửi lời mời"
+friend_request_confirm --> search_friend : "Đã gửi"
+
+' Luồng người dùng - Cài đặt
+profile --> settings : "Cài đặt"
+settings --> personal_info : "Thông tin cá nhân"
+settings --> change_password : "Đổi mật khẩu"
+settings --> notification_settings : "Cài đặt thông báo"
+settings --> login : "Đăng xuất"
+
+' Kết thúc các luồng
+personal_info --> settings : "Lưu"
+change_password --> settings : "Lưu"
+notification_settings --> settings : "Lưu"
+
+@enduml

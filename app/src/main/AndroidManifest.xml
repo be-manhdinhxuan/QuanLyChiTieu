@@ -109,6 +109,9 @@
         <activity
                 android:name=".presentation.features.history.screen.HistoryActivity"
                 android:exported="false"/>
+        <activity
+                android:name=".presentation.features.main.onboarding.screen.OnBoardingActivity"
+                android:exported="false"/>
 
         <provider
                 android:name="androidx.core.content.FileProvider"

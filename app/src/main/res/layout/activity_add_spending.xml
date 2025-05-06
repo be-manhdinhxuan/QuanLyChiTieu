@@ -91,9 +91,10 @@
 
                         <ImageView
                                 android:id="@+id/imageType"
-                                android:layout_width="35dp"
-                                android:layout_height="35dp"
-                                android:src="@drawable/ic_question_mark" /> <TextView
+                                android:layout_width="32dp"
+                                android:layout_height="32dp"
+                                android:src="@drawable/ic_tag" />
+                        <TextView
                             android:id="@+id/textType"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -124,8 +125,7 @@
                         <ImageView
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
-                                android:src="@drawable/ic_calendar"
-                                app:tint="@color/orange_500" />
+                                android:src="@drawable/ic_calendar" />
 
                         <TextView
                                 android:id="@+id/textDate"
@@ -159,8 +159,7 @@
                         <ImageView
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
-                                android:src="@drawable/ic_time"
-                                app:tint="@color/yellow_500" />
+                                android:src="@drawable/ic_time" />
 
                         <TextView
                                 android:id="@+id/textTime"
@@ -192,8 +191,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="8dp"
                                 android:adjustViewBounds="true"
-                                android:src="@drawable/ic_note"
-                                app:tint="@color/red_500" />
+                                android:src="@drawable/ic_note" />
 
                         <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -239,8 +237,7 @@
                         <ImageView
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
-                                android:src="@drawable/ic_location"
-                                app:tint="@color/green_500" />
+                                android:src="@drawable/ic_location" />
 
                         <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -276,8 +273,7 @@
                         <ImageView
                                 android:layout_width="35dp"
                                 android:layout_height="35dp"
-                                android:src="@drawable/ic_person"
-                                app:tint="@color/blue_500" />
+                                android:src="@drawable/ic_addfriend" />
 
                         <TextView
                                 android:layout_width="0dp"

@@ -157,12 +157,13 @@ public class UserRepositoryImpl implements UserRepository {
       Log.w(TAG, "updateUser: User object is null.");
       return Tasks.forException(new IllegalArgumentException("User cannot be null"));
     }
-    // Đảm bảo ID của user cần update khớp với user đang đăng nhập
-    // Hoặc nếu logic cho phép sửa user khác (admin?), thì cần kiểm tra quyền
-    if (user.getId() == null || !user.getId().equals(firebaseUser.getUid())) {
-      Log.e(TAG, "updateUser: Attempting to update user with mismatched ID or null ID.");
-      return Tasks.forException(new SecurityException("Cannot update another user's profile or user with null ID."));
+    
+    // Đảm bảo ID không bị null
+    if (user.getId() == null || user.getId().isEmpty()) {
+      user.setId(firebaseUser.getUid());
+      Log.d(TAG, "updateUser: Setting user ID from Firebase: " + user.getId());
     }
+    
     Log.d(TAG, "Updating user ID: " + user.getId());
 
     // Logic xử lý ảnh (upload nếu có imageUri mới)
@@ -342,41 +343,47 @@ public class UserRepositoryImpl implements UserRepository {
    * @param isCurrentUser Đánh dấu user này có phải là user đang đăng nhập không.
    */
   private void cacheUser(User user, boolean isCurrentUser) {
-    if (localDataSource == null) return; // Không cache nếu không có local source
-    if (user == null) {
-      Log.e(TAG, "Cannot cache user: user is null");
-      return;
+    if (localDataSource == null || user == null) {
+        return;
     }
+    
+    // Đảm bảo ID không bị null
     if (user.getId() == null || user.getId().isEmpty()) {
-      Log.e(TAG, "Cannot cache user: user ID is null/empty");
-      return;
+        FirebaseUser firebaseUser = authDataSource.getCurrentUser();
+        if (firebaseUser != null) {
+            user.setId(firebaseUser.getUid());
+            Log.d(TAG, "cacheUser: Setting user ID from Firebase: " + user.getId());
+        } else {
+            Log.e(TAG, "cacheUser: User ID is null and no Firebase user available");
+            return; // Không thể cache user không có ID
+        }
     }
 
     executor.execute(() -> {
-      try {
-        Log.d(TAG, "Caching user ID: " + user.getId() + ", isCurrent: " + isCurrentUser);
-        // Kiểm tra xem user đã tồn tại chưa để quyết định insert hay update
-        User existingUser = localDataSource.getUser(user.getId());
-        if (existingUser != null) {
-          Log.d(TAG, "Updating existing user in cache: " + user.getId());
-          localDataSource.updateUser(user); // Giả sử có hàm update
-        } else {
-          Log.d(TAG, "Inserting new user into cache: " + user.getId());
-          long result = localDataSource.saveUser(user); // Giả sử có hàm save/insert
-          if (result == -1) {
-            Log.e(TAG, "Failed to insert user into local database: " + user.getId());
-            return;
-          }
-        }
+        try {
+            Log.d(TAG, "Caching user ID: " + user.getId() + ", isCurrent: " + isCurrentUser);
+            // Kiểm tra xem user đã tồn tại chưa để quyết định insert hay update
+            User existingUser = localDataSource.getUser(user.getId());
+            if (existingUser != null) {
+                Log.d(TAG, "Updating existing user in cache: " + user.getId());
+                localDataSource.updateUser(user); // Giả sử có hàm update
+            } else {
+                Log.d(TAG, "Inserting new user into cache: " + user.getId());
+                long result = localDataSource.saveUser(user); // Giả sử có hàm save/insert
+                if (result == -1) {
+                    Log.e(TAG, "Failed to insert user into local database: " + user.getId());
+                    return;
+                }
+            }
 
-        // Nếu là user hiện tại, cập nhật trong local source
-        if (isCurrentUser) {
-          localDataSource.setCurrentUser(user.getId()); // Giả sử có hàm này
-          Log.d(TAG, "Set user " + user.getId() + " as current user in cache.");
+            // Nếu là user hiện tại, cập nhật trong local source
+            if (isCurrentUser) {
+                localDataSource.setCurrentUser(user.getId()); // Giả sử có hàm này
+                Log.d(TAG, "Set user " + user.getId() + " as current user in cache.");
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "Error caching user: " + e.getMessage(), e);
         }
-      } catch (Exception e) {
-        Log.e(TAG, "Error caching user: " + e.getMessage(), e);
-      }
     });
   }
 

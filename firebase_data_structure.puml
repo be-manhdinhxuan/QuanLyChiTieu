@@ -1,0 +1,136 @@
+@startuml "Firebase Data Structure"
+
+' Định nghĩa style
+skinparam backgroundColor white
+skinparam packageStyle rectangle
+skinparam componentStyle uml2
+
+' Định nghĩa các stereotype
+!define COLLECTION class
+!define DOCUMENT class
+!define FIELD note right
+
+' Firestore Database
+package "Firestore Database" {
+  ' Users Collection
+  COLLECTION users << (C,#A9DCDF) Collection >> {
+    DOCUMENT user_id << (D,#FFD700) Document >> {
+      FIELD userId: String
+      FIELD name: String
+      FIELD email: String
+      FIELD avatar: String
+      FIELD birthday: String
+      FIELD gender: Boolean
+      FIELD money: Integer
+      FIELD createdAt: Timestamp
+      FIELD updatedAt: Timestamp
+      FIELD isDeleted: Boolean
+      FIELD deletedAt: Timestamp
+    }
+  }
+
+  ' Spending Collection
+  COLLECTION spending << (C,#A9DCDF) Collection >> {
+    DOCUMENT spending_id << (D,#FFD700) Document >> {
+      FIELD userId: String
+      FIELD money: Integer
+      FIELD type: Integer
+      FIELD typeName: String
+      FIELD note: String
+      FIELD dateTime: Timestamp
+      FIELD image: String
+      FIELD location: String
+      FIELD friends: List<String>
+      FIELD monthKey: String
+      FIELD createdAt: Timestamp
+      FIELD updatedAt: Timestamp
+      FIELD isDeleted: Boolean
+    }
+  }
+
+  ' Budgets Collection
+  COLLECTION budgets << (C,#A9DCDF) Collection >> {
+    DOCUMENT budget_id << (D,#FFD700) Document >> {
+      FIELD userId: String
+      FIELD amount: Integer
+      FIELD startDate: Timestamp
+      FIELD endDate: Timestamp
+      FIELD createdAt: Timestamp
+      FIELD updatedAt: Timestamp
+    }
+  }
+
+  ' Friends Collection
+  COLLECTION friends << (C,#A9DCDF) Collection >> {
+    DOCUMENT friend_id << (D,#FFD700) Document >> {
+      FIELD userId: String
+      FIELD friendId: String
+      FIELD status: String
+      FIELD createdAt: Timestamp
+    }
+  }
+
+  ' Notifications Collection
+  COLLECTION notifications << (C,#A9DCDF) Collection >> {
+    DOCUMENT notification_id << (D,#FFD700) Document >> {
+      FIELD userId: String
+      FIELD title: String
+      FIELD message: String
+      FIELD type: String
+      FIELD read: Boolean
+      FIELD createdAt: Timestamp
+    }
+  }
+
+  ' Wallet Collection
+  COLLECTION wallet << (C,#A9DCDF) Collection >> {
+    DOCUMENT wallet_id << (D,#FFD700) Document >> {
+      FIELD userId: String
+      FIELD balance: Integer
+      FIELD name: String
+      FIELD updatedAt: Timestamp
+    }
+  }
+
+  ' Data Collection
+  COLLECTION data << (C,#A9DCDF) Collection >> {
+    DOCUMENT month_key << (D,#FFD700) Document >> {
+      FIELD userId: String
+      FIELD monthKey: String
+      FIELD spendingIds: List<String>
+      FIELD updatedAt: Timestamp
+    }
+  }
+
+  ' Info Collection
+  COLLECTION info << (C,#A9DCDF) Collection >> {
+    DOCUMENT info_id << (D,#FFD700) Document >> {
+      FIELD userId: String
+      FIELD lastSync: Timestamp
+      FIELD appVersion: String
+      FIELD deviceInfo: Map
+    }
+  }
+}
+
+' Firebase Storage
+package "Firebase Storage" {
+  [avatars]
+  [spending_images]
+}
+
+' Mối quan hệ giữa các collection
+users ||--o{ spending : userId
+users ||--o{ budgets : userId
+users ||--o{ wallet : userId
+users ||--o{ data : userId
+users ||--o{ info : userId
+users ||--o{ friends : userId
+users ||--o{ notifications : userId
+spending ||--o{ data : spendingIds
+
+' Mối quan hệ với Storage
+users ||--o{ [avatars] : avatar
+spending ||--o{ [spending_images] : image
+
+@enduml

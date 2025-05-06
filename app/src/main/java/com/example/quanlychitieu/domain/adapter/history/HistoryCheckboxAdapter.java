@@ -33,6 +33,7 @@ public class HistoryCheckboxAdapter extends RecyclerView.Adapter<HistoryCheckbox
 
     public interface OnHistoryItemClickListener {
         void onItemClick(Spending spending);
+
         void onCheckboxChanged(Spending spending, boolean isChecked);
     }
 
@@ -129,41 +130,63 @@ public class HistoryCheckboxAdapter extends RecyclerView.Adapter<HistoryCheckbox
 
         private @DrawableRes int getTypeIcon(int type) {
 
-
             switch (type) {
                 // Chi tiêu hàng tháng
-                case SpendingType.EATING:           return R.drawable.ic_eat;
-                case SpendingType.TRANSPORTATION:   return R.drawable.ic_taxi;
-                case SpendingType.HOUSING:          return R.drawable.ic_house;
-                case SpendingType.UTILITIES:        return R.drawable.ic_water;
-                case SpendingType.PHONE:            return R.drawable.ic_phone;
-                case SpendingType.ELECTRICITY:      return R.drawable.ic_electricity;
-                case SpendingType.GAS:              return R.drawable.ic_gas;
-                case SpendingType.TV:               return R.drawable.ic_tv;
-                case SpendingType.INTERNET:         return R.drawable.ic_internet;
+                case SpendingType.EATING:
+                    return R.drawable.ic_eat;
+                case SpendingType.TRANSPORTATION:
+                    return R.drawable.ic_taxi;
+                case SpendingType.HOUSING:
+                    return R.drawable.ic_house;
+                case SpendingType.UTILITIES:
+                    return R.drawable.ic_water;
+                case SpendingType.PHONE:
+                    return R.drawable.ic_phone;
+                case SpendingType.ELECTRICITY:
+                    return R.drawable.ic_electricity;
+                case SpendingType.GAS:
+                    return R.drawable.ic_gas;
+                case SpendingType.TV:
+                    return R.drawable.ic_tv;
+                case SpendingType.INTERNET:
+                    return R.drawable.ic_internet;
 
                 // Chi tiêu cần thiết
-                case SpendingType.FAMILY:           return R.drawable.ic_family;
-                case SpendingType.HOME_REPAIR:      return R.drawable.ic_house_2;
-                case SpendingType.VEHICLE:          return R.drawable.ic_tools;
-                case SpendingType.HEALTHCARE:       return R.drawable.ic_doctor;
-                case SpendingType.INSURANCE:        return R.drawable.ic_health_insurance;
-                case SpendingType.EDUCATION:        return R.drawable.ic_education;
-                case SpendingType.HOUSEWARES:       return R.drawable.ic_armchair;
-                case SpendingType.PERSONAL:         return R.drawable.ic_toothbrush;
-                case SpendingType.PET:              return R.drawable.ic_pet;
+                case SpendingType.FAMILY:
+                    return R.drawable.ic_family;
+                case SpendingType.HOME_REPAIR:
+                    return R.drawable.ic_house_2;
+                case SpendingType.VEHICLE:
+                    return R.drawable.ic_tools;
+                case SpendingType.HEALTHCARE:
+                    return R.drawable.ic_doctor;
+                case SpendingType.INSURANCE:
+                    return R.drawable.ic_health_insurance;
+                case SpendingType.EDUCATION:
+                    return R.drawable.ic_education;
+                case SpendingType.HOUSEWARES:
+                    return R.drawable.ic_armchair;
+                case SpendingType.PERSONAL:
+                    return R.drawable.ic_toothbrush;
+                case SpendingType.PET:
+                    return R.drawable.ic_pet;
 
                 // Giải trí
-                case SpendingType.SPORTS:           return R.drawable.ic_sports;
-                case SpendingType.BEAUTY:           return R.drawable.ic_diamond;
-                case SpendingType.GIFTS:            return R.drawable.ic_give_love;
-                case SpendingType.ENTERTAINMENT:    return R.drawable.ic_game_pad;
-                // case SpendingType.SHOPPING:      return R.drawable.ic_shopping; // Thêm nếu có
-
+                case SpendingType.SPORTS:
+                    return R.drawable.ic_sports;
+                case SpendingType.BEAUTY:
+                    return R.drawable.ic_diamond;
+                case SpendingType.GIFTS:
+                    return R.drawable.ic_give_love;
+                case SpendingType.ENTERTAINMENT:
+                    return R.drawable.ic_game_pad;
+                // case SpendingType.SHOPPING: return R.drawable.ic_shopping; // Thêm nếu có
 
                 // Khác
-                case SpendingType.OTHER:            return R.drawable.ic_box;
-                default:                            return R.drawable.ic_question_mark; // Icon mặc định
+                case SpendingType.OTHER:
+                    return R.drawable.ic_box;
+                default:
+                    return R.drawable.ic_tag; // Icon mặc định
             }
         }
     }

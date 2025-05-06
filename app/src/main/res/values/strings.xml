@@ -243,7 +243,6 @@
     <string name="contact_me_via_email">Liên hệ với tôi qua Email</string>
 
     <!-- Validation Messages -->
-    <string name="enter_valid_email">Vui lòng nhập địa chỉ email hợp lệ</string>
     <string name="enter_valid_name">Vui lòng nhập tên hợp lệ</string>
     <string name="enter_valid_otp">Vui lòng nhập mã xác minh hợp lệ</string>
 
@@ -457,10 +456,8 @@
     <!-- Password Change Validation Messages -->
     <string name="please_enter_current_password">Vui lòng nhập mật khẩu hiện tại</string>
     <string name="please_enter_new_password">Vui lòng nhập mật khẩu mới</string>
-    <string name="password_must_be_at_least_6_chars">Mật khẩu phải có ít nhất 6 ký tự</string>
     <string name="please_confirm_new_password">Vui lòng xác nhận mật khẩu mới</string>
     <string name="password_not_match">Mật khẩu không khớp</string>
-    <string name="incorrect_password">Mật khẩu không đúng</string>
     <string name="password_changed_successfully">Đổi mật khẩu thành công</string>
     <string name="failed_to_change_password">Đổi mật khẩu thất bại</string>
 
@@ -669,4 +666,19 @@
     <!-- Error messages -->
     <string name="error_spending_not_found">Không tìm thấy chi tiêu</string>
     <string name="please_select_date_time">Vui lòng chọn ngày và giờ</string>
+
+    <!-- Thêm các chuỗi mới cho thông báo lỗi đăng nhập -->
+    <string name="enter_valid_email">Vui lòng nhập email hợp lệ</string>
+    <string name="password_must_be_at_least_6_chars">Mật khẩu phải có ít nhất 6 ký tự</string>
+    <string name="email_not_registered">Email này chưa được đăng ký</string>
+    <string name="incorrect_password">Mật khẩu không chính xác</string>
+    <string name="account_temporarily_blocked">Tài khoản tạm thời bị khóa do nhiều lần đăng nhập thất bại</string>
+    <string name="network_error">Lỗi kết nối mạng. Vui lòng kiểm tra kết nối và thử lại</string>
+    <string name="login_failed">Đăng nhập thất bại. Vui lòng thử lại</string>
+
+    <!-- Thêm chuỗi mới cho đăng ký -->
+    <string name="email_already_registered">Email này đã được đăng ký. Vui lòng sử dụng email khác hoặc đăng nhập</string>
+
+    <!-- Thêm chuỗi mới -->
+    <string name="error_checking_email">Lỗi khi kiểm tra email</string>
 </resources>

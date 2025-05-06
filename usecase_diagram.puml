@@ -1,0 +1,129 @@
+@startuml "Use Case Diagram - Quản lý Chi tiêu"
+
+' Định nghĩa style
+skinparam backgroundColor white
+skinparam usecase {
+  BackgroundColor #EEEBDC
+  BorderColor #000000
+  ArrowColor #000000
+}
+skinparam actor {
+  BorderColor #000000
+}
+
+' Định nghĩa actors
+actor "Người dùng" as User
+actor "Hệ thống thông báo" as NotificationSystem
+actor "Dịch vụ vị trí" as LocationService
+actor "Máy ảnh" as Camera
+actor "Hệ thống đồng bộ" as SyncSystem
+
+' Định nghĩa các package
+package "Quản lý tài khoản" {
+  usecase "Đăng ký tài khoản" as UC1
+  usecase "Đăng nhập" as UC2
+  usecase "Đăng xuất" as UC3
+  usecase "Quên mật khẩu" as UC4
+  usecase "Cập nhật thông tin cá nhân" as UC5
+  usecase "Đổi mật khẩu" as UC6
+}
+
+package "Quản lý chi tiêu" {
+  usecase "Xem danh sách chi tiêu" as UC7
+  usecase "Thêm chi tiêu mới" as UC8
+  usecase "Chỉnh sửa chi tiêu" as UC9
+  usecase "Xóa chi tiêu" as UC10
+  usecase "Tìm kiếm chi tiêu" as UC11
+  usecase "Lọc chi tiêu theo loại" as UC12
+  usecase "Xem chi tiêu theo ngày/tháng" as UC13
+  usecase "Chụp ảnh hóa đơn" as UC14
+  usecase "Thêm vị trí chi tiêu" as UC15
+}
+
+package "Phân tích chi tiêu" {
+  usecase "Xem tổng quan chi tiêu" as UC16
+  usecase "Xem biểu đồ phân tích" as UC17
+  usecase "Xem báo cáo chi tiêu theo loại" as UC18
+  usecase "Xem báo cáo chi tiêu theo thời gian" as UC19
+  usecase "Xuất báo cáo" as UC20
+}
+
+package "Quản lý ngân sách" {
+  usecase "Xem danh sách ngân sách" as UC21
+  usecase "Thêm ngân sách mới" as UC22
+  usecase "Chỉnh sửa ngân sách" as UC23
+  usecase "Xóa ngân sách" as UC24
+  usecase "Theo dõi tiến độ ngân sách" as UC25
+  usecase "Nhận cảnh báo vượt ngân sách" as UC26
+}
+
+package "Quản lý bạn bè" {
+  usecase "Xem danh sách bạn bè" as UC27
+  usecase "Tìm kiếm bạn" as UC28
+  usecase "Gửi lời mời kết bạn" as UC29
+  usecase "Chấp nhận/từ chối lời mời" as UC30
+  usecase "Xem thông tin bạn" as UC31
+  usecase "Chia sẻ chi tiêu với bạn" as UC32
+}
+
+package "Cài đặt và đồng bộ" {
+  usecase "Cài đặt thông báo" as UC33
+  usecase "Đồng bộ dữ liệu" as UC34
+  usecase "Sao lưu dữ liệu" as UC35
+  usecase "Khôi phục dữ liệu" as UC36
+}
+
+' Mối quan hệ giữa actors và use cases
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+User --> UC5
+User --> UC6
+User --> UC7
+User --> UC8
+User --> UC9
+User --> UC10
+User --> UC11
+User --> UC12
+User --> UC13
+User --> UC14
+User --> UC15
+User --> UC16
+User --> UC17
+User --> UC18
+User --> UC19
+User --> UC20
+User --> UC21
+User --> UC22
+User --> UC23
+User --> UC24
+User --> UC25
+User --> UC27
+User --> UC28
+User --> UC29
+User --> UC30
+User --> UC31
+User --> UC32
+User --> UC33
+User --> UC34
+User --> UC35
+User --> UC36
+
+Camera --> UC14
+LocationService --> UC15
+NotificationSystem --> UC26
+NotificationSystem --> UC30
+SyncSystem --> UC34
+SyncSystem --> UC35
+SyncSystem --> UC36
+
+' Mối quan hệ giữa các use cases
+UC8 <.. UC14 : <<include>>
+UC8 <.. UC15 : <<include>>
+UC25 <.. UC26 : <<extend>>
+UC29 <.. UC30 : <<extend>>
+UC8 <.. UC32 : <<extend>>
+UC9 <.. UC32 : <<extend>>
+
+@enduml
